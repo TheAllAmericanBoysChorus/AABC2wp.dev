@@ -21,7 +21,7 @@
                     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
                 </ul>
                 <section class="top-bar-section">
-                    <?php \NV\Hooks\Config::display_nav_menu(); ?>
+                    <?php display_nav_menu(); ?>
                 </section>
             </nav><!-- .top-bar -->
         </div>

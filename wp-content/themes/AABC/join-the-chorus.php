@@ -2,33 +2,32 @@
 
 // Template Name: Join The Chorus
 
-\NV\Theme::get_header();
-\NV\Theme::output_file_marker( __FILE__ );
 ?>
+<?php get_header(); ?>
 
 <?php get_template_part( 'join-the-chorus-header' ); ?>
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
-    <div class="small-12 large-4 columns content left small-centered">
-        <h1>When Last Did You Say…<br />"Don’t Take That Tone With Me Young Man?"</h1>
-        <h5>We Nurture Self-Esteem, Social Skills And Discipline For Life.</h5>
-        <p>We provide a world-acclaimed music and performing arts curriculum that educates, motivates and builds character in boys through unparalleled opportunities for performance, leadership, travel and community service.</p>
+    <div class="small-12 medium-7 large-4 columns content left small-text-center medium-text-center large-text-left">
+        <?php dynamic_sidebar( 'join-the-chorus-1' ) ?>
     </div>
 </div>
 
-<div class="row full travel-map">
-    <h1>Hello</h1>
-</div>
+<!--<div class="travel-map">-->
+<!--    <div class="row">-->
+<!--        <div class="small-12 text-center columns">-->
+<!--            <h1>Travel The World, Make Great Friends, And Learn New Skills.</h1>-->
+<!--            <h2>Now THAT’s Worth Singing About.</h2>-->
+<!--            <a href="#"><button>Join Today</button></a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="row-full clearfix">
     <img class="right small-12 large-6 columns"src="<?php bloginfo( 'template_directory' )?>/assets/images/rehearsal-1.jpg">
-    <div class="content">
-        <h1>We’re Not All About Vibrating Tonsils
-            And Belting Out Chords...</h1>
-        <h5>We Read Music, Understand Notes And Get
-            A Complete Musical Education.</h5>
-        <p>A key component of our overall music education curriculum, our Music Reading Program incorporates a professional staff to teach the sight-reading, writing and comprehension of the language of music. The course is taught by four credentialed instructors. Classes take place Saturdays from September to June.</p>
+    <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
+        <?php dynamic_sidebar( 'join-the-chorus-2' ) ?>
     </div>
 </div>
 </div>
@@ -71,7 +70,7 @@
     </div>
 </div>
 
-<?php \NV\Theme::get_footer(); ?>
+<?php get_footer(); ?>
 
 
 

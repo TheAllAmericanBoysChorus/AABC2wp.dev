@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<?php \NV\Theme::get_footer(); ?>
+<?php get_footer(); ?>
 
 
 
