@@ -1,0 +1,242 @@
+.main-cta-bg-home {
+  background: url('../../assets/images/main-banner-img.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+.main-cta-bg-about {
+  background: url('../../assets/images/about-us-banner.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+.main-cta-join-the-chorus {
+  background: url('../../assets/images/join-the-chorus-banner.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 500px;
+  background-position: center;
+}
+
+.main-cta-bg-book-us {
+  background: url('../../assets/images/performing-1.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+.main-cta-bg-weddings {
+  background: url('../../assets/images/wedding-banner.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+.main-cta-bg-film {
+  background: url('../../assets/images/film-2.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+.main-cta-bg-private-parties {
+  background: url('../../assets/images/film-2.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+.logo {
+  float: left;
+  margin: 5px;
+}
+
+.logo-sm-container {
+  padding-bottom: 2rem;
+}
+
+.social-media-icons {
+  float: right;
+  margin-top: 4rem;
+
+  ul {
+    list-style: none;
+
+    li {
+      display: inline-block;
+      padding-left: 1rem;
+    }
+  }
+
+  img {
+    opacity: 0.5;
+    transition: 0.2s all ease-in
+  }
+
+  img:hover {
+      opacity: 1;
+      transition: 0.2s all ease-in;
+  }
+}
+
+.main-cta {
+  padding: 5% 0 0 0;
+
+  h1 {
+    color: #fff;
+    line-height: 3rem;
+  }
+
+  h2 {
+    color: #fff;
+    line-height: 3rem;
+  }
+}
+
+.main-cta-btn {
+  background: $brand-gold;
+  border-radius: .5rem;
+  font-style: italic;
+  width: 200px;
+  margin-top: 5%;
+  font-size: 1.2rem;
+
+  &:hover {
+    background: $brand-dark-blue
+  }
+}
+
+.event-cta {
+  margin-top: -10%;
+
+  h1 {
+    color: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    background: $brand-dark-blue;
+    margin: 0;
+    padding: .5rem 0;
+  }
+
+  img {
+    width: 100%
+  }
+
+}
+
+.event-unit {
+  position: relative;
+}
+
+.secondary-cta-btn {
+  position: absolute;
+  top: 50%;
+  left: 34%;
+  width: 150px;
+  height: 50px;
+  border-radius: .5rem;
+  background: $brand-gold;
+
+  &:hover {
+    background: $brand-dark-blue;
+  }
+
+}
+
+.top-bar {
+  background: $brand-dark-blue
+}
+
+.contain-to-grid {
+  background: $brand-dark-blue;
+  border-bottom: 2px solid $brand-gold;
+}
+
+
+.top-bar.expanded .title-area {
+  background: $brand-dark-blue;
+}
+
+
+.top-bar-section ul li {
+  background: $brand-dark-blue;
+}
+
+
+.top-bar-section ul li a:hover {
+  background: $brand-gold;
+}
+
+
+@media only screen and (min-width: 40.0625em) {
+  .top-bar-section li:not(.has-form) a:not(.button) {
+    background: #242133;
+    line-height: 2.8125rem;
+    padding: 0 0.9375rem;
+  }
+
+  .top-bar-section > ul > .divider {
+    border-right: none;
+  }
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  background: $brand-gold;
+  transition: 0.1s all ease-in;
+}
+
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+  background: $brand-dark-blue;
+}
+
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button):hover {
+  background: $brand-gold;
+}
+
+.top-bar-section ul li {
+  background: $brand-dark-blue;
+}
+
+
+.top-bar-section li.active:not(.has-form) a:not(.button) {
+  background: $brand-gold;
+
+  &:hover {
+    background: $brand-red;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .social-media-icons {
+    display: none;
+  }
+
+  .main-cta h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 0;
+  }
+
+  .main-cta h2 {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+  }
+
+  .main-cta-btn {
+    width: 180px;
+    margin-top: 2rem;
+  }
+
+  .secondary-cta-btn {
+    left: 23%;
+  }
+}

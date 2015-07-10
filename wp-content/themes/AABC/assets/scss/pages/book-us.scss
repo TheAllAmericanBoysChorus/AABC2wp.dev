@@ -1,0 +1,126 @@
+/* Book Us */
+
+.create-buzz {
+  padding: 5rem 0;
+  h1 {
+    color: $brand-gold;
+    font-size: 2rem;
+  }
+}
+
+.book-us-options {
+  .book-us-option-btn {
+    position: absolute;
+    top: 50%;
+    left: 34%;
+    width: 170px;
+    height: 50px;
+    border-radius: 0.5rem;
+    background: $brand-gold;
+    &:hover {
+      background: $brand-dark-blue;
+    }
+  }
+}
+
+.book-us-option-wedding {
+  background: url("../images/weddings.jpg");
+  background-size: cover;
+  height: 400px;
+  float: left;
+  width: 33.333%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.book-us-option-film {
+  background: url("../images/film.jpg");
+  background-size: cover;
+  height: 400px;
+  float: left;
+  width: 33.333%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.book-us-option-private-parties {
+  background: url("../images/private_parties.jpg");
+  background-size: cover;
+  height: 400px;
+  float: left;
+  width: 33.333%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.book-us-option-holiday-events {
+  background: url("../images/holiday_events.jpg");
+  background-size: cover;
+  height: 400px;
+  float: left;
+  width: 33.333%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.book-us-option-recording {
+  background: url("../images/recording-1.jpg");
+  background-size: cover;
+  height: 400px;
+  float: left;
+  width: 33.333%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.book-us-option-presenters {
+  background: url("../images/presenters.jpg");
+  background-size: cover;
+  height: 400px;
+  float: left;
+  width: 33.333%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1225px) {
+  .book-us-option-presenters,
+  .book-us-option-recording,
+  .book-us-option-holiday-events,
+  .book-us-option-private-parties,
+  .book-us-option-film,
+  .book-us-option-wedding {
+    width: 50%;
+  }
+}
+
+@media (max-width: 750px) {
+  .book-us-option-presenters,
+  .book-us-option-recording,
+  .book-us-option-holiday-events,
+  .book-us-option-private-parties,
+  .book-us-option-film,
+  .book-us-option-wedding {
+    width: 100%;
+    float: none;
+    height: 250px;
+  }
+}
+
+@media (max-width: 750px) {
+  .book-us-option-btn {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    width: 170px;
+    height: 50px;
+    border-radius: 0.5rem;
+    background: $brand-gold;
+  }
+}

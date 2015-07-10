@@ -1,0 +1,98 @@
+.contact-home {
+  background: url("../images/contact-form-background.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 1100px;
+  h1 {
+    color: white;
+    line-height: 3rem;
+    margin-top: 20%;
+  }
+  h2 {
+    color: white;
+    line-height: 3rem;
+  }
+}
+
+form {
+  padding-top: 5rem;
+}
+
+label {
+  color: white;
+}
+
+input, textarea {
+  opacity: 0.9;
+}
+
+textarea {
+  height: 300px;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  background: $brand-gold;
+  border: none;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: white;
+  font-family: "Crimson Text", serif;
+  opacity: 1;
+  transition: all 0.3s ease-in;
+  &:hover {
+    background: $brand-dark-blue;
+    transition: 0.3s all ease-in;
+  }
+}
+
+.footer-1 {
+  background: url("../images/footer-bg.png");
+  padding: 4rem 0 0 0;
+}
+
+.footer-1 ul {
+  list-style: none;
+}
+
+.footer-1 ul li a {
+  color: white;
+  font-weight: 200;
+  font-size: 0.8em;
+  opacity: 0.2;
+  transition: all 0.2s ease-in;
+  &:hover {
+    opacity: 0.6;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.footer-1 h4 {
+  color: $brand-gold;
+}
+
+.footer-2 {
+  background: #1f2431;
+  margin-top: 4rem;
+  padding-top: 1.2rem;
+}
+
+.social-media-icons-footer {
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      padding-right: 1rem;
+    }
+  }
+}
+
+.copyright {
+  color: white;
+  opacity: 0.2;
+  p {
+    font-size: 0.8em;
+  }
+}

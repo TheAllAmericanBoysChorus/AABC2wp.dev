@@ -1,0 +1,115 @@
+.content {
+  margin-left: 7%;
+  margin-top: 5%;
+  h1 {
+    color: $brand-gold;
+    font-size: 2rem;
+  }
+  h5 {
+    padding-bottom: 1.5rem;
+  }
+}
+
+.about-us-cta {
+  background: url("../images/footer-bg.png");
+  width: 100%;
+  height: 400px;
+  h1 {
+    color: white;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding-top: 15%;
+  }
+  .red-cta {
+    background: $brand-red;
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: white;
+    padding: 0.7rem 2rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 1430px) {
+  .about-us-info-right .content {
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    padding-top: 3rem;
+  }
+  .about-us-info-left .content {
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 1230px) {
+  .about-us-info-right .content {
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    padding-top: 1rem;
+    p {
+      margin-top: 1rem;
+    }
+  }
+  .about-us-info-left .content {
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    padding-top: 1rem;
+    p {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .about-us-info-left .image-left {
+    width: 100%;
+    clear: both;
+    display: inline-block;
+  }
+  .about-us-info-left .content-right {
+    width: 100%;
+    clear: both;
+    height: 400px;
+    display: inline-block;
+  }
+  .about-us-info-left .content {
+    position: relative;
+    width: 90%;
+    top: 20%;
+    left: 5%;
+    padding-top: 0;
+    text-align: center;
+  }
+  .about-us-info-right .content {
+    position: relative;
+    width: 90%;
+    top: 20%;
+    left: 5%;
+    padding-top: 0;
+    text-align: center;
+  }
+  .about-us-info-right .image-right {
+    width: 100%;
+    clear: both;
+    display: inline-block;
+  }
+  .about-us-info-right .content-left {
+    width: 100%;
+    clear: both;
+    height: 400px;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 1040px) {
+  .content {
+    margin-left: 0%;
+    margin-top: 5%;
+  }
+}

@@ -1,0 +1,59 @@
+.info-section {
+  margin: 5% 0;
+
+  h1 {
+    color: $brand-gold;
+    line-height: 1.5rem;
+    font-size: 1.6875rem;
+  }
+  h5 {
+    margin-bottom: 2rem;
+  }
+}
+
+.book-us-cta {
+  background: url("../images/full-width-module-1.jpg");
+  width: 100%;
+  height: 75%;
+}
+
+.book-us-cta {
+  padding: 10% 0;
+  h1 {
+    color: white;
+    line-height: 3rem;
+  }
+}
+
+.home-widget-left {
+  background: url("../images/alumni-corner.jpg");
+  background-size: cover;
+  height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: 0.4s all ease-in;
+}
+
+.home-widget-left:hover, .home-widget-right:hover {
+  opacity: 0.8;
+  transition: 0.4s all ease-in;
+  cursor: pointer;
+}
+
+.home-widget-right {
+  background: url("../images/concert-2.jpg");
+  background-size: cover;
+  height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: 0.4s all ease-in;
+}
+
+.home-widget-right, .home-widget-left {
+  h1 {
+    color: white;
+    margin: 0 auto;
+  }
+}

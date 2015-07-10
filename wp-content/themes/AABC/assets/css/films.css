@@ -1,0 +1,6 @@
+/* Films Page Styles */
+.film-logos {
+  padding-top: 4rem; }
+  .film-logos .film-logo {
+    vertical-align: middle;
+    display: inline-block; }

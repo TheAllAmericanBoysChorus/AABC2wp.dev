@@ -1,0 +1,105 @@
+h1, h2, h3, h4, h5, h6, p, button {
+  font-family: 'Crimson Text', serif;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.7rem;
+}
+
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.full-width-gray {
+  background: #eee;
+  width: 100%;
+  height: 200px;
+}
+
+.row-full {
+  width: 100%;
+}
+
+.row-full .columns {
+    padding: 0 !important;
+}
+
+/* Parent Portal Styles */
+
+.main-title {
+  padding: 5rem 0;
+  h1 {
+    color: $brand-red;
+  }
+}
+
+.sidebar-left {
+  border-right: 1px solid #dddddd;
+  h3 {
+    color: $brand-gold;
+    font-size: 1.3rem;
+  }
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+  li {
+    line-height: 1rem;
+    padding-bottom: 1rem;
+  }
+  li a {
+    color: #777777;
+    font-size: 0.76rem;
+    &:hover {
+      color: $brand-blue;
+      transition: 0.2s all ease-in;
+      text-decoration: underline;
+    }
+  }
+}
+
+.general-content-right {
+  padding-left: 3% !important;
+  h1 {
+    color: $brand-gold;
+    font-size: 2rem;
+    line-height: 2.2rem;
+  }
+  p {
+    color: #777777;
+    line-height: 1.5rem;
+  }
+  img {
+    margin-bottom: 1rem;
+  }
+  hr {
+    padding: 2rem 0;
+  }
+}
+
+.blog-post-details {
+  color: #aaaaaa;
+  font-size: 0.7rem;
+  padding-bottom: 2rem;
+}
+
+.post-btn {
+  background: $brand-red;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  &:hover {
+    background: $brand-dark-blue;
+  }
+}
