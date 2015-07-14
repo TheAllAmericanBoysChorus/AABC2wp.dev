@@ -5,10 +5,12 @@
  */
 function load_styles() {
     wp_enqueue_style( 'foundation', get_template_directory_uri() . '/assets/css/foundation/css/foundation.css' );
+    wp_enqueue_style( 'flickity_css', 'https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.css' );
     wp_enqueue_style( 'app', get_template_directory_uri() . '/assets/css/app.css' );
-    wp_enqueue_script( 'app', get_template_directory_uri() . '/assets/js/foundation_js/foundation.min.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'app', get_template_directory_uri() . '/assets/js/app.js', array(), '2.0.0', true );
-
+    wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/foundation_js/vendor/jquery.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'foundation', get_template_directory_uri() . '/assets/js/foundation_js/foundation.min.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script( 'flickity', 'https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script( 'app', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), '2.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'load_styles' );
 
@@ -166,6 +168,26 @@ register_sidebar(array(
     register_sidebar(array(
         'name'          => __( 'Join The Chorus Second Info Section', 'nvLangScope' ),
         'id'            => 'join-the-chorus-2',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Join The Chorus Third Info Section', 'nvLangScope' ),
+        'id'            => 'join-the-chorus-3',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Join The Chorus Fourth Info Section', 'nvLangScope' ),
+        'id'            => 'join-the-chorus-4',
         'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => "</aside>",

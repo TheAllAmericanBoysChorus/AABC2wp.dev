@@ -6,6 +6,15 @@
  * This is used to initialize your custom Javascript. If you would like to change how Foundation and it's plugins are
  * initialized, you can. See http://foundation.zurb.com/docs/javascript.html for documentation.
  */
+
+var flkty = new Flickity( '.main-gallery', {
+    cellAlign: 'left',
+    contain: true,
+    wrapAround: true,
+    prevNextButtons: false,
+    autoPlay: 5000
+});
+
 (function($) {
 
     // Foundation JavaScript
@@ -14,7 +23,6 @@
     });
 
     //Your code goes here
-
     // Main Banner Image Script
 
     // Define Variables
@@ -29,5 +37,7 @@
         //} else {
         //    mainBannerId.removeClass("main-cta-bg-home");
         //}
+
+
 
 })(jQuery);

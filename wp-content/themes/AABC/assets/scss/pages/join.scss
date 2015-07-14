@@ -25,13 +25,19 @@
   color: white;
   font-style: italic;
   font-weight: 200;
+  font-size: 1.5rem;
+}
+
+.testimonial-face {
+  border-radius: 50%;
+  padding-bottom: 1rem;
 }
 
 .quote-person {
   color: white;
   font-style: italic;
   font-weight: 500;
-  padding-bottom: 10%;
+  padding-bottom: 2%;
 }
 
 .travel-map {
@@ -59,12 +65,12 @@
     border: 1px solid #fff;
     padding: 1rem 4rem;
     margin-top: 2rem;
-    transition: 0.2s all ease-in;
+    transition: 0.2s all ease-in-out;
 
 
     &:hover {
       background: #fff;
-      transiton: 0.2s all ease-in;
+      transition: 0.2s all ease-in-out;
       color: $brand-dark-blue;
     }
   }

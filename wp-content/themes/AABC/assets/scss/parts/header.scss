@@ -35,7 +35,10 @@
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
 }
 
 .main-cta-bg-film {
@@ -43,15 +46,22 @@
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
 }
 
 .main-cta-bg-private-parties {
-  background: url('../../assets/images/film-2.jpg');
+  background: url('../../assets/images/private_parties.jpg');
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
+
 }
 
 .logo {

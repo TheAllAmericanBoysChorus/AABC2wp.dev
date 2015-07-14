@@ -58,3 +58,26 @@
     margin: 0 auto;
   }
 }
+
+[class*="block-grid-"] {
+  display: inline-block !important;
+  height: auto;
+  padding: 0 0.625em 1.25em;
+}
+
+.season-sponsors {
+  background: #eeeeee;
+  padding: 3rem;
+
+  h1 {
+    color: $brand-gold;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  img {
+    opacity: 0.3;
+  }
+}
+
+

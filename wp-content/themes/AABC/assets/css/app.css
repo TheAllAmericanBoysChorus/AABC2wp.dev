@@ -6366,22 +6366,28 @@ th.hide-for-touch {
   background: url("../../assets/images/wedding-banner.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-weddings {
+      background-position: center; } }
 
 .main-cta-bg-film {
   background: url("../../assets/images/film-2.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-film {
+      background-position: center; } }
 
 .main-cta-bg-private-parties {
-  background: url("../../assets/images/film-2.jpg");
+  background: url("../../assets/images/private_parties.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-private-parties {
+      background-position: center; } }
 
 .logo {
   float: left;
@@ -7054,6 +7060,21 @@ form input[type="submit"] {
   color: white;
   margin: 0 auto; }
 
+[class*="block-grid-"] {
+  display: inline-block !important;
+  height: auto;
+  padding: 0 0.625em 1.25em; }
+
+.season-sponsors {
+  background: #eeeeee;
+  padding: 3rem; }
+  .season-sponsors h1 {
+    color: #a99c67;
+    font-size: 2rem;
+    margin-bottom: 2rem; }
+  .season-sponsors img {
+    opacity: 0.3; }
+
 .blue-bg {
   background: url("../images/footer-bg.png");
   background-size: cover;
@@ -7075,13 +7096,18 @@ form input[type="submit"] {
 .quote {
   color: white;
   font-style: italic;
-  font-weight: 200; }
+  font-weight: 200;
+  font-size: 1.5rem; }
+
+.testimonial-face {
+  border-radius: 50%;
+  padding-bottom: 1rem; }
 
 .quote-person {
   color: white;
   font-style: italic;
   font-weight: 500;
-  padding-bottom: 10%; }
+  padding-bottom: 2%; }
 
 .travel-map {
   background: url("../images/world-map.jpg");
@@ -7100,11 +7126,12 @@ form input[type="submit"] {
     border: 1px solid #fff;
     padding: 1rem 4rem;
     margin-top: 2rem;
-    -webkit-transition: 0.2s all ease-in;
-            transition: 0.2s all ease-in; }
+    -webkit-transition: 0.2s all ease-in-out;
+            transition: 0.2s all ease-in-out; }
     .travel-map button:hover {
       background: #fff;
-      transiton: 0.2s all ease-in;
+      -webkit-transition: 0.2s all ease-in-out;
+              transition: 0.2s all ease-in-out;
       color: #242133; }
 
 /* Presenters Styles */
@@ -7122,4 +7149,51 @@ form input[type="submit"] {
     color: white;
     opacity: 0.7;
     font-size: 2rem; }
+
+.main-gallery {
+  background: url("../../images/footer-bg.png"); }
+
+.testimonial-headline {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2% 0 !important; }
+
+.gallery-cell {
+  width: 100%; }
+
+.testimonial {
+  text-align: center;
+  max-width: 850px;
+  margin: 0px auto 130px auto;
+  padding: 0 20px; }
+
+.testimonial-avatar {
+  width: 100px;
+  border-radius: 50%; }
+
+.testimonial-quote {
+  display: block;
+  font-size: 1.6rem;
+  padding: 10px 0;
+  color: #fff;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+  font-weight: 100 !important; }
+
+.testimonial-author {
+  display: block;
+  font-weight: 800;
+  color: #a99c67;
+  font-family: "Crimson Text", serif;
+  -webkit-font-smoothing: anti-aliased; }
+
+.flickity-page-dots {
+  bottom: 25px; }
+
+.flickity-page-dots .dot {
+  background: #aaa; }
+
+.flickity-page-dots .dot.is-selected {
+  background: #a99c67; }
 /*# sourceMappingURL=app.css.map */
