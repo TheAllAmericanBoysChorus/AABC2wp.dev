@@ -2,11 +2,11 @@
 
 // Template Name: Calendar
 
-\NV\Theme::get_header();
-\NV\Theme::output_file_marker( __FILE__ );
+get_header();
+
 ?>
 
-<?php get_template_part( 'about-us-header' ); ?>
+<?php get_template_part( 'calendar-header' ); ?>
 
 <div class="row">
     <div class="small-12 medium-8 large-12 columns text-center small-centered main-title">
@@ -63,7 +63,7 @@
     </div>
 </div>
 
-<?php \NV\Theme::get_footer(); ?>
+<?php get_footer(); ?>
 
 
 

@@ -1,5 +1,5 @@
 <header>
-    <div class="main-cta-join-the-chorus">
+    <div class="main-cta-bg-weddings">
         <div class="row clearfix logo-sm-container">
             <div class="logo large-4 small-11 columns">
                 <a href="<?php get_site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo-white.png"/></a>
@@ -29,8 +29,8 @@
         <div class="main-cta">
             <div class="row">
                 <div class="small-10 small-centered columns text-center">
-                    <h1>We’re More Than A Hundred Professional Choristers</h1>
-                    <h2>But One Harmonious Family.</h2>
+                    <h1>When You Hear Them</h1>
+                    <h2>You'll Fall In Love All Over Again</h2>
                     <a href="join-the-chorus.html"><button class="main-cta-btn">Join The Team!</button></a>
                 </div>
             </div>

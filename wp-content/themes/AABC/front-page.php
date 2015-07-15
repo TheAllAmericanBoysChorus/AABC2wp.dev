@@ -55,8 +55,11 @@ $the_query = new WP_Query( $args );
             <img src="<?php the_field('image');?>">
             <a href="<?php the_field('button_link_url');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
                 <?php endwhile;
-            else :
-
+            else : ?>
+                <h1>Up Coming Events</h1>
+                <img src="<?php bloginfo('template_directory'); ?>/assets/images/module-box-1.jpg">
+                <a href="www.taabc.org/calendar"><button class="secondary-cta-btn">View Calendar</button></a>
+            <?php
             endif;
             ?>
         </div>
@@ -95,8 +98,14 @@ $the_query = new WP_Query( $args );
 
 $args = array(
     'post_type' => 'testimonial',
-    'posts_per_page' => '1',
-    'orderby' => 'rand'
+    'orderby' => 'rand',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'home',
+        ),
+    ),
 );
 
 $the_query = new WP_Query( $args );
@@ -104,50 +113,26 @@ $the_query = new WP_Query( $args );
 ?>
 
 <div class="blue-bg">
-    <div class="row">
-        <div class="small-12 columns text-center small-centered">
-            <h1>What Our Parents Are Saying</h1>
-        </div>
-        <div class="large-5 small-11 left columns small-text-center large-text-left">
-            <?php if( have_posts() ) : ?>
+    <h1 class="testimonial-headline">What Our Fans Are Saying</h1>
+    <div class="main-gallery">
+        <?php if( have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <p class="quote"><?php the_field('testimonial'); ?></p>
-            <p class="quote-person"><?php the_field('name'); ?></p>
-                <?php endwhile;
-            else :
+                <div class="gallery-cell">
+                    <div class="testimonial">
+                        <img class="testimonial-avatar" src="<?php the_field('image'); ?>">
+                        <q class="testimonial-quote"><?php the_field('testimonial'); ?></q>
+                        <span class="testimonial-author"><?php the_field('name'); ?></span>
+                    </div>
+                </div>
+            <?php endwhile;
+        else :
 
-            endif;
-            ?>
-
-            <?php wp_reset_query(); ?>
-
-            <?php
-
-            $args = array(
-                'post_type' => 'testimonial',
-                'posts_per_page' => '1',
-                'orderby' => 'rand'
-            );
-
-            $the_query = new WP_Query( $args );
-
-            ?>
-
-
-        </div>
-        <div class="large-5 small-11 right columns small-text-center large-text-left">
-            <?php if( have_posts() ) : ?>
-            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <p class="quote"><?php the_field('testimonial'); ?></p>
-            <p class="quote-person"><?php the_field('name'); ?></p>
-                <?php endwhile;
-            else :
-
-            endif;
-            ?>
-        </div>
+        endif;
+        ?>
     </div>
 </div>
+
+<?php wp_reset_query(); ?>
 
 <div class="row-full clearfix">
     <div class="home-widget-left small-12 large-6 columns">
@@ -177,6 +162,31 @@ $the_query = new WP_Query( $args );
 
             </form>
         </div>
+    </div>
+</div>
+
+<?php
+
+$args = array(
+    'post_type' => 'seasonsponsor',
+    'orderby' => 'rand',
+    'posts_per_page' => '8'
+);
+
+$the_query = new WP_Query( $args );
+
+?>
+
+<div class="season-sponsors row-full">
+    <div class="small-12 columns text-center">
+        <h1>Our Season Sponsors</h1>
+        <?php if( have_posts() ) : ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <a href="#" ><img src="<?php the_field('logo'); ?>"/></a>
+            <?php endwhile;
+        else :
+        endif;
+        ?>
     </div>
 </div>
 

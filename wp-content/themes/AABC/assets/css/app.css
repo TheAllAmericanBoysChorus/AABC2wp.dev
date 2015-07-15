@@ -6349,11 +6349,13 @@ th.hide-for-touch {
   background-position: center; }
 
 .main-cta-join-the-chorus {
-  background: url("../../assets/images/join-the-chorus-banner.jpg");
+  background: url("../../assets/images/taylor-hicks.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-join-the-chorus {
+      background-position: center; } }
 
 .main-cta-bg-book-us {
   background: url("../../assets/images/performing-1.jpg");
@@ -6366,18 +6368,31 @@ th.hide-for-touch {
   background: url("../../assets/images/wedding-banner.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-weddings {
+      background-position: center; } }
 
 .main-cta-bg-film {
   background: url("../../assets/images/film-2.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-film {
+      background-position: center; } }
 
 .main-cta-bg-private-parties {
-  background: url("../../assets/images/film-2.jpg");
+  background: url("../../assets/images/private_parties.jpg");
+  width: 100%;
+  background-size: cover;
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-private-parties {
+      background-position: center; } }
+
+.main-cta-bg-calendar {
+  background: url("../../assets/images/newport-concert.jpg");
   width: 100%;
   background-size: cover;
   height: 700px;
@@ -7054,6 +7069,41 @@ form input[type="submit"] {
   color: white;
   margin: 0 auto; }
 
+.season-sponsors {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  box-pack: distribute;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+  -ms-flex-pack: distribute;
+  padding: 60px 0;
+  background: #fcfcfc; }
+  .season-sponsors h1 {
+    color: #a99c67;
+    padding-bottom: 3rem;
+    font-size: 1.8rem; }
+  .season-sponsors a {
+    margin: 0 20px;
+    display: inline-block;
+    pointer-events: none; }
+    .season-sponsors a img {
+      display: inline-block;
+      vertical-align: middle;
+      height: 45px;
+      max-width: 100%;
+      opacity: 0.4;
+      padding: .1rem; }
+
 .blue-bg {
   background: url("../images/footer-bg.png");
   background-size: cover;
@@ -7075,13 +7125,18 @@ form input[type="submit"] {
 .quote {
   color: white;
   font-style: italic;
-  font-weight: 200; }
+  font-weight: 200;
+  font-size: 1.5rem; }
+
+.testimonial-face {
+  border-radius: 50%;
+  padding-bottom: 1rem; }
 
 .quote-person {
   color: white;
   font-style: italic;
   font-weight: 500;
-  padding-bottom: 10%; }
+  padding-bottom: 2%; }
 
 .travel-map {
   background: url("../images/world-map.jpg");
@@ -7100,11 +7155,12 @@ form input[type="submit"] {
     border: 1px solid #fff;
     padding: 1rem 4rem;
     margin-top: 2rem;
-    -webkit-transition: 0.2s all ease-in;
-            transition: 0.2s all ease-in; }
+    -webkit-transition: 0.2s all ease-in-out;
+            transition: 0.2s all ease-in-out; }
     .travel-map button:hover {
       background: #fff;
-      transiton: 0.2s all ease-in;
+      -webkit-transition: 0.2s all ease-in-out;
+              transition: 0.2s all ease-in-out;
       color: #242133; }
 
 /* Presenters Styles */
@@ -7116,10 +7172,59 @@ form input[type="submit"] {
     font-size: 2rem; }
 
 /* Presenters Styles */
-.song-list {
-  margin-bottom: 5rem; }
-  .song-list h2 {
-    color: white;
-    opacity: 0.7;
-    font-size: 2rem; }
+.wedding-song-list ul {
+  list-style: none; }
+
+.wedding-song-list li {
+  background-image: url("../../images/play-icon.png");
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  padding-left: 15px; }
+
+.main-gallery {
+  background: url("../../images/footer-bg.png"); }
+
+.testimonial-headline {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2% 0 !important; }
+
+.gallery-cell {
+  width: 100%; }
+
+.testimonial {
+  text-align: center;
+  max-width: 850px;
+  margin: 0px auto 130px auto;
+  padding: 0 20px; }
+
+.testimonial-avatar {
+  width: 100px;
+  border-radius: 50%; }
+
+.testimonial-quote {
+  display: block;
+  font-size: 1.6rem;
+  padding: 10px 0;
+  color: #fff;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+  font-weight: 100 !important; }
+
+.testimonial-author {
+  display: block;
+  font-weight: 800;
+  color: #a99c67;
+  font-family: "Crimson Text", serif;
+  -webkit-font-smoothing: anti-aliased; }
+
+.flickity-page-dots {
+  bottom: 25px; }
+
+.flickity-page-dots .dot {
+  background: #aaa; }
+
+.flickity-page-dots .dot.is-selected {
+  background: #a99c67; }
 /*# sourceMappingURL=app.css.map */

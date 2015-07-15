@@ -2,11 +2,10 @@
 
 // Template Name: Alumni Corner
 
-\NV\Theme::get_header();
-\NV\Theme::output_file_marker( __FILE__ );
+get_header();
 ?>
 
-<?php get_template_part( 'about-us-header' ); ?>
+<?php get_template_part( 'alumni-corner-header' ); ?>
 
 <div class="blue-bg">
     <div class="row-full feautred-alumni">
@@ -115,7 +114,7 @@
     </div>
 </div>
 
-<?php \NV\Theme::get_footer(); ?>
+<?php get_footer(); ?>
 
 
 

@@ -15,11 +15,14 @@
 }
 
 .main-cta-join-the-chorus {
-  background: url('../../assets/images/join-the-chorus-banner.jpg');
+  background: url('../../assets/images/taylor-hicks.jpg');
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
 }
 
 .main-cta-bg-book-us {
@@ -35,7 +38,10 @@
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
 }
 
 .main-cta-bg-film {
@@ -43,11 +49,26 @@
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
 }
 
 .main-cta-bg-private-parties {
-  background: url('../../assets/images/film-2.jpg');
+  background: url('../../assets/images/private_parties.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
+
+}
+
+.main-cta-bg-calendar {
+  background: url('../../assets/images/newport-concert.jpg');
   width: 100%;
   background-size: cover;
   height: 700px;

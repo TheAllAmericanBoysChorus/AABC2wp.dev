@@ -44,6 +44,7 @@
 </footer>
         <!-- start wp_footer() hooks -->
         <?php wp_footer(); ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js"></script>
         <!-- end wp_footer() hooks -->
 
     </div>

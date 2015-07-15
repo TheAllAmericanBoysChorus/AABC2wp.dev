@@ -25,47 +25,65 @@
 <!--</div>-->
 
 <div class="row-full clearfix">
-    <img class="right small-12 large-6 columns"src="<?php bloginfo( 'template_directory' )?>/assets/images/rehearsal-1.jpg">
+    <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/rehearsal-1.jpg">
     <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
         <?php dynamic_sidebar( 'join-the-chorus-2' ) ?>
     </div>
 </div>
 </div>
 
+<?php
+
+$args = array(
+    'post_type' => 'testimonial',
+    'orderby' => 'rand',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'parents',
+        ),
+    ),
+);
+$the_query = new WP_Query( $args );
+
+?>
+
+
+
 <div class="blue-bg">
-    <div class="row">
-        <div class="small-12 columns text-center small-centered">
-            <h1>What Our Parents Are Saying</h1>
+    <h1 class="testimonial-headline">What Our Parents Are Saying</h1>
+    <div class="main-gallery">
+        <?php if( have_posts() ) : ?>
+        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+        <div class="gallery-cell">
+            <div class="testimonial">
+                <img class="testimonial-avatar" src="<?php the_field('image'); ?>">
+                <q class="testimonial-quote"><?php the_field('testimonial'); ?></q>
+                <span class="testimonial-author"><?php the_field('name'); ?></span>
+            </div>
         </div>
-        <div class="small-5 left">
-            <p class="quote">Our son … has obtained significant and enduring personal benefits. The Chorus’ instruction in self-discipline … good personal habits, succeeding in school, setting goals, exercising leadership skills, respecting adults, practicing religion, and being independent has been invaluable.”</p>
-            <p class="quote-person">– Carol and Larry Jones, Parents</p>
-        </div>
-        <div class="small-5 right">
-            <p class="quote">“The All-American Boys Chorus has given both my boys an unequaled educational experience. I will forever be grateful to the Chorus for its help in molding my boys into men.”</p>
-            <p class="quote-person">– Denny Lynn Engelke, Parent of Chorus Alumni</p>
-        </div>
+        <?php endwhile;
+        else :
+
+        endif;
+        ?>
     </div>
 </div>
 
+
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/clipper-game.jpg">
-    <div class="small-12 large-4 columns content left small-centered">
-        <h1>How Cool Are We?</h1>
-        <h5>We Have The Power To Make People Cry.</h5>
-        <p>The Concert Chorus performs 30+ concerts per year in Southern California for a wide range of clients and for diverse audiences in varied venues and settings (e.g., country clubs, concert halls, sacred spaces, stadiums, amphitheaters) for private, corporate and civic events.</p>
+    <div class="small-12 medium-7 large-4 columns content left small-text-center medium-text-center large-text-left">
+        <?php dynamic_sidebar( 'join-the-chorus-3' ) ?>
     </div>
 </div>
 
 <div class="about-us-info-right clearfix">
-    <div class="image-right">
-        <img src="<?php bloginfo( 'template_directory' )?>/assets/images/staff-1.jpg">
-    </div>
+        <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/staff-1.jpg">
     <div class="content-left">
-        <div class="content">
-            <h1>Our Staff Are Youth Protection Trained.</h1>
-            <h5>A Testament To Our Phenomenal Leadership Commitment.</h5>
-            <p>The Concert Chorus performs 30+ concerts per year in Southern California for a wide range of clients and for diverse audiences in varied venues and settings (e.g., country clubs, concert halls, sacred spaces, stadiums, amphitheaters) for private, corporate and civic events.</p>
+        <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
+            <?php dynamic_sidebar( 'join-the-chorus-4' ) ?>
         </div>
     </div>
 </div>
