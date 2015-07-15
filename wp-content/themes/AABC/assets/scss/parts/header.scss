@@ -15,11 +15,14 @@
 }
 
 .main-cta-join-the-chorus {
-  background: url('../../assets/images/join-the-chorus-banner.jpg');
+  background: url('../../assets/images/taylor-hicks.jpg');
   width: 100%;
   background-size: cover;
   height: 700px;
-  background-position: center;
+
+  @media #{$small-only} {
+    background-position: center;
+  }
 }
 
 .main-cta-bg-book-us {
@@ -62,6 +65,14 @@
     background-position: center;
   }
 
+}
+
+.main-cta-bg-calendar {
+  background: url('../../assets/images/newport-concert.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  background-position: center;
 }
 
 .logo {

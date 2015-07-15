@@ -37,8 +37,14 @@
 $args = array(
     'post_type' => 'testimonial',
     'orderby' => 'rand',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'parents',
+        ),
+    ),
 );
-
 $the_query = new WP_Query( $args );
 
 ?>

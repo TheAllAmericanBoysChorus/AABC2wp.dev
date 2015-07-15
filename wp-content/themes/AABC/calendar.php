@@ -6,7 +6,7 @@ get_header();
 
 ?>
 
-<?php get_template_part( 'about-us-header' ); ?>
+<?php get_template_part( 'calendar-header' ); ?>
 
 <div class="row">
     <div class="small-12 medium-8 large-12 columns text-center small-centered main-title">

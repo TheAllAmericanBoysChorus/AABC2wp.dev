@@ -141,6 +141,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/aabc-wordpress-login-logo.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11359,
+		"inputAbbreviatedPath": "\/assets\/images\/aabc-wordpress-login-logo.png",
+		"outputAbbreviatedPath": "\/assets\/images\/aabc-wordpress-login-logo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/about-us-banner.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -526,6 +537,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/newport-concert.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 359625,
+		"inputAbbreviatedPath": "\/assets\/images\/newport-concert.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/newport-concert.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/performing-1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -555,6 +577,17 @@
 		"initialSize": 136769,
 		"inputAbbreviatedPath": "\/assets\/images\/performing-3.jpg",
 		"outputAbbreviatedPath": "\/assets\/images\/performing-3.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/play-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2764,
+		"inputAbbreviatedPath": "\/assets\/images\/play-icon.png",
+		"outputAbbreviatedPath": "\/assets\/images\/play-icon.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -654,6 +687,17 @@
 		"initialSize": 1694,
 		"inputAbbreviatedPath": "\/assets\/images\/starburst.png",
 		"outputAbbreviatedPath": "\/assets\/images\/starburst.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/taylor-hicks.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 766898,
+		"inputAbbreviatedPath": "\/assets\/images\/taylor-hicks.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/taylor-hicks.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1443,6 +1487,24 @@
 		"shouldRunAutoprefixer": 1,
 		"shouldRunBless": 1,
 		"useLibsass": 1
+		},
+	"\/book-us-header.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/book-us-header.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/book-us.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/book-us.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/bower.json": {
 		"fileType": 524288,
@@ -5075,6 +5137,15 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/calendar-header.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/calendar-header.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/calendar.php": {
 		"fileType": 8192,

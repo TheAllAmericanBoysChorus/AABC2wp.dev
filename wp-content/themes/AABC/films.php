@@ -47,19 +47,42 @@
     </div>
 </div>
 
+<?php
+
+$args = array(
+    'post_type' => 'testimonial',
+    'orderby' => 'rand',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'films',
+        ),
+    ),
+);
+$the_query = new WP_Query( $args );
+
+?>
+
+
+
 <div class="blue-bg">
-    <div class="row">
-        <div class="small-12 columns text-center small-centered">
-            <h1>What Others Are Saying!</h1>
-        </div>
-        <div class="small-5 left">
-            <p class="quote">“Thank you for your hard work on our KFC commercial. The footage looks and sounds fabulous. We could not be more pleased!”</p>
-            <p class="quote-person">– Dektor Higgins and Associates</p>
-        </div>
-        <div class="small-5 right">
-            <p class="quote">“I have absolutely loved working with Wes Martin and The All-American Boys Chorus. Just putting their beautiful tone on top of a more choral sound for Vocal Point seems to fit really well.”</p>
-            <p class="quote-person">– Mckay Crockett, Director BYU Vocal Point</p>
-        </div>
+    <h1 class="testimonial-headline">What Our Clients Are Saying</h1>
+    <div class="main-gallery">
+        <?php if( have_posts() ) : ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <div class="gallery-cell">
+                    <div class="testimonial">
+                        <img class="testimonial-avatar" src="<?php the_field('image'); ?>">
+                        <q class="testimonial-quote"><?php the_field('testimonial'); ?></q>
+                        <span class="testimonial-author"><?php the_field('name'); ?></span>
+                    </div>
+                </div>
+            <?php endwhile;
+        else :
+
+        endif;
+        ?>
     </div>
 </div>
 

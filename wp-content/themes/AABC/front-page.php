@@ -55,8 +55,11 @@ $the_query = new WP_Query( $args );
             <img src="<?php the_field('image');?>">
             <a href="<?php the_field('button_link_url');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
                 <?php endwhile;
-            else :
-
+            else : ?>
+                <h1>Up Coming Events</h1>
+                <img src="<?php bloginfo('template_directory'); ?>/assets/images/module-box-1.jpg">
+                <a href="www.taabc.org/calendar"><button class="secondary-cta-btn">View Calendar</button></a>
+            <?php
             endif;
             ?>
         </div>
@@ -96,6 +99,13 @@ $the_query = new WP_Query( $args );
 $args = array(
     'post_type' => 'testimonial',
     'orderby' => 'rand',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'home',
+        ),
+    ),
 );
 
 $the_query = new WP_Query( $args );
@@ -103,7 +113,7 @@ $the_query = new WP_Query( $args );
 ?>
 
 <div class="blue-bg">
-    <h1 class="testimonial-headline">What Our Parents Are Saying</h1>
+    <h1 class="testimonial-headline">What Our Fans Are Saying</h1>
     <div class="main-gallery">
         <?php if( have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -133,34 +143,6 @@ $the_query = new WP_Query( $args );
     </div>
 </div>
 
-<?php
-
-$args = array(
-    'post_type' => 'seasonsponsor',
-    'orderby' => 'rand',
-    'posts_per_page' => '4'
-);
-
-$the_query = new WP_Query( $args );
-
-?>
-
-
-<div class="season-sponsors">
-    <div class="row">
-        <h1 class="testimonial-headline">Our Season Sponsors</h1>
-        <ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-4 sponsor-logo-list">
-            <?php if( have_posts() ) : ?>
-            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <li><a href="#"><img src="<?php the_field('logo'); ?>"/></a></li>
-            <?php endwhile;
-            else :
-            endif;
-            ?>
-        </ul>
-    </div>
-</div>
-
 
 <div class="contact-home">
     <div class="row">
@@ -180,6 +162,31 @@ $the_query = new WP_Query( $args );
 
             </form>
         </div>
+    </div>
+</div>
+
+<?php
+
+$args = array(
+    'post_type' => 'seasonsponsor',
+    'orderby' => 'rand',
+    'posts_per_page' => '8'
+);
+
+$the_query = new WP_Query( $args );
+
+?>
+
+<div class="season-sponsors row-full">
+    <div class="small-12 columns text-center">
+        <h1>Our Season Sponsors</h1>
+        <?php if( have_posts() ) : ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <a href="#" ><img src="<?php the_field('logo'); ?>"/></a>
+            <?php endwhile;
+        else :
+        endif;
+        ?>
     </div>
 </div>
 

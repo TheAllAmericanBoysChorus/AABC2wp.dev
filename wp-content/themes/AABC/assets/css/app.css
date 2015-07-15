@@ -6349,11 +6349,13 @@ th.hide-for-touch {
   background-position: center; }
 
 .main-cta-join-the-chorus {
-  background: url("../../assets/images/join-the-chorus-banner.jpg");
+  background: url("../../assets/images/taylor-hicks.jpg");
   width: 100%;
   background-size: cover;
-  height: 700px;
-  background-position: center; }
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-join-the-chorus {
+      background-position: center; } }
 
 .main-cta-bg-book-us {
   background: url("../../assets/images/performing-1.jpg");
@@ -6388,6 +6390,13 @@ th.hide-for-touch {
   @media only screen and (max-width: 40em) {
     .main-cta-bg-private-parties {
       background-position: center; } }
+
+.main-cta-bg-calendar {
+  background: url("../../assets/images/newport-concert.jpg");
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
 
 .logo {
   float: left;
@@ -7060,20 +7069,40 @@ form input[type="submit"] {
   color: white;
   margin: 0 auto; }
 
-[class*="block-grid-"] {
-  display: inline-block !important;
-  height: auto;
-  padding: 0 0.625em 1.25em; }
-
 .season-sponsors {
-  background: #eeeeee;
-  padding: 3rem; }
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  box-pack: distribute;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+  -ms-flex-pack: distribute;
+  padding: 60px 0;
+  background: #fcfcfc; }
   .season-sponsors h1 {
     color: #a99c67;
-    font-size: 2rem;
-    margin-bottom: 2rem; }
-  .season-sponsors img {
-    opacity: 0.3; }
+    padding-bottom: 3rem;
+    font-size: 1.8rem; }
+  .season-sponsors a {
+    margin: 0 20px;
+    display: inline-block;
+    pointer-events: none; }
+    .season-sponsors a img {
+      display: inline-block;
+      vertical-align: middle;
+      height: 45px;
+      max-width: 100%;
+      opacity: 0.4;
+      padding: .1rem; }
 
 .blue-bg {
   background: url("../images/footer-bg.png");
@@ -7143,12 +7172,14 @@ form input[type="submit"] {
     font-size: 2rem; }
 
 /* Presenters Styles */
-.song-list {
-  margin-bottom: 5rem; }
-  .song-list h2 {
-    color: white;
-    opacity: 0.7;
-    font-size: 2rem; }
+.wedding-song-list ul {
+  list-style: none; }
+
+.wedding-song-list li {
+  background-image: url("../../images/play-icon.png");
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  padding-left: 15px; }
 
 .main-gallery {
   background: url("../../images/footer-bg.png"); }

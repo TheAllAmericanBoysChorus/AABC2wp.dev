@@ -6,6 +6,7 @@
 function load_styles() {
     wp_enqueue_style( 'foundation', get_template_directory_uri() . '/assets/css/foundation/css/foundation.css' );
     wp_enqueue_style( 'flickity_css', 'https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.css' );
+    wp_enqueue_style( 'custom-login', get_template_directory_uri() . 'assets/css/style-login.css' );
     wp_enqueue_style( 'app', get_template_directory_uri() . '/assets/css/app.css' );
     wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/foundation_js/vendor/jquery.js', array(), '1.0.0', true );
     wp_enqueue_script( 'foundation', get_template_directory_uri() . '/assets/js/foundation_js/foundation.min.js', array('jquery'), '1.0.0', true );
@@ -195,5 +196,48 @@ register_sidebar(array(
         'after_title'   => '</h3>',
     ));
 
+    register_sidebar(array(
+        'name'          => __( 'Book Us First Info Section', 'nvLangScope' ),
+        'id'            => 'book-us-1',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+register_sidebar(array(
+        'name'          => __( 'Wedding Songs', 'nvLangScope' ),
+        'id'            => 'wedding-songs',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/aabc-wordpress-login-logo.png);
+            background-size: 320px 230px;
+            background-position: center top;
+            background-repeat: no-repeat;
+            color: #999;
+            height: 230px;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 1.3em;
+            margin: 0 auto 25px;
+            text-decoration: none;
+            width: 320px;
+            text-indent: -9999px;
+            outline: none;
+            overflow: hidden;
+            display: block;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 ?>
