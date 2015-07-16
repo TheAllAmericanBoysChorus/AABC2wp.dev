@@ -155,6 +155,16 @@ register_sidebar(array(
         'after_title'   => '</h3>',
     ));
 
+    register_sidebar(array(
+        'name'          => __( 'Our Team (About Page)', 'nvLangScope' ),
+        'id'            => 'about-us-info-4',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
 
     register_sidebar(array(
         'name'          => __( 'Join The Chorus First Info Section', 'nvLangScope' ),

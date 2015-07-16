@@ -31,7 +31,7 @@
                 <div class="small-10 small-centered columns text-center">
                     <h1>When You Hear Them</h1>
                     <h2>You'll Fall In Love All Over Again</h2>
-                    <a href="join-the-chorus.html"><button class="main-cta-btn">Join The Team!</button></a>
+                    <a href="join-the-chorus.html"><button class="main-cta-btn">Hire The Choir!</button></a>
                 </div>
             </div>
         </div>

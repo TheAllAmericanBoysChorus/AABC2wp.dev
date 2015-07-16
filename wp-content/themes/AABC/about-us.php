@@ -23,8 +23,42 @@
 <div class="row-full clearfix">
     <img class="left small-12 large-6 columns"  src="<?php bloginfo( 'template_directory' )?>/assets/images/iowa.jpg">
     <div class="small-11 medium-10 large-4 columns content left small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'about-us-info-3' ) ?>
+
     </div>
+</div>
+
+<?php
+
+$args = array(
+    'post_type' => 'staff',
+);
+
+$the_query = new WP_Query( $args );
+
+?>
+
+<div class="row-full our-staff">
+    <div class="small-12 medium-6 large-4 columns text-center small-centered">
+        <?php dynamic_sidebar( 'about-us-info-4' ) ?>
+    </div>
+
+    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-6">
+        <?php if( have_posts() ) : ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <li>
+                    <div class="staff-unit">
+                        <img src="<?php the_field('image'); ?>"/>
+                        <div class="bio text-center">
+                            <div class="name"><?php the_field('name');?></div>
+                            <div class="title"><?php the_field('title');?></div>
+                        </div>
+                    </div>
+                </li>
+            <?php endwhile;
+        else :
+        endif;
+        ?>
+    </ul>
 </div>
 
 <div class="about-us-cta">

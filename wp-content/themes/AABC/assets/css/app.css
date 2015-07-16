@@ -6719,6 +6719,46 @@ form input[type="submit"] {
     padding: 0.7rem 2rem;
     margin-top: 2rem; }
 
+.our-staff {
+  background: #eeeeee;
+  padding: 4rem 0; }
+  .our-staff h1 {
+    color: #a99c67;
+    font-size: 2.5rem;
+    padding-bottom: 2rem; }
+
+.staff-unit {
+  position: relative; }
+
+.staff-unit:hover {
+  cursor: pointer; }
+
+.staff-unit:hover .bio {
+  opacity: 1;
+  -webkit-transition: 0.2s all ease-in-out;
+          transition: 0.2s all ease-in-out; }
+
+.bio {
+  background: rgba(36, 33, 51, 0.82);
+  z-index: 999;
+  position: absolute;
+  bottom: -1px;
+  opacity: 0;
+  width: 100%;
+  padding: 15px 0;
+  -webkit-transition: 0.2s all ease-in-out;
+          transition: 0.2s all ease-in-out; }
+  .bio .name {
+    color: #fff;
+    font-family: "Crimson Text", serif;
+    font-size: 1.2rem; }
+  .bio .title {
+    color: #fff;
+    font-family: "Crimson Text", serif;
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.7; }
+
 @media (max-width: 1430px) {
   .about-us-info-right .content {
     position: absolute;
@@ -7026,6 +7066,7 @@ form input[type="submit"] {
 .home-widget-left {
   background: url("../images/alumni-corner.jpg");
   background-size: cover;
+  background-position: center;
   height: 400px;
   position: relative;
   display: -webkit-box;
@@ -7050,6 +7091,7 @@ form input[type="submit"] {
 .home-widget-right {
   background: url("../images/concert-2.jpg");
   background-size: cover;
+  background-position: center;
   height: 400px;
   position: relative;
   display: -webkit-box;
@@ -7175,11 +7217,12 @@ form input[type="submit"] {
 .wedding-song-list ul {
   list-style: none; }
 
+.wedding-song-list ul::after {
+  content: url("../../images/play-icon.png"); }
+
 .wedding-song-list li {
-  background-image: url("../../images/play-icon.png");
-  background-repeat: no-repeat;
-  background-position: 0 center;
-  padding-left: 15px; }
+  color: #222;
+  font-family: "Crimson Text", serif; }
 
 .main-gallery {
   background: url("../../images/footer-bg.png"); }

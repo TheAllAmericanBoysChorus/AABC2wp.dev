@@ -17,33 +17,12 @@
     </div>
 </div>
 
-<div class="full-width-cta-banner">
-    <div class="small-12 large-8 small-centered text-center columns">
-        <h1>Write Tag Line Here</h1>
-        <button class="full-width-cta-banner-btn">Book Us</button>
-    </div>
-</div>
-
-<div class="full-width-gray">
-    <div class="row film-logos">
-        <div class="small-6 medium-4 large-2 columns film-logo">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/images/mazda.png">
-        </div>
-        <div class="small-6 medium-4 large-2 columns film-logo">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/images/vocal-point.png">
-        </div>
-        <div class="small-6 medium-4 large-2 columns film-logo">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/images/cartoon-network.png">
-        </div>
-        <div class="small-6 medium-4 large-2 columns film-logo">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/images/ktla5.png">
-        </div>
-        <div class="small-6 medium-4 large-2 columns film-logo">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/images/scrubs.png">
-        </div>
-        <div class="small-6 medium-4 large-2 columns film-logo">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/images/toshiba.png">
-        </div>
+<div class="row-full info-right clearfix">
+    <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/recording-1.jpg">
+    <div class="small-12 medium-7 large-4 columns content left small-text-center medium-text-center large-text-left">
+        <h1>Beautiful Choral Sound For Your Next Project</h1>
+        <h5>Perfect For Video & Recordings</h5>
+        <p>The All-American Boys Chorus, America’s quintessential professional boys chorus, has delighted viewers worldwide for over forty years. Based in Costa Mesa, California. the Chorus is comprised of over 100 boys ages 8 – 15 drawn from throughout Southern California. We are the perfect youth choral group for your next video or recording. Under the leadership of Artistic Director Wesley Martin, a veteran of Hungary’s renowned Kodaly Institute, the Chorus will provide you with sound ranging from angelic to the latest pop.</p>
     </div>
 </div>
 
@@ -85,6 +64,35 @@ $the_query = new WP_Query( $args );
         ?>
     </div>
 </div>
+
+<?php
+
+$args = array(
+    'post_type' => 'client logo',
+    'orderby' => 'rand',
+    'posts_per_page' => '8'
+);
+
+$the_query = new WP_Query( $args );
+
+?>
+
+<div class="season-sponsors row-full">
+    <div class="small-12 columns text-center">
+        <h1>Some Of Our Past Clients</h1>
+        <?php if( have_posts() ) : ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <a href="#" ><img src="<?php the_field('logo'); ?>"/></a>
+            <?php endwhile;
+        else :
+        endif;
+        ?>
+    </div>
+</div>
+
+
+
+
 
 <?php get_footer(); ?>
 

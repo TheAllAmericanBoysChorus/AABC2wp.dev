@@ -152,6 +152,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/aaron-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 18002,
+		"inputAbbreviatedPath": "\/assets\/images\/aaron-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/aaron-photo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/about-us-banner.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -170,6 +181,17 @@
 		"initialSize": 480542,
 		"inputAbbreviatedPath": "\/assets\/images\/alumni-corner.jpg",
 		"outputAbbreviatedPath": "\/assets\/images\/alumni-corner.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/avery-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 18895,
+		"inputAbbreviatedPath": "\/assets\/images\/avery-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/avery-photo.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -273,6 +295,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/devin-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 25405,
+		"inputAbbreviatedPath": "\/assets\/images\/devin-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/devin-photo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/facebook-icon-white.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -372,6 +405,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/garrett-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 27372,
+		"inputAbbreviatedPath": "\/assets\/images\/garrett-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/garrett-photo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/goodnews1mc1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -401,6 +445,17 @@
 		"initialSize": 142352,
 		"inputAbbreviatedPath": "\/assets\/images\/holiday_events.jpg",
 		"outputAbbreviatedPath": "\/assets\/images\/holiday_events.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/hunter-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 59352,
+		"inputAbbreviatedPath": "\/assets\/images\/hunter-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/hunter-photo.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -467,6 +522,17 @@
 		"initialSize": 4566,
 		"inputAbbreviatedPath": "\/assets\/images\/ktla5.png",
 		"outputAbbreviatedPath": "\/assets\/images\/ktla5.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/leah-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 29713,
+		"inputAbbreviatedPath": "\/assets\/images\/leah-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/leah-photo.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -581,6 +647,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/pierre-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 20197,
+		"inputAbbreviatedPath": "\/assets\/images\/pierre-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/pierre-photo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/play-icon.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -691,6 +768,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/sue.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 26310,
+		"inputAbbreviatedPath": "\/assets\/images\/sue.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/sue.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/taylor-hicks.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -698,6 +786,28 @@
 		"initialSize": 766898,
 		"inputAbbreviatedPath": "\/assets\/images\/taylor-hicks.jpg",
 		"outputAbbreviatedPath": "\/assets\/images\/taylor-hicks.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/tony-h.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 16931,
+		"inputAbbreviatedPath": "\/assets\/images\/tony-h.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/tony-h.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/tony-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 24354,
+		"inputAbbreviatedPath": "\/assets\/images\/tony-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/tony-photo.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -823,6 +933,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/wes-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 15741,
+		"inputAbbreviatedPath": "\/assets\/images\/wes-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/wes-photo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/world-map.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -830,6 +951,17 @@
 		"initialSize": 174424,
 		"inputAbbreviatedPath": "\/assets\/images\/world-map.jpg",
 		"outputAbbreviatedPath": "\/assets\/images\/world-map.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/youssef-photo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 21684,
+		"inputAbbreviatedPath": "\/assets\/images\/youssef-photo.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/youssef-photo.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

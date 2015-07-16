@@ -6,10 +6,12 @@
     list-style: none;
   }
 
+  ul::after {
+    content: url("../../images/play-icon.png");
+  }
+
   li {
-    background-image: url("../../images/play-icon.png");
-    background-repeat: no-repeat;
-    background-position: 0 center;
-    padding-left: 15px;
+    color: #222;
+    font-family: "Crimson Text", serif;
   }
 }
