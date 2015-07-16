@@ -6,6 +6,16 @@
 
 <?php get_template_part( 'weddings-header' ); ?>
 
+<div class="row-full info-right clearfix">
+    <img class="left small-12 large-6 columns" src="images/wedding-2.jpg">
+    <div class="small-12 medium-10 large-4 columns content left small-text-center medium-text-center large-text-left">
+        <h1>Dynamic Enough To Sing In An Opera House, Inimate Enough For Your Wedding. </h1>
+        <h5>Our Performance Will Move You</h5>
+        <p>For those seeking to offer a magical entertainment experience for their
+            wedding The All-American Boys Chorus is America’s quintessential and most internationally acclaimed contemporary boys choir that offers a professional repertoire of over 100 arrangements for almost any venue size. Let us help you arrange exactly what you want for this special day of your lives.</p>
+    </div>
+</div>
+
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
@@ -52,11 +62,18 @@ $the_query = new WP_Query( $args );
     </div>
 </div>
 
-
-
-
 <?php wp_reset_query(); ?>
 
+<div class="row-full clearfix">
+    <img class="right small-12 large-6 columns" src="images/boys-jumping.jpg">
+    <div class="small-12 large-4 columns content left small-text-center large-text-left">
+        <h1>Hmmm...
+            Travel The World Before High School...
+            Or Play Football After School?</h1>
+        <h5>Decisions. Decisions.</h5>
+        <p>It is remarkable to consider that only boys possess this extraordinary gift, but perhaps even more remarkable when one considers that they possess it only briefly. For a narrow window of time, a boy’s voice can be harnessed to uplift those who hear it and enhance the life of him who possesses it.</p>
+    </div>
+</div>
 
 <?php get_footer(); ?>
 
