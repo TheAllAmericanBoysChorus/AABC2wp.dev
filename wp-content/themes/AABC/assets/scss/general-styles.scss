@@ -103,3 +103,50 @@ h1, h2, h3, h4, h5, h6 {
     background: $brand-dark-blue;
   }
 }
+
+.rpwwt-post-date {
+  font-size: .8rem;
+  color: #000;
+  font-family: "Crimson Text", serif;
+}
+
+.download-link {
+  color: #777777;
+  font-family: "Crimson Text", serif;
+  font-size: .9rem !important;
+}
+
+.download-link:hover {
+  color: $brand-red;
+  transition: 0.2s all ease-in-out;
+  text-decoration: underline;
+
+}
+
+.grid-element-dark {
+  background: $brand-dark-blue;
+}
+
+.blog {
+  padding-top: 4rem;
+
+  h3 {
+    color: $brand-gold;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.widget-title {
+  color: $brand-gold !important;
+  font-size: 1.5rem !important;
+  text-transform: inherit !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important;
+}
+
+#lptw-fluid-images-recent-posts-3 {
+  padding-top: 1.5rem !important;
+  border-top: 1px solid #ddd;
+  margin-top: 1.5rem;
+}

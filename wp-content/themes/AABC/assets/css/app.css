@@ -6398,6 +6398,29 @@ th.hide-for-touch {
   height: 700px;
   background-position: center; }
 
+.main-cta-bg-donate {
+  background: url("../../assets/images/newport-concert.jpg");
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-single-blog {
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+  .main-cta-bg-single-blog > .blue-overlay {
+    background: #242133;
+    width: 100%;
+    height: 700px;
+    opacity: 0.5; }
+
+.head {
+  position: absolute;
+  top: 30px;
+  width: 100%; }
+
 .logo {
   float: left;
   margin: 5px; }
@@ -6609,6 +6632,44 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5rem 1.5rem; }
   .post-btn:hover {
     background: #242133; }
+
+.rpwwt-post-date {
+  font-size: .8rem;
+  color: #000;
+  font-family: "Crimson Text", serif; }
+
+.download-link {
+  color: #777777;
+  font-family: "Crimson Text", serif;
+  font-size: .9rem !important; }
+
+.download-link:hover {
+  color: #a9171c;
+  -webkit-transition: 0.2s all ease-in-out;
+          transition: 0.2s all ease-in-out;
+  text-decoration: underline; }
+
+.grid-element-dark {
+  background: #242133; }
+
+.blog {
+  padding-top: 4rem; }
+  .blog h3 {
+    color: #a99c67;
+    font-size: 2rem;
+    padding-bottom: 1rem; }
+
+.widget-title {
+  color: #a99c67 !important;
+  font-size: 1.5rem !important;
+  text-transform: inherit !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important; }
+
+#lptw-fluid-images-recent-posts-3 {
+  padding-top: 1.5rem !important;
+  border-top: 1px solid #ddd;
+  margin-top: 1.5rem; }
 
 .contact-home {
   background: url("../images/contact-form-background.jpg");
@@ -7035,6 +7096,40 @@ form input[type="submit"] {
     background: #a99c67; } }
 
 /* Donate Styles */
+.donate {
+  padding-bottom: 3rem; }
+
+.donate-option {
+  position: relative;
+  height: 300px; }
+  @media only screen and (max-width: 40em) {
+    .donate-option {
+      height: 220px; } }
+  .donate-option h2 {
+    color: #fff;
+    font-size: 1.7rem; }
+  .donate-option p {
+    color: #fff;
+    opacity: 0.7; }
+  .donate-option button {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    background: #a99c67;
+    border-radius: 2rem;
+    font-style: italic;
+    font-size: 1rem;
+    width: 150px;
+    margin: 0 auto; }
+    .donate-option button:hover {
+      background: #a9171c; }
+    @media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+      .donate-option button {
+        left: 35%; } }
+    @media only screen and (max-width: 40em) {
+      .donate-option button {
+        left: 30%; } }
+
 /* Films Page Styles */
 .film-logos {
   padding-top: 4rem; }
@@ -7206,12 +7301,17 @@ form input[type="submit"] {
       color: #242133; }
 
 /* Presenters Styles */
+.song-list-title h1 {
+  padding-bottom: 0 !important; }
+
 .song-list {
   margin-bottom: 5rem; }
   .song-list h2 {
     color: white;
     opacity: 0.7;
     font-size: 2rem; }
+  .song-list li {
+    padding: .2rem 0; }
 
 /* Presenters Styles */
 .wedding-song-list ul {

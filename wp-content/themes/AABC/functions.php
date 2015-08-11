@@ -81,7 +81,7 @@ register_nav_menu( 'primary', __('Primary Menu', 'nvLangScope' ));
 
 register_sidebar(array(
         'name'          => __( 'Blog Sidebar', 'nvLangScope' ),
-        'id'            => 'sidebar-1',
+        'id'            => 'blog-sidebar',
         'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => "</aside>",
@@ -89,9 +89,9 @@ register_sidebar(array(
         'after_title'   => '</h3>',
     ));
     register_sidebar(array(
-        'name'          => __( 'Site Sidebar', 'nvLangScope' ),
-        'id'            => 'sidebar-2',
-        'description'   => __( 'Drag widgets for the Site sidebar here. These widgets will only appear on non-blog pages.', 'nvLangScope' ),
+        'name'          => __( 'Blog Single Sidebar', 'nvLangScope' ),
+        'id'            => 'blog-single-sidebar',
+        'description'   => __( 'Drag widgets for the Blog Single sidebar here. These widgets will only appear on single blog pages.', 'nvLangScope' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => "</aside>",
         'before_title'  => '<h3 class="widget-title">',
@@ -216,7 +216,7 @@ register_sidebar(array(
         'after_title'   => '</h3>',
     ));
 
-register_sidebar(array(
+    register_sidebar(array(
         'name'          => __( 'Wedding Songs', 'nvLangScope' ),
         'id'            => 'wedding-songs',
         'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
@@ -225,6 +225,91 @@ register_sidebar(array(
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
+
+    register_sidebar(array(
+        'name'          => __( 'Calendar Sidebar', 'nvLangScope' ),
+        'id'            => 'calendar-sidebar',
+        'description'   => __( 'Drag widgets for calendar sidebar here. These widgets will only appear on the calendar portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Our Parents Sidebar', 'nvLangScope' ),
+        'id'            => 'our-parents-sidebar',
+        'description'   => __( 'Drag widgets for our parents sidebar here. These widgets will only appear on the our parents portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Our Parents Right Content', 'nvLangScope' ),
+        'id'            => 'our-parents-right',
+        'description'   => __( 'Drag widgets for our parents right content here. These widgets will only appear on the our parents portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Alumni Corner', 'nvLangScope' ),
+        'id'            => 'alumni-corner',
+        'description'   => __( 'Drag widgets for our alumni corner content here. These widgets will only appear on the our alumni corner portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Presenters Info Section 1', 'nvLangScope' ),
+        'id'            => 'presenters-1',
+        'description'   => __( 'Drag widgets for our alumni corner content here. These widgets will only appear on the our alumni corner portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Presenters Song List Left', 'nvLangScope' ),
+        'id'            => 'presenters-2',
+        'description'   => __( 'Drag widgets for our alumni corner content here. These widgets will only appear on the our alumni corner portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Presenters Song List Right', 'nvLangScope' ),
+        'id'            => 'presenters-3',
+        'description'   => __( 'Drag widgets for our alumni corner content here. These widgets will only appear on the our alumni corner portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Presenters Info Section 2', 'nvLangScope' ),
+        'id'            => 'presenters-4',
+        'description'   => __( 'Drag widgets for our alumni corner content here. These widgets will only appear on the our alumni corner portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+
+
+
+
 
 function my_login_logo() { ?>
     <style type="text/css">

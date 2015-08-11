@@ -1,1 +1,49 @@
 /* Donate Styles */
+
+
+.donate {
+  padding-bottom: 3rem;
+}
+
+.donate-option {
+  position: relative;
+  height: 300px;
+
+  @media #{$small-only} {
+    height: 220px;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 1.7rem;
+  }
+
+  p {
+    color: #fff;
+    opacity: 0.7;
+  }
+
+  button {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    background: $brand-gold;
+    border-radius: 2rem;
+    font-style: italic;
+    font-size: 1rem;
+    width: 150px;
+    margin: 0 auto;
+
+    &:hover {
+      background: $brand-red;
+    }
+
+    @media #{$medium-only} {
+      left: 35%;
+    }
+
+    @media #{$small-only} {
+      left: 30%;
+    }
+  }
+}

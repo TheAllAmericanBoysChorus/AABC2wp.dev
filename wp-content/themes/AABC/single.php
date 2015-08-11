@@ -4,16 +4,20 @@
  * 
  * This is the template for single, full-page blog posts.
  */
-\NV\Theme::get_header();
-\NV\Theme::output_file_marker( __FILE__ );
+get_header();
 ?>
-    <div id="container" class="row">
-        <div id="content" class="small-12 large-8 columns">
-            <?php \NV\Theme::loop( 'parts/article-with-comments', 'parts/article-empty' ) ?>
+
+<?php get_template_part( 'single-blog-header' ); ?>
+
+<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+    <div id="container" class="row blog">
+        <div class="small-12 large-8 columns right general-content-right">
+            <h3><?php the_title(); ?></h3>
+            <?php the_content(); ?>
         </div>
-        <div id="sidebar" class="small-12 large-4 columns">
-            <?php dynamic_sidebar( 'sidebar-1' ) ?>
+<?php endwhile; // end of the loop. ?>
+        <div class="small-12 large-4 columns sidebar-left">
+            <?php dynamic_sidebar( 'blog-single-sidebar' ) ?>
         </div>
     </div>
-<?php
-\NV\Theme::get_footer();
+<?php get_footer();

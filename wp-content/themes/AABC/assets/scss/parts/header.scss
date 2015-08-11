@@ -75,6 +75,35 @@
   background-position: center;
 }
 
+.main-cta-bg-donate {
+  background: url('../../assets/images/newport-concert.jpg');
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  background-position: center;
+}
+
+
+.main-cta-bg-single-blog {
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  background-position: center;
+
+  > .blue-overlay {
+    background: $brand-dark-blue;
+    width: 100%;
+    height: 700px;
+    opacity: 0.5;
+  }
+}
+
+.head {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
 .logo {
   float: left;
   margin: 5px;
