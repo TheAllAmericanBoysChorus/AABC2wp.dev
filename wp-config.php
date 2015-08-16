@@ -16,7 +16,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'aabc3_wp');
+define('DB_NAME', 'aabc3wp');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -28,7 +28,7 @@ define('DB_PASSWORD', 'root');
 define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8);
+define('DB_CHARSET', 'utf-8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');

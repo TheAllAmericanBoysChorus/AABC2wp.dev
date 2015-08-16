@@ -2,8 +2,7 @@
 
 // Template Name: Blog Page
 
-get_header();
-?>
+get_header(); ?>
 
 <?php get_template_part( 'calendar-header' ); ?>
 
