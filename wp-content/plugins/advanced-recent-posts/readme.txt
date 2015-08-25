@@ -3,7 +3,7 @@ Contributors: eugenyh
 Tags: widget, posts, plugin, recent, recent posts, video, latest, latest posts, shortcode, thumbnail, thumbnails, categories, content, featured image, Taxonomy, custom post type, custom
 Requires at least: 3.5
 Tested up to: 4.2.3
-Stable tag: 0.6.13
+Stable tag: 0.6.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,15 @@ In version 0.6.4 added new color scheme (both widgets and shortcode) - natural i
 6. This is result of shortcode on the website
 
 == Changelog ==
+
+= 0.6.14 =
+* Added support of post offset.
+* Added ability to exclude the current post if the shortcode inserted in the post content or near.
+* Added ability to display Read more link after excerpt in Responsive Grid Layout.
+* Added ability to open links in the same or new window.
+* Added support of post subtitles (both for shortcodes and widgets).
+* Added the ability (both in shortcodes and widgets) to display only the posts of those categories that belong to the post on the page.
+* Deep code refactoring
 
 = 0.6.13 =
 * Added embedded video support. Now embedded video can be displayed instead of Featured Image in Responsive Grid Layout

@@ -4,7 +4,7 @@ Plugin Name: Advanced Recent Posts
 Plugin URI: http://lp-tricks.com/
 Description: Plugin that shows the recent posts with thumbnails in the widget and in other parts of the your blog or theme with shortcodes.
 Tags: widget, posts, plugin, recent, recent posts, video, latest, latest posts, shortcode, thumbnail, thumbnails, categories, content, featured image, Taxonomy, custom post type, custom
-Version: 0.6.13
+Version: 0.6.14
 Author: Eugene Holin
 Author URI: http://lp-tricks.com/
 License: GPLv2 or later
@@ -61,10 +61,13 @@ function lptw_recent_posts_options_box_content ( $post ) {
     // Add a nonce field so we can check for it later.
 	wp_nonce_field( 'lptw_recent_posts_options_box', 'lptw_recent_posts_meta_box_nonce' );
 
+    $post_subtitle = get_post_meta( $post->ID, 'lptw_post_subtitle', true );
     $featured_post = get_post_meta( $post->ID, 'featured_post', true );
     $embedded_video = get_post_meta( $post->ID, 'embedded_video', true );
     $hide_youtube_controls = get_post_meta( $post->ID, 'hide_youtube_controls', true );
 
+    echo '<p><label class="lptw-checkbox-label" for="post_subtitle"><strong>'.__( 'Post Subtitle:', 'lptw_recent_posts_domain' ).'</strong></label></p>';
+    echo '<p><input class="text" type="text" id="post_subtitle" name="post_subtitle" value="'.esc_attr($post_subtitle).'" /></p>';
     echo '<p><label class="lptw-checkbox-label" for="featured_post"><input class="checkbox" type="checkbox" '.checked( $featured_post, 'on', false ).' id="featured_post" name="featured_post" />&nbsp;'.__( 'Featured post', 'lptw_recent_posts_domain' ).'</label></p>';
     echo '<p class="description">'.__( 'Featured post displays larger than the other posts in Responsive Grid Layout', 'lptw_recent_posts_domain' ).'</p>';
     echo '<div id="lptw-embedded-video-settings">';
@@ -113,857 +116,41 @@ function lptw_recent_posts_options_save_meta_box_data( $post_id ) {
 	/* OK, it's safe for us to save the data now. */
 
 	// Sanitize user input.
+	$post_subtitle = sanitize_text_field( $_POST['post_subtitle'] );
 	$featured_post = sanitize_text_field( $_POST['featured_post'] );
 	$embedded_video = sanitize_text_field( $_POST['embedded_video'] );
 	$hide_youtube_controls = sanitize_text_field( $_POST['hide_youtube_controls'] );
 
 	// Update the meta field in the database.
+	update_post_meta( $post_id, 'lptw_post_subtitle', $post_subtitle );
 	update_post_meta( $post_id, 'featured_post', $featured_post );
 	update_post_meta( $post_id, 'embedded_video', $embedded_video );
 	update_post_meta( $post_id, 'hide_youtube_controls', $hide_youtube_controls );
 }
 add_action( 'save_post', 'lptw_recent_posts_options_save_meta_box_data' );
 
-
-/**
--------------------------------------- Fluid Images Widget --------------------------------------
-**/
-
-// Creating the widget with fluid images
-class lptw_recent_posts_fluid_images_widget extends WP_Widget {
-
-    function __construct() {
-
-		$widget_ops = array('classname' => 'lptw_recent_posts_fluid_images_widget', 'description' => __( "Your site&#8217;s most recent Posts. Displays big fluid images, post date ant title.", 'lptw_recent_posts_domain') );
-		parent::__construct('lptw-fluid-images-recent-posts', __('Recent Posts Widget (Fluid Images)', 'lptw_recent_posts_domain'), $widget_ops);
-		$this->alt_option_name = 'lptw_widget_fluid_images_recent_entries';
-
-		add_action( 'save_post', array($this, 'flush_widget_cache') );
-		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
-		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
-
-    }
-
-    // Creating widget front-end
-    // This is where the action happens
-	public function widget($args, $instance) {
-		$cache = array();
-		if ( ! $this->is_preview() ) {
-			$cache = wp_cache_get( 'lptw_recent_posts_fluid_images_widget', 'widget' );
-		}
-
-		if ( ! is_array( $cache ) ) {
-			$cache = array();
-		}
-
-		if ( ! isset( $args['widget_id'] ) ) {
-			$args['widget_id'] = $this->id;
-		}
-
-		if ( isset( $cache[ $args['widget_id'] ] ) ) {
-			echo $cache[ $args['widget_id'] ];
-			return;
-		}
-
-		ob_start();
-
-		$show_widget_title = isset( $instance['show_widget_title'] ) ? $instance['show_widget_title'] : true;
-		$exclude_current_post = isset( $instance['exclude_current_post'] ) ? $instance['exclude_current_post'] : true;
-		$no_thumbnails = isset( $instance['no_thumbnails'] ) ? $instance['no_thumbnails'] : false;
-
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts', 'lptw_recent_posts_domain' );
-
-		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
-
-		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
-		if ( ! $number ) {$number = 5;}
-
-		$reverse_post_order = isset( $instance['reverse_post_order'] ) ? $instance['reverse_post_order'] : false;
-
-		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : true;
-
-		$date_format = isset( $instance['date_format'] ) ? $instance['date_format'] : 'm/d/Y';
-
-		$time_format = isset( $instance['time_format'] ) ? $instance['time_format'] : 'g:i a';
-
-		$show_time = isset( $instance['show_time'] ) ? $instance['show_time'] : true;
-
-		$show_time_before = isset( $instance['show_time_before'] ) ? $instance['show_time_before'] : true;
-
-		$show_post_title = isset( $instance['show_post_title'] ) ? $instance['show_post_title'] : true;
-
-		$show_title_before = isset( $instance['show_title_before'] ) ? $instance['show_title_before'] : true;
-
-		$color_scheme = isset( $instance['color_scheme'] ) ? $instance['color_scheme'] : 'light';
-
-		$post_category = isset( $instance['post_category'] ) ? $instance['post_category'] : array();
-        if (!empty($post_category)) { $post_category_str = implode (',', $post_category); }
-
-		$authors = isset( $instance['authors'] ) ? $instance['authors'] : array();
-
-		$post_type = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
-
-        /* don't show post in recent if it shows in page */
-        global $post;
-        if (!empty($post) && $exclude_current_post == true) { $exclude_post = array( $post->ID ); }
-
-        if ( $post_type != 'post' ) {
-            if (!empty($post_category)) {
-                $tax_query = array('relation' => 'AND');
-             	$taxonomies = get_object_taxonomies($post_type);
-                if (!empty($taxonomies)) {
-                 	foreach ($taxonomies as $taxonomy) {
-                        $tax_array = array('taxonomy' => $taxonomy, 'field' => 'term_id', 'include_children' => false, 'terms' => $post_category);
-
-                        array_push ($tax_query, $tax_array);
-                 	}
-                }
-            } else { $tax_query = ''; }
-            $post_category = '';
-        }
-
-        if ($no_thumbnails == 'on') { $meta_key = '_thumbnail_id'; }
-        else { $meta_key = ''; }
-
-		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
-			'post_type'             => $post_type,
-			'posts_per_page'        => $number,
-			'no_found_rows'         => true,
-			'post_status'           => 'publish',
-			'ignore_sticky_posts'   => true,
-            'post__not_in'          => $exclude_post,
-            'author__in'            => $authors,
-            'category__in'          => $post_category,
-            'tax_query'             => $tax_query,
-            'order'                 => 'DESC',
-            'orderby'               => 'date',
-            'meta_key'              => $meta_key
-		) ) );
-
-		if ($r->have_posts()) :
-            if ($reverse_post_order == 'true') { $r->posts = array_reverse($r->posts); }
-
-?>
-		<?php echo $args['before_widget']; ?>
-		<?php if ( $title && $show_widget_title == true) {
-			echo $args['before_title'] . $title . $args['after_title'];
-		} ?>
-		<ul class="lptw-recent-posts-fluid-images-widget">
-		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
-        <?php
-            $post_date = get_the_date($date_format);
-            $post_time = get_the_date($time_format);
-            if ($show_time == true) {
-                if ($show_time_before == true) { $post_date_time = $post_time . ' ' . $post_date; }
-                else { $post_date_time = $post_date . ' ' . $post_time; }
-            }
-            else { $post_date_time = $post_date; }
-        ?>
-
-
-			<li>
-                <?php if ( has_post_thumbnail() ) :
-                    $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($r->post_ID), 'large' );
-                    $url = $thumb['0'];
-                ?>
-				<div class="lptw-post-thumbnail">
-                    <a href="<?php the_permalink(); ?>" class="lptw-post-thumbnail-link"><div class="overlay overlay-<?php echo $color_scheme; ?>"><img src="<?php echo $url; ?>" alt="<?php get_the_title() ? the_title() : the_ID(); ?>" /></div>
-                    <div class="lptw-post-header">
-        		    	<?php if ( $show_title_before == true ) : ?>
-            		    	<?php if ( $show_post_title ) : ?>
-        		    		<span class="lptw-post-title title-<?php echo $color_scheme; ?>"><?php get_the_title() ? the_title() : the_ID(); ?></span>
-            			    <?php endif; ?>
-            		    	<?php if ( $show_date == true ) : ?>
-        	    			<span class="lptw-post-date date-<?php echo $color_scheme; ?>"><?php echo $post_date_time; ?></span>
-            			    <?php endif; ?>
-                        <?php else : ?>
-            		    	<?php if ( $show_date == true ) : ?>
-        	    			<span class="lptw-post-date date-<?php echo $color_scheme; ?>"><?php echo $post_date_time; ?></span>
-            			    <?php endif; ?>
-            		    	<?php if ( $show_post_title ) : ?>
-        		    		<span class="lptw-post-title title-<?php echo $color_scheme; ?>"><?php get_the_title() ? the_title() : the_ID(); ?></span>
-            			    <?php endif; ?>
-            			<?php endif; ?>
-                    </div>
-                    </a>
-                </div>
-                <?php else : ?>
-    			<?php if ( $show_date == true ) : ?>
-    				<span class="lptw-post-date"><?php echo $post_date; ?></span>
-    			<?php endif; ?>
-				<a href="<?php the_permalink(); ?>" class="lptw-post-title-link"><?php get_the_title() ? the_title() : the_ID(); ?></a>
-                <?php endif; ?>
-			</li>
-		<?php endwhile; ?>
-		</ul>
-		<?php echo $args['after_widget']; ?>
-<?php
-		// Reset the global $the_post as this query will have stomped on it
-		wp_reset_postdata();
-
-		endif;
-
-		if ( ! $this->is_preview() ) {
-			$cache[ $args['widget_id'] ] = ob_get_flush();
-			wp_cache_set( 'lptw_recent_posts_fluid_images_widget', $cache, 'widget' );
-		} else {
-			ob_end_flush();
-		}
-	}
-
-    /* --------------------------------- Widget Backend --------------------------------- */
-    public function form( $instance ) {
-        if ( isset( $instance[ 'title' ] ) ) { $title = esc_attr( $instance[ 'title' ]) ; }
-        else { $title = __( 'Recent posts', 'lptw_recent_posts_domain' ); }
-
-        if ( isset( $instance[ 'show_widget_title' ] ) ) { $show_widget_title = (bool) $instance[ 'show_widget_title' ]; }
-        else { $show_widget_title = true; }
-
-        if ( isset( $instance[ 'exclude_current_post' ] ) ) { $exclude_current_post = (bool) $instance[ 'exclude_current_post' ]; }
-        else { $exclude_current_post = true; }
-
-        if ( isset( $instance[ 'no_thumbnails' ] ) ) { $no_thumbnails = (bool) $instance[ 'no_thumbnails' ]; }
-        else { $no_thumbnails = false; }
-
-        if ( isset( $instance[ 'number' ] ) ) { $number = absint( $instance[ 'number' ] ); }
-        else { $number = 5; }
-
-        if ( isset( $instance[ 'reverse_post_order' ] ) ) { $reverse_post_order = (bool) $instance[ 'reverse_post_order' ]; }
-        else { $reverse_post_order = false; }
-
-        if ( isset( $instance[ 'show_post_title' ] ) ) { $show_post_title = (bool) $instance[ 'show_post_title' ]; }
-        else { $show_post_title = true; }
-
-        if ( isset( $instance[ 'show_title_before' ] ) ) { $show_title_before = (bool) $instance[ 'show_title_before' ]; }
-        else { $show_title_before = false; }
-
-        if ( isset( $instance[ 'show_date' ] ) ) { $show_date = (bool) $instance[ 'show_date' ]; }
-        else { $show_date = false; }
-
-        if ( isset( $instance[ 'date_format' ] ) ) { $date_format = $instance[ 'date_format' ]; }
-        else { $date_format = 'm/d/Y'; }
-
-        if ( isset( $instance[ 'time_format' ] ) ) { $time_format = $instance[ 'time_format' ]; }
-        else { $time_format = 'g:i a'; }
-
-        if ( isset( $instance[ 'show_time' ] ) ) { $show_time = (bool) $instance[ 'show_time' ]; }
-        else { $show_time = false; }
-
-        if ( isset( $instance[ 'show_time_before' ] ) ) { $show_time_before = (bool) $instance[ 'show_time_before' ]; }
-        else { $show_time_before = false; }
-
-        if ( isset( $instance[ 'color_scheme' ] ) ) { $color_scheme = $instance[ 'color_scheme' ] ; }
-        else { $color_scheme = 'light'; }
-
-        if ( isset( $instance[ 'post_category' ] ) ) { $post_category = $instance[ 'post_category' ]; }
-
-        if ( isset( $instance[ 'authors' ] ) ) { $authors = $instance[ 'authors' ]; }
-
-        if ( isset( $instance[ 'post_type' ] ) ) { $post_type = $instance[ 'post_type' ]; }
-        else { $post_type = 'post_type'; }
-
-        // Widget admin form
-        ?>
-        <p>
-        <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'lptw_recent_posts_domain' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_widget_title ); ?> id="<?php echo $this->get_field_id( 'show_widget_title' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_title' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_widget_title' ); ?>"><?php _e( 'Display widget title?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('post_type'); ?>"><?php _e( 'Post type:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'post_type' ); ?>" id="<?php echo $this->get_field_id('post_type'); ?>" class="widefat registered-post-types">
-                <?php
-                    $post_types = get_post_types( '', 'names' );
-                    foreach ( $post_types as $registered_post_type ) {
-                        echo '<option value="' . $registered_post_type . '"'.selected( $post_type, $registered_post_type ).'>' . $registered_post_type . '</option>';
-                    }
-                ?>
-			</select>
-		</p>
-
-        <div class="lptw-categories-dropdown"><a class="lptw-categories-dropdown-link" href="#">List of categories <span id="lptw-categories-action" class="lptw-categories-action-down"></span></a></div>
-        <div id="lptw-categories-wrapper">
-            <fieldset id="categories_list">
-                <ul class="lptw-categories-list">
-                    <?php
-                     	$taxonomies = get_object_taxonomies($post_type);
-                        if (!empty($taxonomies)) {
-                            $categories_content = '';
-                         	foreach ($taxonomies as $taxonomy) {
-                         	    $args = array(
-                                    'taxonomy' => $taxonomy,
-                                    'orderby' => 'name',
-                                    'show_count' => 0,
-                                    'pad_counts' => 0,
-                                    'hierarchical' => 1,
-                                    'hide_empty' => 0
-                                );
-                         		$categories = get_categories($args);
-                         		foreach ($categories as $category) {
-                         		    if (is_array($post_category) && in_array($category->term_id, $post_category)) { $checked = 'checked="checked"'; }
-                                    else { $checked = ''; }
-                         		    $categories_content .= '<li id="category-' . $category->term_id . '"><label class="selectit"><input type="checkbox" id="in-category-' . $category->term_id . '" name="post_category[]" value="' . $category->term_id . '" '.$checked.'> ' . $category->name . '</label></li>' . "\n";
-                         		}
-                         	}
-                        } else { $categories_content = 'No taxonomies for selected post type'; }
-
-                        echo $categories_content;
-                    ?>
-                </ul>
-            </fieldset>
-            <p class="description">If none of the categories is selected - will be displayed posts from all categories.</p>
-        </div>
-
-        <div class="chosen-container"><label for="<?php echo $this->get_field_id( 'authors' ); ?>"><?php _e( 'Select one or more authors:', 'lptw_recent_posts_domain' ); ?></label>
-            <?php
-                $authors_args = array(
-                    'who'          => 'authors'
-                );
-                $blog_authors = get_users( $authors_args );
-            ?>
-            <select id="<?php echo $this->get_field_id( 'authors' ); ?>" name="<?php echo $this->get_field_name( 'authors' ); ?>[]" multiple class="widefat chosen-select chosen-select-widget" data-placeholder="<?php _e( 'Authors', 'lptw_recent_posts_domain' ); ?>">
-            <?php
-                foreach ($blog_authors as $blog_author) {
-                    if (is_array($authors) && in_array($blog_author->id, $authors)) { $selected = 'selected="selected"'; }
-                    else { $selected = ''; }
-                    if ( $blog_author->first_name && $blog_author->last_name ) { $author_name = ' ('.$blog_author->first_name.' '.$blog_author->last_name.')'; }
-                    else { $author_name = ''; }
-                    echo '<option value="' . $blog_author->id . '" '.$selected.'>' . $blog_author->user_nicename . $author_name . '</option>';
-                }
-            ?>
-            </select>
-        </div>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $no_thumbnails ); ?> id="<?php echo $this->get_field_id( 'no_thumbnails' ); ?>" name="<?php echo $this->get_field_name( 'no_thumbnails' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'no_thumbnails' ); ?>"><?php _e( 'Do not display Posts without Featured Image', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $exclude_current_post ); ?> id="<?php echo $this->get_field_id( 'exclude_current_post' ); ?>" name="<?php echo $this->get_field_name( 'exclude_current_post' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'exclude_current_post' ); ?>"><?php _e( 'Exclude the current Post from list', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:', 'lptw_recent_posts_domain' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $reverse_post_order ); ?> id="<?php echo $this->get_field_id( 'reverse_post_order' ); ?>" name="<?php echo $this->get_field_name( 'reverse_post_order' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'reverse_post_order' ); ?>"><?php _e( 'Reverse post order: display the latest post last in the list?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('date_format'); ?>"><?php _e( 'Date format:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'date_format' ); ?>" id="<?php echo $this->get_field_id('date_format'); ?>" class="widefat">
-				<option value="d.m.Y"<?php selected( $date_format, 'd.m.Y' ); ?>><?php echo date('d.m.Y') ?></option>
-				<option value="m/d/Y"<?php selected( $date_format, 'm/d/Y' ); ?>><?php echo date('m/d/Y'); ?></option>
-				<option value="d/m/Y"<?php selected( $date_format, 'd/m/Y' ); ?>><?php echo date('d/m/Y'); ?></option>
-				<option value="F j, Y"<?php selected( $date_format, 'F j, Y' ); ?>><?php echo date('F j, Y'); ?></option>
-				<option value="M j, Y"<?php selected( $date_format, 'M j, Y' ); ?>><?php echo date('M j, Y'); ?></option>
-			</select>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('time_format'); ?>"><?php _e( 'Time format:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'time_format' ); ?>" id="<?php echo $this->get_field_id('time_format'); ?>" class="widefat">
-				<option value="H:i"<?php selected( $time_format, 'H:i' ); ?>><?php echo date('H:i') ?></option>
-				<option value="H:i:s"<?php selected( $time_format, 'H:i:s' ); ?>><?php echo date('H:i:s'); ?></option>
-				<option value="g:i a"<?php selected( $time_format, 'g:i a' ); ?>><?php echo date('g:i a'); ?></option>
-				<option value="g:i:s a"<?php selected( $time_format, 'g:i:s a' ); ?>><?php echo date('g:i:s a'); ?></option>
-			</select>
-		</p>
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_time ); ?> id="<?php echo $this->get_field_id( 'show_time' ); ?>" name="<?php echo $this->get_field_name( 'show_time' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_time' ); ?>"><?php _e( 'Display post time?', 'lptw_recent_posts_domain' ); ?></label></p>
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_time_before ); ?> id="<?php echo $this->get_field_id( 'show_time_before' ); ?>" name="<?php echo $this->get_field_name( 'show_time_before' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_time_before' ); ?>" title="<?php _e( 'By default post time displays after post date.', 'lptw_recent_posts_domain' );?>"><?php _e( 'Display post time before post date?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_post_title ); ?> id="<?php echo $this->get_field_id( 'show_post_title' ); ?>" name="<?php echo $this->get_field_name( 'show_post_title' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_post_title' ); ?>"><?php _e( 'Display post title?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_title_before ); ?> id="<?php echo $this->get_field_id( 'show_title_before' ); ?>" name="<?php echo $this->get_field_name( 'show_title_before' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_title_before' ); ?>"><?php _e( 'Display post title before post date and time?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('color_scheme'); ?>"><?php _e( 'Color scheme:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'color_scheme' ); ?>" id="<?php echo $this->get_field_id('color_scheme'); ?>" class="widefat">
-				<option value="no-overlay"<?php selected( $color_scheme, 'no-overlay' ); ?>><?php _e('Without overlay', 'lptw_recent_posts_domain'); ?></option>
-				<option value="light"<?php selected( $color_scheme, 'light' ); ?>><?php _e('Light', 'lptw_recent_posts_domain'); ?></option>
-				<option value="dark"<?php selected( $color_scheme, 'dark' ); ?>><?php _e('Dark', 'lptw_recent_posts_domain'); ?></option>
-			</select>
-		</p>
-
-        </p>
-        <?php
-    }
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['show_widget_title'] = isset( $new_instance['show_widget_title'] ) ? (bool) $new_instance['show_widget_title'] : false;
-		$instance['exclude_current_post'] = isset( $new_instance['exclude_current_post'] ) ? (bool) $new_instance['exclude_current_post'] : false;
-		$instance['no_thumbnails'] = isset( $new_instance['no_thumbnails'] ) ? (bool) $new_instance['no_thumbnails'] : false;
-		$instance['reverse_post_order'] = isset( $new_instance['reverse_post_order'] ) ? (bool) $new_instance['reverse_post_order'] : false;
-		$instance['number'] = (int) $new_instance['number'];
-		$instance['show_post_title'] = isset( $new_instance['show_post_title'] ) ? (bool) $new_instance['show_post_title'] : false;
-		$instance['show_title_before'] = isset( $new_instance['show_title_before'] ) ? (bool) $new_instance['show_title_before'] : false;
-		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
-		$instance['date_format'] = strip_tags($new_instance['date_format']);
-		$instance['time_format'] = strip_tags($new_instance['time_format']);
-		$instance['show_time'] = isset( $new_instance['show_time'] ) ? (bool) $new_instance['show_time'] : false;
-		$instance['show_time_before'] = isset( $new_instance['show_time_before'] ) ? (bool) $new_instance['show_time_before'] : false;
-		$instance['color_scheme'] = strip_tags($new_instance['color_scheme']);
-
-        // need to replace $_POST by $new_instance as authors
-		if( isset( $_POST['post_category'] ) ) {
-		    $posted_terms = $_POST['post_category'];
-			foreach ( $posted_terms as $term ) {
-			    if( term_exists( absint( $term ), $taxonomy ) ) {
-				    $terms[] = absint( $term );
-				}
-			}
-            $instance['post_category'] = $terms;
-		} else { $instance['post_category'] = ''; }
-
-		if( isset( $new_instance['authors'] ) ) {
-		    $authors = $new_instance['authors'];
-			foreach ( $authors as $author ) {
-			    $authors_id[] = absint( $author );
-			}
-            $instance['authors'] = $authors_id;
-		} else { $instance['authors'] = ''; }
-
-		$instance['post_type'] = strip_tags($new_instance['post_type']);
-
-		$this->flush_widget_cache();
-
-		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['lptw_widget_fluid_images_recent_entries']) )
-			delete_option('lptw_widget_fluid_images_recent_entries');
-
-		return $instance;
-	}
-
-	public function flush_widget_cache() {
-		wp_cache_delete('lptw_recent_posts_fluid_images_widget', 'widget');
-	}
-
-} // Class wpb_widget ends here
-
-/**
--------------------------------------- Small Thumbnails Widget --------------------------------------
-**/
-
-// Creating the widget with small thumbnails
-class lptw_recent_posts_thumbnails_widget extends WP_Widget {
-
-    function __construct() {
-
-		$widget_ops = array('classname' => 'lptw_recent_posts_thumbnails_widget', 'description' => __( "Your site&#8217;s most recent Posts. Displays small thumbnails, post date and title.", 'lptw_recent_posts_domain') );
-		parent::__construct('lptw-thumbnails-recent-posts', __('Recent Posts Widget (Thumbnails)', 'lptw_recent_posts_domain'), $widget_ops);
-		$this->alt_option_name = 'lptw_widget_thumbnails_recent_entries';
-
-		add_action( 'save_post', array($this, 'flush_widget_cache') );
-		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
-		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
-
-    }
-
-    // Creating widget front-end
-    // This is where the action happens
-	public function widget($args, $instance) {
-		$cache = array();
-		if ( ! $this->is_preview() ) {
-			$cache = wp_cache_get( 'lptw_recent_posts_thumbnails_widget', 'widget' );
-		}
-
-		if ( ! is_array( $cache ) ) {
-			$cache = array();
-		}
-
-		if ( ! isset( $args['widget_id'] ) ) {
-			$args['widget_id'] = $this->id;
-		}
-
-		if ( isset( $cache[ $args['widget_id'] ] ) ) {
-			echo $cache[ $args['widget_id'] ];
-			return;
-		}
-
-		ob_start();
-
-		$show_widget_title = isset( $instance['show_widget_title'] ) ? $instance['show_widget_title'] : true;
-		$exclude_current_post = isset( $instance['exclude_current_post'] ) ? $instance['exclude_current_post'] : true;
-		$no_thumbnails = isset( $instance['no_thumbnails'] ) ? $instance['no_thumbnails'] : false;
-
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts', 'lptw_recent_posts_domain' );
-
-		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
-
-		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
-		if ( ! $number ) {$number = 5;}
-
-        if ( isset( $instance[ 'reverse_post_order' ] ) ) { $reverse_post_order = (bool) $instance[ 'reverse_post_order' ]; }
-        else { $reverse_post_order = false; }
-
-		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : true;
-
-		$date_format = isset( $instance['date_format'] ) ? $instance['date_format'] : 'm/d/Y';
-
-		$time_format = isset( $instance['time_format'] ) ? $instance['time_format'] : 'g:i a';
-
-		$show_time = isset( $instance['show_time'] ) ? $instance['show_time'] : true;
-
-		$show_time_before = isset( $instance['show_time_before'] ) ? $instance['show_time_before'] : true;
-
-		$show_post_title = isset( $instance['show_post_title'] ) ? $instance['show_post_title'] : true;
-
-		$show_title_before = isset( $instance['show_title_before'] ) ? $instance['show_title_before'] : false;
-
-		$post_category = isset( $instance['post_category'] ) ? $instance['post_category'] : array();
-
-		$authors = isset( $instance['authors'] ) ? $instance['authors'] : array();
-
-		$post_type = isset( $instance['post_type'] ) ? $instance['post_type'] : 'post';
-
-        /* don't show post in recent if it shows in page */
-        global $post;
-        if (!empty($post) && $exclude_current_post == true) { $exclude_post = array( $post->ID ); }
-
-        if ( $post_type != 'post' ) {
-            if (!empty($post_category)) {
-                $tax_query = array('relation' => 'AND');
-             	$taxonomies = get_object_taxonomies($post_type);
-                if (!empty($taxonomies)) {
-                 	foreach ($taxonomies as $taxonomy) {
-                        $tax_array = array('taxonomy' => $taxonomy, 'field' => 'term_id', 'include_children' => false, 'terms' => $post_category);
-
-                        array_push ($tax_query, $tax_array);
-                 	}
-                }
-            } else { $tax_query = ''; }
-            $post_category = '';
-        }
-
-        if ($no_thumbnails == 'on') { $meta_key = '_thumbnail_id'; }
-        else { $meta_key = ''; }
-
-		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
-			'post_type'             => $post_type,
-			'posts_per_page'        => $number,
-			'no_found_rows'         => true,
-			'post_status'           => 'publish',
-			'ignore_sticky_posts'   => true,
-            'post__not_in'          => $exclude_post,
-            'author__in'            => $authors,
-            'category__in'          => $post_category,
-            'tax_query'             => $tax_query,
-            'order'                 => 'DESC',
-            'orderby'               => 'date',
-            'meta_key'              => $meta_key
-		) ) );
-
-		if ($r->have_posts()) :
-            if ($reverse_post_order == 'true') { $r->posts = array_reverse($r->posts); }
-?>
-		<?php echo $args['before_widget']; ?>
-		<?php if ( $title && $show_widget_title == true) {
-			echo $args['before_title'] . $title . $args['after_title'];
-		} ?>
-		<ul class="lptw-recent-posts-thumbnails-widget">
-		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
-        <?php
-            $post_date = get_the_date($date_format);
-            $post_time = get_the_date($time_format);
-            if ($show_time == true) {
-                if ($show_time_before == true) { $post_date_time = $post_time . ' ' . $post_date; }
-                else { $post_date_time = $post_date . ' ' . $post_time; }
-            }
-            else { $post_date_time = $post_date; }
-        ?>
-
-			<li>
-                <div class="lptw-post-small-thumbnail">
-                    <a href="<?php the_permalink(); ?>" class="lptw-thumbnail-link"><?php if ( has_post_thumbnail() ) {the_post_thumbnail( array(100, 100) );} ?></a>
-                    <div class="lptw-post-header">
-                        <?php if ( $show_title_before == true ) : ?>
-            		    	<?php if ( $show_post_title ) : ?>
-            		    	<a href="<?php the_permalink(); ?>" class="lptw-header-link"><?php get_the_title() ? the_title() : the_ID(); ?></a>
-            			    <?php endif; ?>
-            		    	<?php if ( $show_date == true ) : ?>
-            	    		<span class="lptw-post-date"><?php echo $post_date_time; ?></span>
-            			    <?php endif; ?>
-                        <?php else : ?>
-            		    	<?php if ( $show_date == true ) : ?>
-            	    		<span class="lptw-post-date"><?php echo $post_date_time; ?></span>
-            			    <?php endif; ?>
-            		    	<?php if ( $show_post_title ) : ?>
-            		    	<a href="<?php the_permalink(); ?>" class="lptw-header-link"><?php get_the_title() ? the_title() : the_ID(); ?></a>
-            			    <?php endif; ?>
-            			<?php endif; ?>
-                    </div>
-                </div>
-			</li>
-		<?php endwhile; ?>
-		</ul>
-		<?php echo $args['after_widget']; ?>
-<?php
-		// Reset the global $the_post as this query will have stomped on it
-		wp_reset_postdata();
-
-		endif;
-
-		if ( ! $this->is_preview() ) {
-			$cache[ $args['widget_id'] ] = ob_get_flush();
-			wp_cache_set( 'lptw_recent_posts_thumbnails_widget', $cache, 'widget' );
-		} else {
-			ob_end_flush();
-		}
-	}
-
-    /* --------------------------------- Widget Backend --------------------------------- */
-    public function form( $instance ) {
-        if ( isset( $instance[ 'title' ] ) ) { $title = esc_attr( $instance[ 'title' ]) ; }
-        else { $title = __( 'Recent posts', 'lptw_recent_posts_domain' ); }
-
-        if ( isset( $instance[ 'show_widget_title' ] ) ) { $show_widget_title = (bool) $instance[ 'show_widget_title' ]; }
-        else { $show_widget_title = true; }
-
-        if ( isset( $instance[ 'exclude_current_post' ] ) ) { $exclude_current_post = (bool) $instance[ 'exclude_current_post' ]; }
-        else { $exclude_current_post = true; }
-
-        if ( isset( $instance[ 'no_thumbnails' ] ) ) { $no_thumbnails = (bool) $instance[ 'no_thumbnails' ]; }
-        else { $no_thumbnails = false; }
-
-        if ( isset( $instance[ 'number' ] ) ) { $number = absint( $instance[ 'number' ] ); }
-        else { $number = 5; }
-
-        if ( isset( $instance[ 'reverse_post_order' ] ) ) { $reverse_post_order = (bool) $instance[ 'reverse_post_order' ]; }
-        else { $reverse_post_order = false; }
-
-        if ( isset( $instance[ 'show_post_title' ] ) ) { $show_post_title = (bool) $instance[ 'show_post_title' ]; }
-        else { $show_post_title = true; }
-
-        if ( isset( $instance[ 'show_title_before' ] ) ) { $show_title_before = (bool) $instance[ 'show_title_before' ]; }
-        else { $show_title_before = false; }
-
-        if ( isset( $instance[ 'show_date' ] ) ) { $show_date = (bool) $instance[ 'show_date' ]; }
-        else { $show_date = false; }
-
-        if ( isset( $instance[ 'date_format' ] ) ) { $date_format = $instance[ 'date_format' ]; }
-        else { $date_format = 'd.m.Y'; }
-
-        if ( isset( $instance[ 'time_format' ] ) ) { $time_format = $instance[ 'time_format' ]; }
-        else { $time_format = 'H:i'; }
-
-        if ( isset( $instance[ 'show_time' ] ) ) { $show_time = (bool) $instance[ 'show_time' ]; }
-        else { $show_time = false; }
-
-        if ( isset( $instance[ 'show_time_before' ] ) ) { $show_time_before = (bool) $instance[ 'show_time_before' ]; }
-        else { $show_time_before = false; }
-
-        if ( isset( $instance[ 'post_category' ] ) ) { $post_category = $instance[ 'post_category' ]; }
-
-        if ( isset( $instance[ 'authors' ] ) ) { $authors = $instance[ 'authors' ]; }
-
-        if ( isset( $instance[ 'post_type' ] ) ) { $post_type = $instance[ 'post_type' ]; }
-        else { $post_type = 'post_type'; }
-
-        // Widget admin form
-        ?>
-        <p>
-        <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'lptw_recent_posts_domain' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_widget_title ); ?> id="<?php echo $this->get_field_id( 'show_widget_title' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_title' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_widget_title' ); ?>"><?php _e( 'Display widget title?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('post_type'); ?>"><?php _e( 'Post type:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'post_type' ); ?>" id="<?php echo $this->get_field_id('post_type'); ?>" class="widefat registered-post-types">
-                <?php
-                    $post_types = get_post_types( '', 'names' );
-                    foreach ( $post_types as $registered_post_type ) {
-                        echo '<option value="' . $registered_post_type . '"'.selected( $post_type, $registered_post_type ).'>' . $registered_post_type . '</option>';
-                    }
-                ?>
-			</select>
-		</p>
-
-        <div class="lptw-categories-dropdown"><a class="lptw-categories-dropdown-link" href="#">List of categories <span id="lptw-categories-action" class="lptw-categories-action-down"></span></a></div>
-        <div id="lptw-categories-wrapper">
-            <fieldset id="categories_list">
-                <ul class="lptw-categories-list">
-                    <?php
-                     	$taxonomies = get_object_taxonomies($post_type);
-                        if (!empty($taxonomies)) {
-                            $categories_content = '';
-                         	foreach ($taxonomies as $taxonomy) {
-                         	    $args = array(
-                                    'taxonomy' => $taxonomy,
-                                    'orderby' => 'name',
-                                    'show_count' => 0,
-                                    'pad_counts' => 0,
-                                    'hierarchical' => 1,
-                                    'hide_empty' => 0
-                                );
-                         		$categories = get_categories($args);
-                         		foreach ($categories as $category) {
-                         		    if (is_array($post_category) && in_array($category->term_id, $post_category)) { $checked = 'checked="checked"'; }
-                                    else { $checked = ''; }
-                         		    $categories_content .= '<li id="category-' . $category->term_id . '"><label class="selectit"><input type="checkbox" id="in-category-' . $category->term_id . '" name="post_category[]" value="' . $category->term_id . '" '.$checked.'> ' . $category->name . '</label></li>' . "\n";
-                         		}
-                         	}
-                        } else { $categories_content = 'No taxonomies for selected post type'; }
-
-                        echo $categories_content;
-                    ?>
-                </ul>
-            </fieldset>
-            <p class="description">If none of the categories is selected - will be displayed posts from all categories.</p>
-        </div>
-
-        <div class="chosen-container"><label for="<?php echo $this->get_field_id( 'authors' ); ?>"><?php _e( 'Select one or more authors:', 'lptw_recent_posts_domain' ); ?></label>
-            <?php
-                $authors_args = array(
-                    'who'          => 'authors'
-                );
-                $blog_authors = get_users( $authors_args );
-            ?>
-            <select id="<?php echo $this->get_field_id( 'authors' ); ?>" name="<?php echo $this->get_field_name( 'authors' ); ?>[]" multiple class="widefat chosen-select chosen-select-widget" data-placeholder="<?php _e( 'Authors', 'lptw_recent_posts_domain' ); ?>">
-            <?php
-                foreach ($blog_authors as $blog_author) {
-                    if (is_array($authors) && in_array($blog_author->id, $authors)) { $selected = 'selected="selected"'; }
-                    else { $selected = ''; }
-                    if ( $blog_author->first_name && $blog_author->last_name ) { $author_name = ' ('.$blog_author->first_name.' '.$blog_author->last_name.')'; }
-                    else { $author_name = ''; }
-                    echo '<option value="' . $blog_author->id . '" '.$selected.'>' . $blog_author->user_nicename . $author_name . '</option>';
-                }
-            ?>
-            </select>
-        </div>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $no_thumbnails ); ?> id="<?php echo $this->get_field_id( 'no_thumbnails' ); ?>" name="<?php echo $this->get_field_name( 'no_thumbnails' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'no_thumbnails' ); ?>"><?php _e( 'Do not display Posts without Featured Image', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $exclude_current_post ); ?> id="<?php echo $this->get_field_id( 'exclude_current_post' ); ?>" name="<?php echo $this->get_field_name( 'exclude_current_post' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'exclude_current_post' ); ?>"><?php _e( 'Exclude the current Post from list', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:', 'lptw_recent_posts_domain' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $reverse_post_order ); ?> id="<?php echo $this->get_field_id( 'reverse_post_order' ); ?>" name="<?php echo $this->get_field_name( 'reverse_post_order' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'reverse_post_order' ); ?>"><?php _e( 'Reverse post order: display the latest post last in the list?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('date_format'); ?>"><?php _e( 'Date format:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'date_format' ); ?>" id="<?php echo $this->get_field_id('date_format'); ?>" class="widefat">
-				<option value="d.m.Y"<?php selected( $date_format, 'd.m.Y' ); ?>><?php echo date('d.m.Y') ?></option>
-				<option value="m/d/Y"<?php selected( $date_format, 'm/d/Y' ); ?>><?php echo date('m/d/Y'); ?></option>
-				<option value="d/m/Y"<?php selected( $date_format, 'd/m/Y' ); ?>><?php echo date('d/m/Y'); ?></option>
-				<option value="F j, Y"<?php selected( $date_format, 'F j, Y' ); ?>><?php echo date('F j, Y'); ?></option>
-				<option value="M j, Y"<?php selected( $date_format, 'M j, Y' ); ?>><?php echo date('M j, Y'); ?></option>
-			</select>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('time_format'); ?>"><?php _e( 'Time format:', 'lptw_recent_posts_domain' ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'time_format' ); ?>" id="<?php echo $this->get_field_id('time_format'); ?>" class="widefat">
-				<option value="H:i"<?php selected( $time_format, 'H:i' ); ?>><?php echo date('H:i') ?></option>
-				<option value="H:i:s"<?php selected( $time_format, 'H:i:s' ); ?>><?php echo date('H:i:s'); ?></option>
-				<option value="g:i a"<?php selected( $time_format, 'g:i a' ); ?>><?php echo date('g:i a'); ?></option>
-				<option value="g:i:s a"<?php selected( $time_format, 'g:i:s a' ); ?>><?php echo date('g:i:s a'); ?></option>
-			</select>
-		</p>
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_time ); ?> id="<?php echo $this->get_field_id( 'show_time' ); ?>" name="<?php echo $this->get_field_name( 'show_time' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_time' ); ?>"><?php _e( 'Display post time?', 'lptw_recent_posts_domain' ); ?></label></p>
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_time_before ); ?> id="<?php echo $this->get_field_id( 'show_time_before' ); ?>" name="<?php echo $this->get_field_name( 'show_time_before' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_time_before' ); ?>" title="<?php _e( 'By default post time displays after post date.', 'lptw_recent_posts_domain' );?>"><?php _e( 'Display post time before post date?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_post_title ); ?> id="<?php echo $this->get_field_id( 'show_post_title' ); ?>" name="<?php echo $this->get_field_name( 'show_post_title' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_post_title' ); ?>"><?php _e( 'Display post title?', 'lptw_recent_posts_domain' ); ?></label></p>
-
-		<p><input class="checkbox" type="checkbox" <?php checked( $show_title_before ); ?> id="<?php echo $this->get_field_id( 'show_title_before' ); ?>" name="<?php echo $this->get_field_name( 'show_title_before' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_title_before' ); ?>"><?php _e( 'Display post title before post date and time??', 'lptw_recent_posts_domain' ); ?></label></p>
-
-        </p>
-        <?php
-    }
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['show_widget_title'] = isset( $new_instance['show_widget_title'] ) ? (bool) $new_instance['show_widget_title'] : false;
-		$instance['exclude_current_post'] = isset( $new_instance['exclude_current_post'] ) ? (bool) $new_instance['exclude_current_post'] : false;
-		$instance['no_thumbnails'] = isset( $new_instance['no_thumbnails'] ) ? (bool) $new_instance['no_thumbnails'] : false;
-		$instance['number'] = (int) $new_instance['number'];
-		$instance['reverse_post_order'] = isset( $new_instance['reverse_post_order'] ) ? (bool) $new_instance['reverse_post_order'] : false;
-		$instance['show_post_title'] = isset( $new_instance['show_post_title'] ) ? (bool) $new_instance['show_post_title'] : false;
-		$instance['show_title_before'] = isset( $new_instance['show_title_before'] ) ? (bool) $new_instance['show_title_before'] : false;
-		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
-		$instance['date_format'] = strip_tags($new_instance['date_format']);
-		$instance['time_format'] = strip_tags($new_instance['time_format']);
-		$instance['show_time'] = isset( $new_instance['show_time'] ) ? (bool) $new_instance['show_time'] : false;
-		$instance['show_time_before'] = isset( $new_instance['show_time_before'] ) ? (bool) $new_instance['show_time_before'] : false;
-
-        // need to replace $_POST by $new_instance as authors
-		if( isset( $_POST['post_category'] ) ) {
-		    $posted_terms = $_POST['post_category'];
-			foreach ( $posted_terms as $term ) {
-			    if( term_exists( absint( $term ), $taxonomy ) ) {
-				    $terms[] = absint( $term );
-				}
-			}
-            $instance['post_category'] = $terms;
-		} else { $instance['post_category'] = ''; }
-
-		if( isset( $new_instance['authors'] ) ) {
-		    $authors = $new_instance['authors'];
-			foreach ( $authors as $author ) {
-			    $authors_id[] = absint( $author );
-			}
-            $instance['authors'] = $authors_id;
-		} else { $instance['authors'] = ''; }
-
-		$instance['post_type'] = strip_tags($new_instance['post_type']);
-
-		$this->flush_widget_cache();
-
-		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['lptw_widget_thumbnails_recent_entries']) )
-			delete_option('lptw_widget_thumbnails_recent_entries');
-
-		return $instance;
-	}
-
-	public function flush_widget_cache() {
-		wp_cache_delete('lptw_recent_posts_thumbnails_widget', 'widget');
-	}
-
-} // Class wpb_widget ends here
-
-// Register and load the widget
+/*
+-------------------------------------- Include widgets classess --------------------------------------
+*/
+
+/* Fluid Images Widget */
+include( plugin_dir_path( __FILE__ ) . 'includes/class.widget.fluid.images.php');
+/* Small Thumbnails Widget */
+include( plugin_dir_path( __FILE__ ) . 'includes/class.widget.small.thumbnails.php');
+
+/* Register and load the widget */
 function lptw_recent_posts_load_widget() {
 	register_widget( 'lptw_recent_posts_fluid_images_widget' );
 	register_widget( 'lptw_recent_posts_thumbnails_widget' );
 }
 add_action( 'widgets_init', 'lptw_recent_posts_load_widget' );
 
-function lptw_create_element_style ($style_args) {
-    if ( is_array($style_args) ) {
-        $element_style = 'style = "';
-        foreach ( $style_args as $argument ) {
-            $element_style .= $argument . ' ';
-        }
-        $element_style .= '"';
-        return $element_style;
-    } else {
-        return;
-    }
-}
-
 /**
 -------------------------------------- Shortcode --------------------------------------
 **/
+
+/* Main Class for all Layouts Rendering */
+include( plugin_dir_path( __FILE__ ) . 'includes/class.render.layout.php');
 
 function lptw_display_recent_posts ( $atts ) {
     $default_posts_per_page =  get_option( 'posts_per_page', '10' );
@@ -975,6 +162,7 @@ function lptw_display_recent_posts ( $atts ) {
         'post_parent'               => '0',
         'posts_per_page'            => $default_posts_per_page,
         'exclude_posts'             => '',
+        'exclude_current_post'      => 'false',
         'thumbnail_size'            => 'thumbnail',
         'random_thumbnail'          => 'false',
         'layout'                    => 'basic',
@@ -1004,9 +192,26 @@ function lptw_display_recent_posts ( $atts ) {
         'override_colors'           => 'false',
         'excerpt_show'              => 'true',
         'excerpt_lenght'            => '35',
-        'ignore_more_tag'           => 'false'
+        'ignore_more_tag'           => 'false',
+        'post_offset'               => 0,
+        'read_more_show'            => 'false',
+        'read_more_inline'          => 'false',
+        'read_more_content'         => 'Read more &rarr;',
+        'link_target'               => 'self',
+        'show_subtitle'             => 'true'
     ), $atts );
 
+    /* get the list of the post categories */
+    if ($a['category_id'] == 'same_as_post') {
+        $post_categories = get_the_category();
+        if ( !empty($post_categories) ) {
+            foreach ($post_categories as $category) {
+                if ( $category->taxonomy == 'category' ) { $post_category[] = $category->term_id; }
+            }
+        }
+    }
+
+    /* ------------------------------------ WP_Query arguments filter start ------------------------------------ */
     if ($a['no_thumbnails'] == 'hide') { $meta_key = '_thumbnail_id'; }
     else { $meta_key = ''; }
 
@@ -1014,6 +219,10 @@ function lptw_display_recent_posts ( $atts ) {
         $exclude_post = explode(',', $a['exclude_posts']);
         }
     else { $exclude_post = ''; }
+    if ($a['exclude_current_post'] == 'true') {
+        $current_post = get_the_ID();
+        $exclude_post[] = $current_post;
+    }
 
     if ( strpos($a['authors_id'], ',') !== false ) {
         $authors_id = array_map('intval', explode(',', $a['authors_id']));
@@ -1021,7 +230,9 @@ function lptw_display_recent_posts ( $atts ) {
 
     if ( strpos($a['category_id'], ',') !== false ) {
         $post_category = array_map('intval', explode(',', $a['category_id']));
-    } else { $post_category = (integer) $a['category_id']; }
+    } else if ( $a['category_id'] != 'same_as_post' ) {
+        $post_category = (integer) $a['category_id'];
+    }
 
     $tax_query = '';
 
@@ -1059,57 +270,46 @@ function lptw_display_recent_posts ( $atts ) {
         'tax_query'             => $tax_query,
         'order'                 => $a['order'],
         'orderby'               => $a['orderby'],
-        'meta_key'              => $meta_key
+        'meta_key'              => $meta_key,
+        'offset'                => $a['post_offset']
         );
+
+    /* ------------------------------------ WP_Query arguments filter end ------------------------------------ */
+
+    /* link target start */
+    if ( $a['link_target'] == 'new' ) { $link_target = '_blank'; }
+    else { $link_target = '_self'; }
+    /* link target end */
+
+    /* date, title and subtitle position start */
+    if ( $a['show_date_before_title'] == 'true' ) {
+        $date_pos = 1;
+        $title_pos = 2;
+    } else {
+        $date_pos = 2;
+        $title_pos = 1;
+    }
+    $subtitle_pos = 3;
+    /* date, title and subtitle position end */
+
 
     $lptw_shortcode_query = new WP_Query( $lptw_shortcode_query_args );
     if( $lptw_shortcode_query->have_posts() ) {
         if ($a['reverse_post_order'] == 'true') { $lptw_shortcode_query->posts = array_reverse($lptw_shortcode_query->posts); }
         $i=1;
-        $content = '';
-        switch ($a['layout']) {
-            case 'basic':
-                $content .= '<div id="basic-container">';
-            break;
-            case 'thumbnail':
-                $content .= '<div id="thumbnail-container">';
-            break;
-            case 'dropcap':
-                $content .= '<div id="dropcap-container">';
-            break;
-            case 'grid-medium':
-                $rand_grid = rand(11111, 99999);
-                $content .= '<div class="lptw-container" id="lptw-grid-'.$rand_grid.'">';
-            break;
-        }
+        $rand_grid = rand(11111, 99999);
+        $content = lptw_display_layout_header ($a['layout'], $rand_grid);
         while( $lptw_shortcode_query->have_posts() ) {
             $lptw_shortcode_query->the_post();
-            /*
-            echo '<pre>';
-            echo $lptw_shortcode_query->post->ID;
-            echo $lptw_shortcode_query->post->post_excerpt;
-            echo '</pre>';
-            */
-
-            $element_style_args = Array();
-            if ($a['width'] != '' && $a['fluid_images'] != 'true')  {$element_style_args[] = 'width:'.$a['width'].'px;';}
-            if ($a['height'] != '' && $a['fluid_images'] != 'true') {$element_style_args[] = 'height:'.$a['height'].'px;';}
-
-            if ($a['fluid_images'] == 'true') {
-                $column_style = 'lptw-columns-'.$a['columns'];
-                }
-            else {
-                $column_style = 'lptw-columns-fixed';
-            }
 
             $post_id = get_the_ID();
 
             $post_date = get_the_date($a['date_format']);
             $post_time = get_the_date($a['time_format']);
-            if ($a['show_time'] == 'true' && $a['show_time_before'] == 'true') { $post_date_time = $post_time . ' ' . $post_date; }
-            else if ( $a['show_time'] == 'true' && $a['show_time_before'] != 'true' ) { $post_date_time = $post_date . ' ' . $post_time; }
-            else { $post_date_time = $post_date; }
-
+            $post_date_time = render_post_date($a, $post_date, $post_time);
+            $post_subtitle = get_post_meta( $post_id, 'lptw_post_subtitle', true );
+            if ( $post_subtitle != '' && $a['show_subtitle'] == 'true') { $post_subtitle_show = true; }
+            else { $post_subtitle_show = false; }
 
             $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $a['thumbnail_size'] );
             $url = $thumb['0'];
@@ -1122,89 +322,335 @@ function lptw_display_recent_posts ( $atts ) {
                 }
             }
 
+            /* ------------------------------------ main container columns ------------------------------------ */
+            if ($a['fluid_images'] == 'true') { $column_class = 'lptw-columns-'.$a['columns']; }
+            else { $column_class = 'lptw-columns-fixed'; }
+
+            /* ------------------------------------ main container styles start ------------------------------------ */
+            $element_style_args = Array();
+            if ($a['width'] != '' && $a['fluid_images'] != 'true')  {$element_style_args['width'] = $a['width'].'px';}
+            if ($a['height'] != '' && $a['fluid_images'] != 'true') {$element_style_args['height'] = $a['height'].'px';}
+
             if ( $a['columns'] > 1 && $a['layout'] != 'grid-medium' ) {
                 if (($i % $a['columns']) == 0) {
-                    $element_style_args[] = 'padding-bottom: '.$a['space_ver'].'px;';
+                    $element_style_args['padding-bottom'] = $a['space_ver'].'px';
                 }
                 elseif (($i % $a['columns']) == 1 && $a['fluid_images'] != 'true') {
-                    $element_style_args[] = 'padding-right: '.$a['space_hor'].'px;';
-                    $element_style_args[] = 'padding-bottom: '.$a['space_ver'].'px;';
-                    $element_style_args[] = 'clear: left;';
+                    $element_style_args['padding-right'] = $a['space_hor'].'px';
+                    $element_style_args['padding-bottom'] = $a['space_ver'].'px';
+                    $element_style_args['clear'] = 'left';
                 }
                 else {
-                    $element_style_args[] = 'padding-right: '.$a['space_hor'].'px;';
-                    $element_style_args[] = 'padding-bottom: '.$a['space_ver'].'px;';
+                    $element_style_args['padding-right'] = $a['space_hor'].'px';
+                    $element_style_args['padding-bottom'] = $a['space_ver'].'px';
                 }
-            } else if ( $a['columns'] == 1 && $a['layout'] != 'grid-medium' ) { $element_style_args[] = 'padding-bottom: '.$a['space_ver'].'px;'; }
-            else { $element_style_args[] = 'margin-bottom: '.$a['space_ver'].'px;'; }
+            } else if ( $a['columns'] == 1 && $a['layout'] != 'grid-medium' ) { $element_style_args['padding-bottom'] = $a['space_ver'].'px'; }
+            else { $element_style_args['margin-bottom'] = $a['space_ver'].'px'; }
+            /* ------------------------------------ main container styles end ------------------------------------ */
 
-            /* start layouts output */
-            /* basic layout - one or tho columns, fixed or adaptive width */
+            /* ------------------------------------ start layouts output ------------------------------------ */
+
+            /* ---------- basic layout (fluid images) - fixed or adaptive width, multiple columns ---------- */
             if ($a['layout'] == 'basic' ) {
-                $content .= '<article class="basic-layout '.$column_style.'" '.lptw_create_element_style($element_style_args).'><header>';
                 if ($url != '') {
-                    $content .= '<a href="'.get_the_permalink().'" class="lptw-post-thumbnail-link"><div class="overlay overlay-'.$a['color_scheme'].'"><img src="'.$url.'" alt="'.get_the_title().'" class="fluid" /></div>';
+                    $overlay_class = Array ( 'overlay', 'overlay-'.$a['color_scheme'], 'lptw-post-thumbnail-link' );
+                    $overlay_style = '';
+                    $img_class = 'fluid-image-wrapper';
+                    $img_content = '<img src="'.$url.'" alt="'.get_the_title().'" class="fluid" />';
+                    $layout_class = 'layout-'.$a['color_scheme'];
                     }
                 else {
-                    $content .= '<a href="'.get_the_permalink().'" class="lptw-thumbnail-noimglink"><div class="user-overlay" style="background-color: '.$a['background_color'].';"></div>';
-                    $a['color-scheme'] = 'user';
+                    $overlay_class = Array ( 'overlay', 'overlay-'.$a['color_scheme'], 'lptw-thumbnail-noimglink' );
+                    $overlay_style = Array( 'background-color' => $a['background_color'] );
+                    $img_content = '';
+                    $img_class = '';
+                    /*$a['color_scheme'] = 'user';*/
                     }
-                if ( $a['override_colors'] == 'true' ) { $user_text_color = 'style="color: '.$a['text_color'].';"'; }
+
+                if ( $a['override_colors'] == 'true' ) { $user_text_color = Array ('color' => $a['text_color']); }
                 else { $user_text_color = ''; }
 
-                $content .= '<div class="lptw-post-header">';
-                if ( $a['show_date_before_title'] == 'true' ) {
-                	if ( $a['show_date'] == 'true') {$content .= '<span class="lptw-post-date date-'.$a['color_scheme'].'" '.$user_text_color.'>'.$post_date_time.'</span>';}
-            		$content .= '<span class="lptw-post-title title-'.$a['color_scheme'].'" '.$user_text_color.'>'.get_the_title().'</span>';
-                } else {
-            		$content .= '<span class="lptw-post-title title-'.$a['color_scheme'].'" '.$user_text_color.'>'.get_the_title().'</span>';
-                	if ( $a['show_date'] == 'true') {$content .= '<span class="lptw-post-date date-'.$a['color_scheme'].'" '.$user_text_color.'>'.$post_date_time.'</span>';}
-                }
-                $content .= '</div>
-                        </a>
-                    </header>
-                </article>';
+                $layout_classes = Array (
+                    0 => 'basic-layout',
+                    1 => $column_class,
+                    2 => $layout_class
+                );
 
-            /* small thumbnails */
+                /* array with layout settings */
+                $layout_sections = Array (
+                    0 => Array (
+                        'type' => 'header',
+                        'display' => true,
+                        'id' => '',
+                        'class' => ''
+                    )
+                );
+
+                /* array with layout containers */
+                $layout_containers = Array (
+                    0 => Array (
+                        'place' => 'header',
+                        'name' => 'image',
+                        'display' => true,
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => $overlay_class,
+                        'style' => $overlay_style,
+                        'id' => ''
+                    ),
+                    1 => Array (
+                        'place' => 'header',
+                        'name' => 'title',
+                        'display' => true,
+                        'class' => 'lptw-post-header',
+                        'style' => '',
+                        'id' => ''
+                    )
+                );
+
+                /* array with layout objects */
+                $layout_objects = Array (
+                    0 => Array (
+                        'container' => 'image',
+                        'display' => true,
+                        'tag' => 'span',
+                        'class' => $img_class,
+                        'style' => '',
+                        'id' => '',
+                        'content' => $img_content
+                    ),
+                    $date_pos => Array (
+                        'container' => 'title',
+                        'display' => $a['show_date'],
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => Array ('lptw-post-date', 'date-'.$a['color_scheme'] ),
+                        'style' => $user_text_color,
+                        'id' => '',
+                        'content' => $post_date_time
+                    ),
+                    $title_pos => Array (
+                        'container' => 'title',
+                        'display' => true,
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => Array( 'lptw-post-title', 'title-'.$a['color_scheme'] ),
+                        'style' => $user_text_color,
+                        'id' => '',
+                        'content' => get_the_title()
+                    ),
+                    $subtitle_pos => Array (
+                        'container' => 'title',
+                        'display' => $post_subtitle_show,
+                        'tag' => 'span',
+                        'class' => Array( 'lptw-post-subtitle', 'subtitle-'.$a['color_scheme'] ),
+                        'style' => $user_text_color,
+                        'id' => '',
+                        'content' => $post_subtitle
+                    )
+                );
+
+                $content .= render_article ($layout_classes, $element_style_args, $layout_sections, $layout_containers, $layout_objects);
+
+            /* ---------- small thumbnails ---------- */
             } elseif ($a['layout'] == 'thumbnail' ) {
-                $thumb_100 = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), array ( 100,100 ) );
-                $content .= '<article class="thumbnail-layout '.$column_style.'" '.lptw_create_element_style($element_style_args).'>';
+                /* get thumbnail url with size 100x100px */
+                $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), array ( 100,100 ) );
                 $title = get_the_title();
-                if ($thumb_100 == '') {
-                    $first_letter = substr($title, 0, 1);
-                    $content .= '<a href="'.get_the_permalink().'" class="lptw-thumbnail-noimglink" style="background-color: '.$a['background_color'].'; color: '.$a['text_color'].';">'.$first_letter.'</a>';
-                } else {
-                    $url_100 = $thumb_100['0'];
-                    $content .= '<a href="'.get_the_permalink().'" class="lptw-thumbnail-link"><img src="'.$url_100.'" width="100" height="100" alt="'.$title.'" /></a>';
-                }
-                $content .= '<header class="lptw-post-header">';
-                if ( $a['show_date_before_title'] == 'true' ) {
-                    if ( $a['show_date'] == 'true') { $content .= '<span class="lptw-post-date">'.$post_date_time.'</span>'; }
-                	$content .= '<a href="'.get_the_permalink().'" class="lptw-post-title">'.get_the_title().'</a>';
-                } else {
-                    $content .= '<a href="'.get_the_permalink().'" class="lptw-post-title">'.get_the_title().'</a>';
-                    if ( $a['show_date'] == 'true') { $content .= '<span class="lptw-post-date">'.$post_date_time.'</span>'; }
-                }
-                $content .= '</header>';
-                $content .= '</article>';
 
-            /* recent posts without thumbnails, with date as drop cap */
+                if (empty($thumbnail) || $thumbnail == false) {
+                    $img_class = 'lptw-thumbnail-noimglink';
+                    $img_style = Array (
+                        'background-color' => $a['background_color'],
+                        'color' => $a['text_color']
+                    );
+                    $link_content = substr($title, 0, 1);
+                } else {
+                    $img_class = 'lptw-thumbnail-link';
+                    $link_content = '<img src="'.$thumbnail['0'].'" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="'.$title.'" />';
+                }
+
+                $layout_classes = Array (
+                    0 => 'thumbnail-layout',
+                    1 => $column_class
+                );
+
+                /* array with layout settings */
+                $layout_sections = Array (
+                    0 => Array (
+                        'type' => 'header',
+                        'display' => true,
+                        'id' => '',
+                        'class' => 'lptw-post-header'
+                    )
+                );
+
+                /* array with layout containers */
+                $layout_containers = Array (
+                    0 => Array (
+                        'place' => 'header',
+                        'name' => 'image',
+                        'display' => true,
+                        'class' => 'lptw-thumbnail-image',
+                        'style' => '',
+                        'id' => ''
+                    ),
+                    1 => Array (
+                        'place' => 'header',
+                        'name' => 'title',
+                        'display' => true,
+                        'class' => 'lptw-thumbnail-title',
+                        'style' => '',
+                        'id' => ''
+                    )
+                );
+
+                /* array with layout objects */
+                $layout_objects = Array (
+                    0 => Array (
+                        'container' => 'image',
+                        'display' => true,
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => $img_class,
+                        'style' => $img_style,
+                        'id' => '',
+                        'content' => $link_content
+                    ),
+                    $date_pos => Array (
+                        'container' => 'title',
+                        'display' => $a['show_date'],
+                        'tag' => 'span',
+                        'class' => 'lptw-post-date',
+                        'style' => '',
+                        'id' => '',
+                        'content' => $post_date_time
+                    ),
+                    $title_pos => Array (
+                        'container' => 'title',
+                        'display' => true,
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => 'lptw-post-title',
+                        'style' => '',
+                        'id' => '',
+                        'content' => $title
+                    ),
+                    $subtitle_pos => Array (
+                        'container' => 'title',
+                        'display' => $post_subtitle_show,
+                        'tag' => 'span',
+                        'class' => Array( 'lptw-post-subtitle' ),
+                        'style' => '',
+                        'id' => '',
+                        'content' => $post_subtitle
+                    )
+                );
+
+                $content .= render_article ($layout_classes, $element_style_args, $layout_sections, $layout_containers, $layout_objects);
+
+            /* ---------- recent posts without thumbnails, with date as drop cap ---------- */
             } elseif ( $a['layout'] == 'dropcap' ) {
                 $post_date = get_the_date('M.Y');
                 $post_day = get_the_date('d');
 
-                $content .= '<article class="dropcap-layout '.$column_style.'" '.lptw_create_element_style($element_style_args).'>
-                <header>
-                    <div class="lptw-dropcap-date" style="background-color: '.$a['background_color'].'">
-                        <span class="lptw-dropcap-day" style="color: '.$a['text_color'].'">'.$post_day.'</span>
-                        <span class="lptw-dropcap-month" style="color: '.$a['text_color'].'">'.$post_date.'</span>
-                    </div>
-                    <a class="lptw-dropcap-date-link" href="'.get_the_permalink().'">'.get_the_title().'</a>
-                </header>
-            </article>';
+                $layout_classes = Array (
+                    0 => 'dropcap-layout',
+                    1 => $column_class
+                );
 
-            /* Responsive Grid - recent posts with thumbnail and featured posts */
+                /* array with layout settings */
+                $layout_sections = Array (
+                    0 => Array (
+                        'type' => 'header',
+                        'display' => true,
+                        'id' => ''
+                    )
+                );
+
+                /* array with layout containers */
+                $layout_containers = Array (
+                    0 => Array (
+                        'place' => 'header',
+                        'name' => 'date',
+                        'display' => true,
+                        'class' => 'lptw-dropcap-date',
+                        'style' => Array ( 'background-color' => $a['background_color'] ),
+                        'id' => ''
+                    ),
+                    1 => Array (
+                        'place' => 'header',
+                        'name' => 'title',
+                        'display' => true,
+                        'class' => 'lptw-dropcap-title',
+                        'style' => '',
+                        'id' => ''
+                    )
+                );
+
+                /* array with layout objects */
+                $layout_objects = Array (
+                    0 => Array (
+                        'container' => 'date',
+                        'display' => true,
+                        'tag' => 'span',
+                        'class' => 'lptw-dropcap-day',
+                        'style' => Array ( 'color' => $a['text_color'] ),
+                        'id' => '',
+                        'content' => $post_day
+                    ),
+                    1 => Array (
+                        'container' => 'date',
+                        'display' => true,
+                        'tag' => 'span',
+                        'class' => 'lptw-dropcap-month',
+                        'style' => Array ( 'color' => $a['text_color'] ),
+                        'id' => '',
+                        'content' => $post_date
+                    ),
+                    2 => Array (
+                        'container' => 'title',
+                        'display' => true,
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => 'lptw-dropcap-date-link',
+                        'style' => '',
+                        'id' => '',
+                        'content' => get_the_title()
+                    ),
+                    3 => Array (
+                        'container' => 'title',
+                        'display' => $post_subtitle_show,
+                        'tag' => 'span',
+                        'class' => Array( 'lptw-post-subtitle' ),
+                        'style' => '',
+                        'id' => '',
+                        'content' => $post_subtitle
+                    )
+                );
+
+                /**
+                 Main render function
+                 **/
+                $content .= render_article ($layout_classes, $element_style_args, $layout_sections, $layout_containers, $layout_objects);
+
+            /* --------- Responsive Grid - recent posts with thumbnail and featured posts --------- */
             } elseif ($a['layout'] == 'grid-medium' ) {
+                /* get meta values */
+                $featured = get_post_meta ($post_id, 'featured_post', true);
+                $embedded_video = get_post_meta ($post_id, 'embedded_video', true);
+                $hide_youtube_controls = get_post_meta ($post_id, 'hide_youtube_controls', true);
+
+                /* get embedded video frame code */
+                $embedded_video_frame = lptw_get_first_embed_media($post_id);
+
+                /* ------------ start calculate featured and base height and width ------------ */
                 $featured_height = $a['featured_height'] . 'px';
                 if ($a['fluid_images'] == 'true') {
                     $base_width = (100 / $a['columns']) - 1;
@@ -1214,92 +660,221 @@ function lptw_display_recent_posts ( $atts ) {
                     $normal_width = $a['width'] . 'px';
                     $featured_width = ($a['width'] * 2) + $a['space_hor'] . 'px';
                 }
+                /* ------------ finish calculate featured and base height and width ------------ */
 
-                if ( $a['height'] > 0 ) { $element_style_args[] = 'height: '.$a['height'].'px;'; }
-                if ( $a['excerpt_show'] == 'false' ) { $element_style_args[] = 'padding-bottom: 0.5rem;'; }
-                if ( $a['min_height'] > 0 ) { $element_style_args[] = 'min-height: '.$a['min_height'].'px;'; }
+                /* ------------ start create styles ------------ */
+                if ( $a['height'] > 0 ) { $element_style_args['height'] = $a['height'].'px'; }
+                if ( $a['excerpt_show'] == 'false' ) { $element_style_args['padding-bottom'] = '0.5rem'; }
+                if ( $a['min_height'] > 0 ) { $element_style_args['min-height'] = $a['min_height'].'px'; }
 
                 if ( $a['override_colors'] == 'true' ) {
                     $user_text_color = 'style="color: '.$a['text_color'].';"';
-                    $element_style_args[] = 'background-color: '.$a['background_color'].';';
+                    $element_style_args['background-color'] = $a['background_color'];
                 } else { $user_text_color = ''; }
 
-                $featured = get_post_meta ($post_id, 'featured_post', true);
-                $embedded_video = get_post_meta ($post_id, 'embedded_video', true);
-                $hide_youtube_controls = get_post_meta ($post_id, 'hide_youtube_controls', true);
+                if ($featured == 'on') {
+                    $element_style_args['width'] = $featured_width;
+                    $element_style_args['min-height'] = $featured_height;
+                } else {
+                    $element_style_args['width'] = $normal_width;
+                }
+                /* ------------ finish create styles ------------ */
 
-                /* get embedded video frame code */
-                $embedded_video_frame = lptw_get_first_embed_media($post_id);
+                /* set the layout classes */
+                $layout_classes = Array (
+                    'grid-layout',
+                    'lptw-grid-element'
+                );
 
                 if ($featured == 'on') {
+                    array_push($layout_classes, 'lptw-featured');
                     $thumb_grid = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'lptw-grid-large' );
 
-                    $element_style_args[] = 'width: ' . $featured_width . ';';
-                    $element_style_args[] = 'min-height: ' . $featured_height . ';';
                     if ( $embedded_video != 'on' ) {
-                        $element_style_args[] = 'background: url('.$thumb_grid['0'].') center center no-repeat;';
-                        $element_style_args[] = 'background-size: cover;';
-                        $featured_media_content = '<a href="'.get_the_permalink().'" class="lptw-post-grid-link"><div class="overlay overlay-'.$a['color_scheme'].'"></div>
-                            <div class="lptw-post-header">';
-                            if ( $a['show_date_before_title'] == 'true' ) {
-                            	if ( $a['show_date'] == 'true') {$featured_media_content .= '<span class="lptw-post-date date-'.$a['color_scheme'].'" '.$user_text_color.'>'.$post_date_time.'</span>';}
-                        		$featured_media_content .= '<span class="lptw-post-title title-'.$a['color_scheme'].'" '.$user_text_color.'>'.get_the_title().'</span>';
-                            } else {
-                        		$featured_media_content .= '<span class="lptw-post-title title-'.$a['color_scheme'].'" '.$user_text_color.'>'.get_the_title().'</span>';
-                            	if ( $a['show_date'] == 'true') {$featured_media_content .= '<span class="lptw-post-date date-'.$a['color_scheme'].'" '.$user_text_color.'>'.$post_date_time.'</span>';}
-                            }
-                        $featured_media_content .= '</div></a>';
+                        $display_post_header = 'true';
+                        $element_style_args['background'] = 'url('.$thumb_grid['0'].') center center no-repeat';
+                        $element_style_args['background-size'] = 'cover';
+                        $title_show = true;
+
+                        /* image start */
+                        $img_tag = 'a';
+                        $img_href = get_the_permalink();
+                        $img_class = 'lptw-post-grid-link';
+                        $img_content = '<div class="overlay overlay-'.$a['color_scheme'].'"></div>';
+                        /* image end */
+
                     } else {
-                        $featured_media_content = $embedded_video_frame;
-                        $grid_class = 'lptw-video-container-featured';
-                        if ( $hide_youtube_controls != 'on' ) { $grid_class .= ' lptw-video-container-controls'; }
+                        $display_post_header = 'false';
+                        $title_show = false;
+                        $img_tag = 'div';
+                        $img_href = '';
+                        $img_class = '';
+                        $img_content = $embedded_video_frame;
+                        array_push($layout_classes, 'lptw-video-container-featured');
+                        if ( $hide_youtube_controls != 'on' ) { array_push($layout_classes,  ' lptw-video-container-controls'); }
                     }
 
-                    $content .= '
-                    <article id="grid-'. $post_id .'" class="grid-layout lptw-grid-element lptw-featured ' . $grid_class . '" '.lptw_create_element_style($element_style_args).'>
-                        <header>
-                            '.$featured_media_content.'
-                        </header>
-                    </article>';
-                }
-                else {
+                } else {
+                    $display_post_header = 'true';
+                    array_push($layout_classes, 'grid-element-'.$a['color_scheme']);
+
+                    /* image start */
                     if ($embedded_video == 'on' && $embedded_video_frame !== false) {
+                        $img_tag = 'div';
+                        $img_href = '';
                         if ( $hide_youtube_controls != 'on' ) { $controls_class = 'lptw-video-container-controls'; }
                         else { $controls_class = ''; }
-                        $featured_media_content = '<div class="lptw-video-container '.$controls_class.'">'.$embedded_video_frame.'</div>';
+                        $img_class = Array( 'lptw-video-container', $controls_class );
+                        $img_content = $embedded_video_frame;
                     } else {
                         $thumb_grid = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'large' );
-                        $featured_media_content = '<img src="'.$thumb_grid['0'].'" alt="'.get_the_title().'" />';
+                        $img_tag = 'a';
+                        $img_href = get_the_permalink();
+                        $img_class = '';
+                        $img_content = '<img src="'.$thumb_grid['0'].'" alt="'.get_the_title().'" />';
                     }
+                    /* image end */
 
-                    $element_style_args[] = 'width: ' . $normal_width . ';';
+                } /* end of post type switcher */
 
-                    $content .= '
-                    <article id="grid-'. $post_id .'" class="grid-layout lptw-grid-element grid-element-'.$a['color_scheme'].'" '.lptw_create_element_style($element_style_args).'>
-                        <header>
-                            <a href="'.get_the_permalink().'" class="lptw-post-grid-img">'.$featured_media_content.'</a>
-                            <div class="lptw-post-header">';
-                    if ( $a['show_date_before_title'] == 'true' ) {
-                    	if ( $a['show_date'] == 'true') {$content .= '<span class="lptw-post-date date-'.$a['color_scheme'].'" '.$user_text_color.'>'.$post_date_time.'</span>';}
-                		$content .= '<a class="lptw-post-title title-'.$a['color_scheme'].'" href="'.get_the_permalink().'" '.$user_text_color.'>'.get_the_title().'</a>';
+                /* ------------ the post excerpt start ------------ */
+                if ($a['excerpt_show'] == 'true' && $featured != 'on') {
+                    $excerpt_display = 'true';
+                    $manual_excerpt = $lptw_shortcode_query->post->post_excerpt;
+                    if ( !empty($manual_excerpt) ) {
+                        $post_excerpt = $manual_excerpt;
                     } else {
-                		$content .= '<a class="lptw-post-title title-'.$a['color_scheme'].'" href="'.get_the_permalink().'" '.$user_text_color.'>'.get_the_title().'</a>';
-                    	if ( $a['show_date'] == 'true') {$content .= '<span class="lptw-post-date date-'.$a['color_scheme'].'" '.$user_text_color.'>'.$post_date_time.'</span>';}
+                        $post_excerpt = lptw_custom_excerpt($a['excerpt_lenght'], $a['ignore_more_tag']);
                     }
-                    $content .= '</div>
-                        </header>';
-                    if ($a['excerpt_show'] == 'true') {
-                        $manual_excerpt = $lptw_shortcode_query->post->post_excerpt;
-                        if ( !empty($manual_excerpt) ) {
-                            $content .= '<content class="post-excerpt content-'.$a['color_scheme'].'" '.$user_text_color.'>' . $manual_excerpt . '</content>';
-                        } else {
-                            $my_excerpt = lptw_custom_excerpt($a['excerpt_lenght'], $a['ignore_more_tag']);
-                            $content .= '<content class="post-excerpt content-'.$a['color_scheme'].'" '.$user_text_color.'>' . $my_excerpt . '</content>';
-                        }
+                } else { $excerpt_display = false; }
+                if ($a['read_more_show'] == 'true' && $a['read_more_inline'] == 'true' ) {
+                    $excerpt_style = Array ( 'display' => 'inline' );
+                    $read_more_style = Array ( 'margin-left' => '5px', 'display' => 'inline' );
                     }
-                    $content .= '</article>';
-                }
-            }
+                /* ------------ the post excerpt end ------------ */
+
+                /* array with layout settings */
+                $layout_sections = Array (
+                    0 => Array (
+                        'type' => 'header',
+                        'display' => 'true',
+                        'id' => ''
+                    ),
+                    1 => Array (
+                        'type' => 'section',
+                        'display' => $excerpt_display,
+                        'id' => ''
+                    ),
+                );
+
+                /* array with layout containers
+                * 1 - image or video
+                * 2 - post header (title and date)
+                * 3 - post excerpt
+                */
+                $layout_containers = Array (
+                    0 => Array (
+                        'place' => 'header',
+                        'name' => 'image',
+                        'display' => 'true',
+                        'class' => 'lptw-post-grid-link',
+                        'style' => '',
+                        'id' => ''
+                    ),
+                    1 => Array (
+                        'place' => 'header',
+                        'name' => 'title',
+                        'display' => $display_post_header,
+                        'class' => 'lptw-post-header',
+                        'style' => '',
+                        'id' => ''
+                    ),
+                    2 => Array (
+                        'place' => 'section',
+                        'name' => 'excerpt',
+                        'display' => $excerpt_display,
+                        'class' => Array( 'post-excerpt', 'content-'.$a['color_scheme'], ),
+                        'style' => $user_text_color,
+                        'id' => ''
+                    )
+                );
+
+                /* array with layout objects
+                * 1 - image or video
+                * 2 - post title
+                * 3 - post date
+                * 4 - post subtitle
+                * 5 - post excerpt
+                * 6 - read more link
+                */
+
+                $layout_objects = Array (
+                    0 => Array (
+                        'container' => 'image',
+                        'display' => 'true',
+                        'tag' => $img_tag,
+                        'href' => $img_href,
+                        'class' => $img_class,
+                        'style' => '',
+                        'id' => '',
+                        'content' => $img_content
+                    ),
+                    $date_pos => Array (
+                        'container' => 'title',
+                        'display' => $a['show_date'],
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => Array ( 'lptw-post-date', 'date-'.$a['color_scheme'] ),
+                        'style' => $user_text_color,
+                        'id' => '',
+                        'content' => $post_date_time
+                    ),
+                    $title_pos => Array (
+                        'container' => 'title',
+                        'display' => 'true',
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => Array ( 'lptw-post-title', 'title-'.$a['color_scheme'] ),
+                        'style' => $user_text_color,
+                        'id' => '',
+                        'content' => get_the_title()
+                    ),
+                    $subtitle_pos => Array (
+                        'container' => 'title',
+                        'display' => $post_subtitle_show,
+                        'tag' => 'span',
+                        'class' => Array( 'lptw-post-subtitle', 'subtitle-'.$a['color_scheme'] ),
+                        'style' => $user_text_color,
+                        'id' => '',
+                        'content' => $post_subtitle
+                    ),
+                    4 => Array (
+                        'container' => 'excerpt',
+                        'display' => $excerpt_display,
+                        'tag' => 'div',
+                        'class' => '',
+                        'style' => $excerpt_style,
+                        'id' => '',
+                        'content' => $post_excerpt
+                    ),
+                    5 => Array (
+                        'container' => 'excerpt',
+                        'display' => $a['read_more_show'],
+                        'tag' => 'a',
+                        'href' => get_the_permalink(),
+                        'target' => $link_target,
+                        'class' => Array ( 'read-more-link', 'link-'.$a['color_scheme'] ),
+                        'style' => $read_more_style,
+                        'id' => '',
+                        'content' => $a['read_more_content']
+                    )
+                );
+
+
+                $content .= render_article ($layout_classes, $element_style_args, $layout_sections, $layout_containers, $layout_objects);
+            } /* end of the layout switcher */
 
             $i++;
         } // end while( $lptw_shortcode_query->have_posts() )
@@ -1322,7 +897,6 @@ function lptw_display_recent_posts ( $atts ) {
                                             $(".lptw-grid-element").css("width", "100%");
                                             countedColumnWidth = containerWidth - 1;
                                         } else if (containerWidth > 640) {
-                                            console.log(containerWidth);
                                             $(".lptw-grid-element").css("width", "'.$normal_width.'");
                                             $(".lptw-featured").css("width", "'.$featured_width.'");
                                             if (fluid_images === true) {
@@ -1378,6 +952,28 @@ function lptw_display_recent_posts ( $atts ) {
 add_shortcode( 'lptw_recentposts', 'lptw_display_recent_posts' );
 
 /**
+ Get the type of the layout
+ Return header of the layout container
+ **/
+function lptw_display_layout_header ($layout, $rand_grid) {
+    switch ($layout) {
+        case 'basic':
+            $content = '<div id="basic-container">';
+        break;
+        case 'thumbnail':
+            $content = '<div id="thumbnail-container">';
+        break;
+        case 'dropcap':
+            $content = '<div id="dropcap-container">';
+        break;
+        case 'grid-medium':
+            $content = '<div class="lptw-container" id="lptw-grid-'.$rand_grid.'">';
+        break;
+    }
+    return $content;
+}
+
+/**
  Find embedded video and use standard oembed to display it
  **/
 /* --------------------------------------------- second function --------------------------------------------- */
@@ -1428,18 +1024,20 @@ function lptw_oembed_result ($html, $url, $args) {
     return $html;
 }
 
-/*
- * Add Shortcode Builder
- */
+/**
+ Add Shortcode Builder
+ **/
 function lptw_register_recent_posts_menu_page(){
     add_menu_page( 'Advanced Recent Posts', 'Advanced Recent Posts', 'manage_options', 'recent_posts', 'lptw_recent_posts_manage_shortcodes', 'dashicons-editor-code' );
 }
 add_action( 'admin_menu', 'lptw_register_recent_posts_menu_page' );
 
+/**
+ Include Shortcode Builder scripts and styles
+ **/
 function lptw_recent_posts_backend_scripts() {
     $screen = get_current_screen();
     $post_type = $screen->id;
-    //echo 'post type: ' . $post_type;
     if ( strpos($post_type, 'page_recent_posts') !== false || strpos($post_type, 'widgets') !== false ) {
     	wp_register_style('lptw-recent-posts-backend-style', plugins_url( 'backend/lptw-recent-posts-backend.css', __FILE__ ) );
     	wp_enqueue_style('lptw-recent-posts-backend-style' );
@@ -1461,7 +1059,9 @@ function lptw_recent_posts_backend_scripts() {
 }
 add_action( 'admin_enqueue_scripts', 'lptw_recent_posts_backend_scripts' );
 
-/* include shortcode builder  */
+/**
+ Include shortcode builder code
+ **/
 include( plugin_dir_path( __FILE__ ) . 'backend/lptw-recent-posts-backend.php');
 
 ?>

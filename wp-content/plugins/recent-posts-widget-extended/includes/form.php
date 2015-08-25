@@ -182,7 +182,7 @@
 
 		<p>
 			<input id="<?php echo $this->get_field_id( 'thumb' ); ?>" name="<?php echo $this->get_field_name( 'thumb' ); ?>" type="checkbox" <?php checked( $instance['thumb'] ); ?> />
-			<label class="input-checkbox" for="<?php echo $this->get_field_id( 'thumb' ); ?>">
+			<label for="<?php echo $this->get_field_id( 'thumb' ); ?>">
 				<?php _e( 'Display Thumbnail', 'rpwe' ); ?>
 			</label>
 		</p>
@@ -212,7 +212,7 @@
 
 	<p>
 		<input id="<?php echo $this->get_field_id( 'excerpt' ); ?>" name="<?php echo $this->get_field_name( 'excerpt' ); ?>" type="checkbox" <?php checked( $instance['excerpt'] ); ?> />
-		<label class="input-checkbox" for="<?php echo $this->get_field_id( 'excerpt' ); ?>">
+		<label for="<?php echo $this->get_field_id( 'excerpt' ); ?>">
 			<?php _e( 'Display Excerpt', 'rpwe' ); ?>
 		</label>
 	</p>
@@ -226,7 +226,7 @@
 
 	<p>
 		<input id="<?php echo $this->get_field_id( 'readmore' ); ?>" name="<?php echo $this->get_field_name( 'readmore' ); ?>" type="checkbox" <?php checked( $instance['readmore'] ); ?> />
-		<label class="input-checkbox" for="<?php echo $this->get_field_id( 'readmore' ); ?>">
+		<label for="<?php echo $this->get_field_id( 'readmore' ); ?>">
 			<?php _e( 'Display Readmore', 'rpwe' ); ?>
 		</label>
 	</p>
@@ -237,19 +237,35 @@
 		</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'readmore_text' ); ?>" name="<?php echo $this->get_field_name( 'readmore_text' ); ?>" type="text" value="<?php echo strip_tags( $instance['readmore_text'] ); ?>" />
 	</p>
+	
+	<p>
+		<input id="<?php echo $this->get_field_id( 'comment_count' ); ?>" name="<?php echo $this->get_field_name( 'comment_count' ); ?>" type="checkbox" <?php checked( $instance['comment_count'] ); ?> />
+		<label for="<?php echo $this->get_field_id( 'comment_count' ); ?>">
+			<?php _e( 'Display Comment Count', 'rpwe' ); ?>
+		</label>
+	</p>
 
 	<p>
 		<input id="<?php echo $this->get_field_id( 'date' ); ?>" name="<?php echo $this->get_field_name( 'date' ); ?>" type="checkbox" <?php checked( $instance['date'] ); ?> />
-		<label class="input-checkbox" for="<?php echo $this->get_field_id( 'date' ); ?>">
+		<label for="<?php echo $this->get_field_id( 'date' ); ?>">
 			<?php _e( 'Display Date', 'rpwe' ); ?>
 		</label>
 	</p>
+	
+	<p>
+		<input id="<?php echo $this->get_field_id( 'date_modified' ); ?>" name="<?php echo $this->get_field_name( 'date_modified' ); ?>" type="checkbox" <?php checked( $instance['date_modified'] ); ?> />
+		<label for="<?php echo $this->get_field_id( 'date_modified' ); ?>">
+			<?php _e( 'Display Modification Date', 'rpwe' ); ?>
+		</label>
+	</p>
+	
 	<p>
 		<input id="<?php echo $this->get_field_id( 'date_relative' ); ?>" name="<?php echo $this->get_field_name( 'date_relative' ); ?>" type="checkbox" <?php checked( $instance['date_relative'] ); ?> />
 		<label for="<?php echo $this->get_field_id( 'date_relative' ); ?>">
 			<?php _e( 'Use Relative Date. eg: 5 days ago', 'rpwe' ); ?>
 		</label>
 	</p>
+	
 
 </div>
 
@@ -257,7 +273,7 @@
 
 <p>
 	<input id="<?php echo $this->get_field_id( 'styles_default' ); ?>" name="<?php echo $this->get_field_name( 'styles_default' ); ?>" type="checkbox" <?php checked( $instance['styles_default'] ); ?> />
-	<label class="input-checkbox" for="<?php echo $this->get_field_id( 'styles_default' ); ?>">
+	<label for="<?php echo $this->get_field_id( 'styles_default' ); ?>">
 		<?php _e( 'Use Default Styles', 'rpwe' ); ?>
 	</label>
 </p>

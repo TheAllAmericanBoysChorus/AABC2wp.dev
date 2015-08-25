@@ -1,6 +1,6 @@
 <?php
 /**
- * The custom recent posts widget. 
+ * The custom recent posts widget.
  * This widget gives total control over the output to the user.
  *
  * @package    Recent_Posts_Widget_Extended
@@ -79,7 +79,7 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 	 * @since 0.1
 	 */
 	function update( $new_instance, $old_instance ) {
-		
+
 		// Validate post_type submissions
 		$name = get_post_types( array( 'public' => true ), 'names' );
 		$types = array();
@@ -99,10 +99,10 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		$instance['ignore_sticky']    = isset( $new_instance['ignore_sticky'] ) ? (bool) $new_instance['ignore_sticky'] : 0;
 		$instance['limit']            = (int)( $new_instance['limit'] );
 		$instance['offset']           = (int)( $new_instance['offset'] );
-		$instance['order']            = $new_instance['order'];
-		$instance['orderby']          = $new_instance['orderby'];
+		$instance['order']            = stripslashes( $new_instance['order'] );
+		$instance['orderby']          = stripslashes( $new_instance['orderby'] );
 		$instance['post_type']        = $types;
-		$instance['post_status']      = esc_attr( $new_instance['post_status'] );
+		$instance['post_status']      = stripslashes( $new_instance['post_status'] );
 		$instance['cat']              = $new_instance['cat'];
 		$instance['tag']              = $new_instance['tag'];
 		$instance['taxonomy']         = esc_attr( $new_instance['taxonomy'] );
@@ -111,8 +111,10 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		$instance['length']           = (int)( $new_instance['length'] );
 		$instance['date']             = isset( $new_instance['date'] ) ? (bool) $new_instance['date'] : false;
 		$instance['date_relative']    = isset( $new_instance['date_relative'] ) ? (bool) $new_instance['date_relative'] : false;
+		$instance['date_modified']    = isset( $new_instance['date_modified'] ) ? (bool) $new_instance['date_modified'] : false;
 		$instance['readmore']         = isset( $new_instance['readmore'] ) ? (bool) $new_instance['readmore'] : false;
 		$instance['readmore_text']    = strip_tags( $new_instance['readmore_text'] );
+		$instance['comment_count']    = isset( $new_instance['comment_count'] ) ? (bool) $new_instance['comment_count'] : false;
 
 		$instance['thumb']            = isset( $new_instance['thumb'] ) ? (bool) $new_instance['thumb'] : false;
 		$instance['thumb_height']     = (int)( $new_instance['thumb_height'] );
