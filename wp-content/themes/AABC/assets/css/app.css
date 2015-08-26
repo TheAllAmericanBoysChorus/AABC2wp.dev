@@ -6588,6 +6588,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 90%;
   margin: 0 auto; }
 
+.contact-us {
+  padding: 4rem 0 1rem 0; }
+  .contact-us h1 {
+    color: #a9171c;
+    padding-bottom: 2rem; }
+
 .full-width-gray {
   background: #eee;
   width: 100%;
@@ -6623,6 +6629,17 @@ h1, h2, h3, h4, h5, h6 {
       color: #2c3f7e;
       transition: 0.2s all ease-in;
       text-decoration: underline; }
+
+.fall-gala-sidebar h2 {
+  color: #a99c67;
+  font-size: 1.5rem; }
+
+.fall-gala-btn-row {
+  padding: 0 0 3rem 0; }
+  .fall-gala-btn-row button {
+    background: #242133; }
+    .fall-gala-btn-row button:hover {
+      background: #2c3f7e; }
 
 .general-content-right {
   padding-left: 3% !important; }
@@ -7257,15 +7274,15 @@ form input[type="submit"] {
     padding: .2rem 0; }
 
 /* Presenters Styles */
-.wedding-song-list ul {
-  list-style: none; }
-
-.wedding-song-list ul::after {
-  content: url("../../images/play-icon.png"); }
-
-.wedding-song-list li {
-  color: #222;
-  font-family: "Crimson Text", serif; }
+.wedding-song-list {
+  margin-right: 8%; }
+  .wedding-song-list ul {
+    list-style: none; }
+  .wedding-song-list ul::after {
+    content: url("../../images/play-icon.png"); }
+  .wedding-song-list li {
+    color: #222;
+    font-family: "Crimson Text", serif; }
 
 .season-sponsorship h1 {
   color: #a99c67;

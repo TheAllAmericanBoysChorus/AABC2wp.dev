@@ -22,6 +22,15 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+.contact-us {
+  padding: 4rem 0 1rem 0;
+
+  h1 {
+    color: $brand-red;
+    padding-bottom: 2rem;
+  }
+}
+
 .full-width-gray {
   background: #eee;
   width: 100%;
@@ -66,6 +75,25 @@ h1, h2, h3, h4, h5, h6 {
       color: $brand-blue;
       transition: 0.2s all ease-in;
       text-decoration: underline;
+    }
+  }
+}
+
+.fall-gala-sidebar {
+  h2 {
+    color: $brand-gold;
+    font-size: 1.5rem;
+  }
+}
+
+.fall-gala-btn-row {
+  padding: 0 0 3rem 0;
+
+  button {
+    background: $brand-dark-blue;
+
+    &:hover {
+      background: $brand-blue;
     }
   }
 }

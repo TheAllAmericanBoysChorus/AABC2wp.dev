@@ -11,7 +11,7 @@
         <h1>Accolades</h1>
         <p>We acknowledge and thank the following foundations, companies and individuals who provided significant program and operating support and sponsorship to The All-American Boys Chorus from 2012 to 2015</p>
     </div>
-    <ul class="accolades-list small-12 medium-4 large-4 columns">
+    <ul class="accolades-list small-12 large-4 columns small-text-center large-text-left">
         <li>Angels Baseball Foundation</li>
         <li>Julia and George Argyros</li>
         <li>Bank of America</li>
@@ -23,7 +23,7 @@
         <li>Edison International</li>
         <li>Bill Gilbert and the Langdale Company</li>
     </ul>
-    <ul class="accolades-list small-12 medium-4 large-4 columns">
+    <ul class="accolades-list small-12 large-4 columns small-text-center large-text-left">
         <li>George Hoag Family Foundation</li>
         <li>Gorfaine/Schwartz Agency</li>
         <li>Tracy and Scott Hughes</li>
@@ -35,7 +35,7 @@
         <li>Lynn and Paul Multari</li>
         <li>Orange County Fair</li>
     </ul>
-    <ul class="accolades-list small-12 medium-4 large-3 columns">
+    <ul class="accolades-list small-12 large-3 columns small-text-center large-text-left">
         <li>Pacific Life Foundation</li>
         <li>Michele and John Page</li>
         <li>Robinson Foundation</li>

@@ -94,15 +94,6 @@ $the_query = new WP_Query( $args );
     </div>
 </div>
 
-<div class="about-us-cta">
-    <div class="row">
-        <div class="small-12 small-centered columns text-center">
-            <h1> All this we believe because we have witnessed it happen again and again, through the life-changing experience that is the All-American Boys Chorus.</h1>
-            <button class="red-cta">Join The Team</button>
-        </div>
-    </div>
-</div>
-
 <?php get_footer(); ?>
 
 

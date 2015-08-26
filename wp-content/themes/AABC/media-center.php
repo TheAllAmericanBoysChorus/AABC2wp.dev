@@ -21,7 +21,7 @@ get_header();
     </div>
 
     <div class="small-12 large-4 columns left sidebar-left">
-        <?php dynamic_sidebar('calendar-sidebar'); ?>
+        <?php dynamic_sidebar('media-center-sidebar'); ?>
     </div>
 </div>
 
