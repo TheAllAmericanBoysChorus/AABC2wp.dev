@@ -11,22 +11,26 @@
 }
 
 .about-us-cta {
-  background: url("../images/footer-bg.png");
+  background: #fff;
   width: 100%;
   height: 400px;
   h1 {
-    color: white;
+    color: $brand-dark-blue;
     font-size: 2rem;
-    line-height: 2rem;
-    padding-top: 15%;
+    line-height: 2.5rem;
+    padding-top: 10%;
   }
   .red-cta {
     background: $brand-red;
-    border-radius: 1rem;
+    border-radius: .6rem;
     font-size: 1rem;
     color: white;
-    padding: 0.7rem 2rem;
-    margin-top: 2rem;
+    padding: 1rem 3rem;
+    margin: 2rem 0;
+  
+    &:hover {
+      background: $brand-dark-blue;
+    }
   }
 }
 

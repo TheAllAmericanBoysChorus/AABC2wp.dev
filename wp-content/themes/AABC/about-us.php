@@ -23,7 +23,7 @@
 <div class="row-full clearfix">
     <img class="left small-12 large-6 columns"  src="<?php bloginfo( 'template_directory' )?>/assets/images/iowa.jpg">
     <div class="small-11 medium-10 large-4 columns content left small-text-center medium-text-center large-text-left">
-
+        <?php dynamic_sidebar( 'about-us-info-3' ) ?>
     </div>
 </div>
 

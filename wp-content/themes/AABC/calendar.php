@@ -36,8 +36,6 @@ $the_query = new WP_Query( $args );
                     <div class="blog-post-details"><?php the_date(); ?></div>
 
                     <?php the_content(); ?>
-
-                    <a href="#"><button class="post-btn">Buy Tickets</button></a>
                 </div>
                 <hr />
             <?php endwhile;
