@@ -7293,6 +7293,19 @@ form input[type="submit"] {
     font-size: 0.7rem;
     color: #222 !important; }
 
+.accolades {
+  padding: 3rem 0 1rem 0; }
+  .accolades h1 {
+    color: #a9171c; }
+  .accolades .accolades-list {
+    margin-top: 2rem;
+    list-style: none; }
+    .accolades .accolades-list li {
+      color: #222;
+      font-family: "Crimson Text", serif;
+      font-size: 1rem;
+      padding: .2rem 0; }
+
 .main-gallery {
   background: url("../../images/footer-bg.png"); }
 

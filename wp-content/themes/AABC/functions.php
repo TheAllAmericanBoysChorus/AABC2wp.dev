@@ -326,6 +326,16 @@ register_sidebar(array(
         'after_title'   => '</h3>',
     ));
 
+    register_sidebar(array(
+        'name'          => __( 'Media Center Right', 'nvLangScope' ),
+        'id'            => 'media-center-right',
+        'description'   => __( 'Drag widgets for our alumni corner content here. These widgets will only appear on the our alumni corner portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
 
 
 

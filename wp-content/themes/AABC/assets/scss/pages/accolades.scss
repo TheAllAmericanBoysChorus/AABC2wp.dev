@@ -1,0 +1,18 @@
+.accolades {
+	padding: 3rem 0 1rem 0;
+	h1 {
+		color: $brand-red;
+	}
+
+	.accolades-list {
+		margin-top: 2rem;
+		list-style: none;
+
+		li {
+			color: #222;
+			font-family: "Crimson Text", serif;
+			font-size: 1rem;
+			padding: .2rem 0;
+		}
+	}
+}
