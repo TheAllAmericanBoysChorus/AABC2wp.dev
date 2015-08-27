@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'about-us-header' ); ?>
+<?php get_template_part( 'accolades-header' ); ?>
 
 <div class="accolades row">
     <div class="small-12 medium-12 large-10 columns text-center large-centered">

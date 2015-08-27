@@ -6420,8 +6420,92 @@ th.hide-for-touch {
   background-position: center; }
 
 .main-cta-bg-donate {
-  background: url("../../assets/images/newport-concert.jpg");
+  background: url("../../assets/images/donate-header-bg.jpg");
   width: 100%;
+  background-size: cover;
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-donate {
+      background-position: center; } }
+
+.main-cta-bg-media-center {
+  background: url("../../assets/images/media-center.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-presenters {
+  background: url("../../assets/images/presenters-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-our-parents {
+  background: url("../../assets/images/our-parents-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-alumni-corner {
+  background: url("../../assets/images/alumni-corner-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px; }
+  @media only screen and (max-width: 40em) {
+    .main-cta-bg-alumni-corner {
+      background-position: center; } }
+
+.main-cta-bg-fall-gala {
+  background: url("../../assets/images/fall-gala-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-season-sponsorship {
+  background: url("../../assets/images/season-sponsorship-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-accolades {
+  background: url("../../assets/images/accolades-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-blog {
+  background: url("../../assets/images/blog-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-press-releases {
+  background: url("../../assets/images/press-releases-bg.jpg");
+  width: 100%;
+  background-color: #242133;
+  background-size: cover;
+  height: 700px;
+  background-position: center; }
+
+.main-cta-bg-contact {
+  background: url("../../assets/images/contact-bg.jpg");
+  width: 100%;
+  background-color: #242133;
   background-size: cover;
   height: 700px;
   background-position: center; }
@@ -6497,6 +6581,8 @@ th.hide-for-touch {
 
 .event-unit {
   position: relative; }
+  .event-unit img {
+    max-height: 250px; }
 
 .secondary-cta-btn {
   position: absolute;

@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'weddings-header' ); ?>
+<?php get_template_part( 'fall-gala-header' ); ?>
 
 <div class="row">
 	<div class="text-center small-12 columns main-title">

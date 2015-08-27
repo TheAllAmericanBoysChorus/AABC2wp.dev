@@ -80,7 +80,7 @@ $the_query = new WP_Query( $args );
 </div>
 
 <div class="about-us-info-right clearfix">
-        <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/staff-1.jpg">
+        <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/staff-2015.jpg">
     <div class="content-left">
         <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
             <?php dynamic_sidebar( 'join-the-chorus-4' ) ?>

@@ -21,16 +21,17 @@ $the_query = new WP_Query( $args );
 <div class="row event-cta">
     <div class="small-12 medium-6 large-5 columns">
         <div class="event-unit">
-            <?php if( have_posts() ) : ?>
+            <?php if( $the_query->have_posts() ) : ?>
                 <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                     <h1><?php the_field('title');?></h1>
                     <img src="<?php the_field('image');?>">
                     <a href="<?php the_field('button_link_url');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
-                <?php endwhile;
-            else :
-
-            endif;
-            ?>
+                <?php endwhile; else : ?>
+                    <h1>The Blog</h1>
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/images/ferry-ride.jpg">
+                    <a href="<?php echo site_url();?>/blog"><button class="secondary-cta-btn">View Posts</button></a>
+            <?php endif; ?>
+            
         </div>
     </div>
 
@@ -49,19 +50,16 @@ $the_query = new WP_Query( $args );
 
     <div class="small-12 medium-6 large-5 columns">
         <div class="event-unit">
-            <?php if( have_posts() ) : ?>
+            <?php if( $the_query->have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
             <h1><?php the_field('title');?></h1>
             <img src="<?php the_field('image');?>">
             <a href="<?php the_field('button_link_url');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
-                <?php endwhile;
-            else : ?>
+                <?php endwhile; else : ?>
                 <h1>Up Coming Events</h1>
-                <img src="<?php bloginfo('template_directory'); ?>/assets/images/module-box-1.jpg">
-                <a href="www.taabc.org/calendar"><button class="secondary-cta-btn">View Calendar</button></a>
-            <?php
-            endif;
-            ?>
+                <img src="<?php bloginfo('template_directory'); ?>/assets/images/bus.jpg">
+                <a href="<?php echo site_url();?>/calendar"><button class="secondary-cta-btn">View Events</button></a>
+            <?php endif; ?>
         </div>
     </div>
 </div>

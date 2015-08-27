@@ -1,5 +1,5 @@
 <header>
-    <div class="main-cta-bg-about">
+    <div class="main-cta-bg-presenters">
         <div class="row clearfix logo-sm-container">
             <div class="logo large-4 small-11 columns">
                 <a href="<?php get_site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo-white.png"/></a>
@@ -29,8 +29,8 @@
         <div class="main-cta">
             <div class="row">
                 <div class="small-10 small-centered columns text-center">
-                    <h1>Making Beautiful Sound Waves</h1>
-                    <h2>From The Pacific To The Atlantic And Beyond</h2>
+                    <h1>Create More Buzz For Your Event</h1>
+                    <h2>Add Our Name To The Program</h2>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
 get_header();
 ?>
 
-<?php get_template_part( 'calendar-header' ); ?>
+<?php get_template_part( 'alumni-corner-header' ); ?>
 
 <div class="row">
     <div class="small-12 medium-10 large-7 small-centered text-center columns main-title">

@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'weddings-header' ); ?>
+<?php get_template_part( 'contact-header' ); ?>
 
 <div class="row">
     <div class="small-12 columns text-center contact-us">
