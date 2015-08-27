@@ -20,6 +20,10 @@ add_action( 'wp_enqueue_scripts', 'load_styles' );
  */
 
 register_nav_menu( 'primary', __('Primary Menu', 'nvLangScope' ));
+register_nav_menu( 'footer-1', __('Footer AABC', 'nvLangScope' ));
+register_nav_menu( 'footer-2', __('Footer Book Us', 'nvLangScope' ));
+register_nav_menu( 'footer-3', __('Footer Communities', 'nvLangScope' ));
+register_nav_menu( 'footer-4', __('Footer Ways To Give', 'nvLangScope' ));
 
  function display_nav_menu() {
     wp_nav_menu( array(
@@ -35,6 +39,34 @@ register_nav_menu( 'primary', __('Primary Menu', 'nvLangScope' ));
         'depth' => 5, // limit the depth of the nav
         'fallback_cb' => false, // fallback function (see below)
         'walker' => new top_bar_walker()
+    ) );
+}
+
+function display_nav_footer_1_menu() {
+    wp_nav_menu( array(
+        'theme_location' => 'footer-1',
+        'menu' => 'Footer AABC',
+    ) );
+}
+
+function display_nav_footer_2_menu() {
+    wp_nav_menu( array(
+        'theme_location' => 'footer-2',
+        'menu' => 'Footer Book Us',
+    ) );
+}
+
+function display_nav_footer_3_menu() {
+    wp_nav_menu( array(
+        'theme_location' => 'footer-3',
+        'menu' => 'Footer Communities',
+    ) );
+}
+
+function display_nav_footer_4_menu() {
+    wp_nav_menu( array(
+        'theme_location' => 'footer-4',
+        'menu' => 'Footer Ways To Give',
     ) );
 }
 
@@ -106,6 +138,7 @@ register_sidebar(array(
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
+
     register_sidebar(array(
         'name'          => __( 'Front Page First Info Section', 'nvLangScope' ),
         'id'            => 'fp-info-1',
@@ -115,10 +148,21 @@ register_sidebar(array(
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
+
     register_sidebar(array(
         'name'          => __( 'Front Page Second Info Section', 'nvLangScope' ),
         'id'            => 'fp-info-2',
         'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Front Page Contact Form', 'nvLangScope' ),
+        'id'            => 'fp-contact-form',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the first white section of the home page.', 'nvLangScope' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => "</aside>",
         'before_title'  => '<h3 class="widget-title">',
@@ -199,6 +243,16 @@ register_sidebar(array(
     register_sidebar(array(
         'name'          => __( 'Join The Chorus Fourth Info Section', 'nvLangScope' ),
         'id'            => 'join-the-chorus-4',
+        'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => "</aside>",
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __( 'Join The Chorus Music Magic', 'nvLangScope' ),
+        'id'            => 'music-magic',
         'description'   => __( 'Drag widgets for Blog sidebar here. These widgets will only appear on the blog portion of your site.', 'nvLangScope' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => "</aside>",

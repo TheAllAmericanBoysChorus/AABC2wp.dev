@@ -88,6 +88,39 @@ $the_query = new WP_Query( $args );
     </div>
 </div>
 
+<div class="blue-bg">
+    <div class="row music-magic text-center">
+        <?php dynamic_sidebar('music-magic'); ?>
+    </div>
+</div>
+
+<?php
+
+$args = array(
+    'post_type' => 'seasonsponsor',
+    'orderby' => 'rand',
+    'posts_per_page' => '8'
+);
+
+$the_query = new WP_Query( $args );
+
+?>
+
+<div class="season-sponsors row-full">
+    <div class="small-12 columns text-center">
+        <h1>Our Season Sponsors</h1>
+        <?php if( have_posts() ) : ?>
+            <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <a href="#" ><img src="<?php the_field('logo'); ?>"/></a>
+            <?php endwhile;
+        else :
+        endif;
+        ?>
+    </div>
+</div>
+
+
+
 <?php get_footer(); ?>
 
 

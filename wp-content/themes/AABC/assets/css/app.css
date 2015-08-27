@@ -6737,14 +6737,25 @@ form input[type="submit"] {
   height: 3rem;
   border-radius: 0.5rem;
   font-size: 1.5em;
-  text-transform: uppercase;
   color: white;
   font-family: "Crimson Text", serif;
   opacity: 1;
   transition: all 0.3s ease-in; }
   form input[type="submit"]:hover {
     background: #242133;
-    transition: 0.3s all ease-in; }
+    transition: 0.3s all ease-in;
+    cursor: pointer; }
+
+div.wpcf7-mail-sent-ok {
+  background: #242133;
+  color: #fff;
+  border: 2px solid #a99c67;
+  font-family: "Crimson Text", sans-serif;
+  padding: 1rem;
+  text-align: center; }
+
+.footer-nav ul {
+  margin: 0; }
 
 .footer-1 {
   background: url("../images/footer-bg.png");
@@ -7260,6 +7271,22 @@ form input[type="submit"] {
       transition: 0.2s all ease-in-out;
       color: #242133; }
 
+.music-magic h5 {
+  margin-top: -3rem;
+  padding-bottom: 2%; }
+
+.music-magic h3 {
+  color: #a99c67; }
+
+.music-magic h6 {
+  color: #fff; }
+
+.music-magic p {
+  color: #fff;
+  opacity: 0.8;
+  margin-top: -1rem;
+  padding-bottom: 5%; }
+
 /* Presenters Styles */
 .song-list-title h1 {
   padding-bottom: 0 !important; }
@@ -7284,16 +7311,22 @@ form input[type="submit"] {
     color: #222;
     font-family: "Crimson Text", serif; }
 
-.season-sponsorship h1 {
-  color: #a99c67;
-  font-size: 2rem; }
+.season-sponsorship {
+  margin-bottom: 8rem; }
+  .season-sponsorship h1 {
+    color: #a99c67;
+    font-size: 2rem; }
 
 .sponsorship-unit {
   background: #eee;
-  margin: 3rem 1.8rem;
+  margin: 0 0.1rem 8rem 0.1rem;
   border-radius: 1rem; }
   .sponsorship-unit h1 {
     color: #242133; }
+
+.season-sponsor-section-title {
+  font-size: 2.3rem !important;
+  color: #fff !important; }
 
 .level-amount {
   color: white;
@@ -7309,6 +7342,27 @@ form input[type="submit"] {
   .level-list li {
     font-size: 0.7rem;
     color: #222 !important; }
+
+.sponsor-button {
+  background: #a9171c;
+  border-radius: .5rem;
+  position: absolute;
+  bottom: 15px;
+  right: 20%;
+  padding: 0.8rem 1.8rem; }
+  .sponsor-button:hover {
+    background: #2c3f7e; }
+
+.encore-sponsor {
+  height: 570px; }
+
+.standing-ovation-sponsor, .applause-sponsor {
+  height: 525px;
+  position: relative; }
+
+.kudos-sponsor, .accolades-sponsor {
+  height: 420px;
+  position: relative; }
 
 .accolades {
   padding: 3rem 0 1rem 0; }

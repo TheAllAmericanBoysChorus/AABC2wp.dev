@@ -151,16 +151,7 @@ $the_query = new WP_Query( $args );
             <h2>Now THAT’s Worth Singing About.</h2>
         </div>
         <div class="small-11 large-7 small-centered columns">
-            <form action="">
-                <label for="name">Name</label>
-                <input type="text" name="name">
-                <label for="email">Email</label>
-                <input type="text" name="email">
-                <label for="message">Message</label>
-                <textarea name="message"></textarea>
-                <input type="submit" name="submit">
-
-            </form>
+           <?php dynamic_sidebar('fp-contact-form'); ?>
         </div>
     </div>
 </div>

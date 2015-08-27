@@ -1,27 +1,35 @@
 <footer>
     <div class="footer-1">
         <div class="row">
-            <div class="small-12 large-3 left"><img src="<?php bloginfo( 'template_directory' )?>/assets/images/footer-logo.png"></div>
-            <div class="footer-nav small-12 large-3 left">
+            <div class="small-12 medium-3 large-3 left small-centered small-text-center">
+                <img src="<?php bloginfo( 'template_directory' )?>/assets/images/footer-logo.png">
+            </div>
+
+            <div class="footer-nav small-12 medium-2 large-2 left small-centered small-text-center medium-text-left large-text-left">
+                <h4>AABC</h4>
+                <?php display_nav_footer_1_menu(); ?>
+            </div>
+            <div class="footer-nav small-12 medium-2 large-2 left small-centered small-text-center medium-text-left large-text-left">
                 <ul>
-                    <h4>AABC</h4>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Join The Chours</a></li>
-                    <li><a href="#">Book Us</a></li>
+                    <h4>Book Us</h4>
+                    <?php display_nav_footer_2_menu(); ?>
+            </div>
+            <div class="footer-nav small-12 medium-2 large-3 left small-centered small-text-center medium-text-left large-text-left">
+                <ul>
+                    <h4>Communities</h4>
+                    <?php display_nav_footer_3_menu(); ?>
                 </ul>
             </div>
-            <div class="footer-nav small-12 large-3 left">
+            <div class="footer-nav small-12  medium-2 large-2 left small-centered small-text-center medium-text-left large-text-left">
                 <ul>
-                    <h4>Our Communities</h4>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Our Parents</a></li>
-                    <li><a href="#">Alumni Society</a></li>
+                    <h4>Ways To Give</h4>
+                    <?php display_nav_footer_4_menu(); ?>
                 </ul>
             </div>
         </div>
         <div class="footer-2">
             <div class="row">
-                <div class="small-12 large-3 social-media-icons-footer left">
+                <div class="small-12 medium-2 large-3 social-media-icons-footer left small-centered small-text-center large-text-left">
                     <ul>
                         <li><a href="#"><img src="<?php bloginfo( 'template_directory' )?>/assets/images/facebook-icon-white.png"></a></li>
                         <li><a href="#"><img src="<?php bloginfo( 'template_directory' )?>/assets/images/twitter-icon-white.png"></a></li>
@@ -29,7 +37,7 @@
                         <li><a href="#"><img src="<?php bloginfo( 'template_directory' )?>/assets/images/youtube-icon-white.png"></a></li>
                     </ul>
                 </div>
-                <div class="small-12 large-6 copyright right">
+                <div class="small-12 large-6 copyright right small-text-center large-text-left">
                     <p>
                         <?php
                         printf(__( 'Copyright &copy; %s %s. All Rights Reserved.', 'nvLangScope' ),
