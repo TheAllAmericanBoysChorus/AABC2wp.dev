@@ -16,8 +16,12 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+<<<<<<< Updated upstream
 // define('DB_NAME', 'aabc3_wp');
 define('DB_NAME', 'db151025_aabc_wp_2015');
+=======
+define('DB_NAME', 'aabc3wp');
+>>>>>>> Stashed changes
 
 /** MySQL database username */
 // define('DB_USER', 'root');
