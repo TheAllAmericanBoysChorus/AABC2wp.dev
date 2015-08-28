@@ -6,10 +6,10 @@
             </div>
             <div class="social-media-icons small-12 large-7 columns">
                 <ul class="right">
-                    <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/facebook-icon-white.png"></a></li>
-                    <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/twitter-icon-white.png"></a></li>
-                    <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/instagram-icon-white.png"></a></li>
-                    <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/youtube-icon-white.png"></a></li>
+                    <li><a href="https://www.facebook.com/TheBoysChorus"><img src="<?php bloginfo('template_directory'); ?>/assets/images/facebook-icon-white.png"></a></li>
+                    <li><a href="https://twitter.com/TheBoysChorus"><img src="<?php bloginfo('template_directory'); ?>/assets/images/twitter-icon-white.png"></a></li>
+                    <li><a href="https://instagram.com/theboyschorus/"><img src="<?php bloginfo('template_directory'); ?>/assets/images/instagram-icon-white.png"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCA0qilTZHd1wFni5A8Ph9xA"><img src="<?php bloginfo('template_directory'); ?>/assets/images/youtube-icon-white.png"></a></li>
                 </ul>
             </div>
         </div>

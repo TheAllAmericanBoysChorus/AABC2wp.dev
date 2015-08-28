@@ -25,7 +25,7 @@ $the_query = new WP_Query( $args );
                 <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                     <h1><?php the_field('title');?></h1>
                     <img src="<?php the_field('image');?>">
-                    <a href="<?php the_field('button_link_url');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
+                    <a href="<?php the_field('button_link');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
                 <?php endwhile; else : ?>
                     <h1>The Blog</h1>
                     <img src="<?php bloginfo('template_directory'); ?>/assets/images/ferry-ride.jpg">
@@ -54,7 +54,7 @@ $the_query = new WP_Query( $args );
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
             <h1><?php the_field('title');?></h1>
             <img src="<?php the_field('image');?>">
-            <a href="<?php the_field('button_link_url');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
+            <a href="<?php the_field('button_link');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
                 <?php endwhile; else : ?>
                 <h1>Up Coming Events</h1>
                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/bus.jpg">
