@@ -25,22 +25,22 @@
         <div class="small-12 medium-6 large-3 columns text-center donate-option">
             <h2>Cash Donations</h2>
             <p>You can make a meaningful difference in the lives of children by making a sustaining, tax-deductible gift to the AABC today.</p>
-            <a href="#"><button class="donate-btn">Donate</button></a>
+            <a href="<?php echo site_url(); ?>/contact-us"><button class="donate-btn">Donate</button></a>
         </div>
         <div class="small-12 medium-6 large-3 columns text-center donate-option">
             <h2>Gifts of Stock</h2>
             <p>Contact the AABC for instructions.</p>
-            <a href="#"><button class="donate-btn">Donate</button></a>
+            <a href="<?php echo site_url(); ?>/contact-us"><button class="donate-btn">Donate</button></a>
         </div>
         <div class="small-12 medium-6 large-3 columns text-center donate-option">
             <h2>Planned Giving</h2>
             <p>Designate the AABC as the beneficiary of a life insurance policy, retirement plan, or living trust.</p>
-            <a href="#"><button class="donate-btn">Donate</button></a>
+            <a href="<?php echo site_url(); ?>/contact-us"><button class="donate-btn">Donate</button></a>
         </div>
         <div class="small-12 medium-6 large-3 columns text-center donate-option">
             <h2>Vehicle Donation</h2>
             <p>roceeds from the sale of your donated vehicle can support the Chorus. Help our program and receive a valid tax-deductible receipt for the full market value of your vehicle. </p>
-            <a href="#"><button class="donate-btn">Donate</button></a>
+            <a href="<?php echo site_url(); ?>/contact-us"><button class="donate-btn">Donate</button></a>
         </div>
     </div>
 </div>

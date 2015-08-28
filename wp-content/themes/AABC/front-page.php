@@ -77,7 +77,7 @@ $the_query = new WP_Query( $args );
         <div class="small-12 small-centered columns text-center">
             <h1>If We’re Having This Much Fun<br/>
                 Imagine What We Can Do For You</h1>
-            <a href="book-us.html"><button class="main-cta-btn">Book Us</button></a>
+            <a href="<?php echo site_url();?>/book-us-3"><button class="main-cta-btn">Book Us</button></a>
         </div>
     </div>
 </div>
@@ -133,12 +133,16 @@ $the_query = new WP_Query( $args );
 <?php wp_reset_query(); ?>
 
 <div class="row-full clearfix">
-    <div class="home-widget-left small-12 large-6 columns">
-        <h1>Alumni Corner</h1>
-    </div>
-    <div class="home-widget-right small-12 large-6 columns">
-        <h1>Upcoming Events</h1>
-    </div>
+    <a href="<?php echo site_url();?>/alumni-corner">
+        <div class="home-widget-left small-12 large-6 columns">
+            <h1>Alumni Corner</h1>
+        </div>
+    </a>
+    <a href="<?php echo site_url();?>/calendar">
+        <div class="home-widget-right small-12 large-6 columns">
+            <h1>Upcoming Events</h1>
+        </div>
+    </a>
 </div>
 
 

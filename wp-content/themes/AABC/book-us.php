@@ -14,22 +14,22 @@
 
 <div class="book-us-options">
     <div class="book-us-option-wedding">
-        <button class="book-us-option-btn">Weddings</button>
+        <a href="<?php echo site_url();?>/weddings"><button class="book-us-option-btn">Weddings</button></a>
     </div>
     <div class="book-us-option-film">
-        <button class="book-us-option-btn">Film</button>
+        <a href="<?php echo site_url();?>/film"><button class="book-us-option-btn">Film</button></a>
     </div>
     <div class="book-us-option-private-parties">
-        <button class="book-us-option-btn">Private Parties</button>
+        <a href="<?php echo site_url();?>/private-parties"><button class="book-us-option-btn">Private Parties</button></a>
     </div>
     <div class="book-us-option-holiday-events">
-        <button class="book-us-option-btn">Holiday Events</button>
+        <a href="<?php echo site_url();?>/holiday-events"><button class="book-us-option-btn">Holiday Events</button></a>
     </div>
     <div class="book-us-option-recording">
-        <button class="book-us-option-btn">Recordings</button>
+        <a href="<?php echo site_url();?>/recordings"><button class="book-us-option-btn">Recordings</button></a>
     </div>
     <div class="book-us-option-presenters">
-        <button class="book-us-option-btn">Presenters</button>
+        <a href="<?php echo site_url();?>/presenters"><button class="book-us-option-btn">Presenters</button></a>
     </div>
 </div>
 

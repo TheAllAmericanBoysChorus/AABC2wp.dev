@@ -12,8 +12,8 @@
 	</div>
 
 	<div class="small-12 large-centered columns text-center fall-gala-btn-row">
-		<a href="<?php echo site_url();?>/uploads/dlm_uploads/2015/05/NewYorkNewYork_Underwritting_Packet_web.pdf"><button>Underwrite The Gala</button></a>
-		<a href="<?php echo site_url();?>/uploads/dlm_uploads/2015/05/NewYorkNewYork_Auction_Donation_Packet_web.pdf"><button>Donate Auction Items</button></a>
+		<a href="http://www.taabc.org/download/2165/"><button>Underwrite The Gala</button></a>
+		<a href="http://www.taabc.org/download/2168/"><button>Donate Auction Items</button></a>
 		<a href="https://portal11.bidpal.net/Portal/bpe293867/main/home.html"><button>Purchase Gala Tickets</button>
 		<a href="#"><button>Bid In Online Auction<br/><em>(Opens October 7)</em></button></a>
 	</div>

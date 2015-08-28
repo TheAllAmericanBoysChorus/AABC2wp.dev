@@ -31,7 +31,7 @@
                 <div class="small-10 small-centered columns text-center">
                     <h1>Developing The Voices Of Young Boys</h1>
                     <h2>To Shape The Men Of The Future</h2>
-                    <a href="join-the-chorus.html"><button class="main-cta-btn">Join The Team!</button></a>
+                    <a href="<?php echo site_url();?>/join-a-boys-chorus"><button class="main-cta-btn">Join The Team!</button></a>
                 </div>
             </div>
         </div>
