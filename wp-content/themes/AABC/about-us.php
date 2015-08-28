@@ -26,6 +26,14 @@
         <?php dynamic_sidebar( 'about-us-info-3' ) ?>
     </div>
 </div>
+<div class="blue-bg">
+    <div class="row" style="padding: 3rem 0;">
+        <div class="small-12 large-7 columns text-center small-centered">
+            <h1>Our Mission</h1>
+            <p style="color:white;">We provide a world-acclaimed music and performing arts curriculum that educates, motivates and builds character in boys through unparalleled opportunities for performance, leadership, travel and community service.</p>
+        </div>
+    </div>
+</div>
 
 <?php
 

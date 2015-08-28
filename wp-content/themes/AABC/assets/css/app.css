@@ -6680,6 +6680,9 @@ h1, h2, h3, h4, h5, h6 {
     color: #a9171c;
     padding-bottom: 2rem; }
 
+.blue-bg p {
+  color: #fff; }
+
 .full-width-gray {
   background: #eee;
   width: 100%;
