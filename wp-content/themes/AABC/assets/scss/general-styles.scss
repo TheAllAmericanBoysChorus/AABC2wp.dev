@@ -79,6 +79,31 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.sidebar-right {
+  border-left: 1px solid #dddddd;
+  h3 {
+    color: $brand-gold;
+    font-size: 1.3rem;
+  }
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+  li {
+    line-height: 1rem;
+    padding-bottom: 1rem;
+  }
+  li a {
+    color: #777777;
+    font-size: 0.76rem;
+    &:hover {
+      color: $brand-blue;
+      transition: 0.2s all ease-in;
+      text-decoration: underline;
+    }
+  }
+}
+
 .fall-gala-sidebar {
   h2 {
     color: $brand-gold;
@@ -91,6 +116,10 @@ h1, h2, h3, h4, h5, h6 {
 
   button {
     background: $brand-dark-blue;
+    height: 77px;
+    max-height: 77px;
+    display: inline-block;
+    vertical-align: top;
 
     &:hover {
       background: $brand-blue;
@@ -114,6 +143,21 @@ h1, h2, h3, h4, h5, h6 {
   }
   hr {
     padding: 2rem 0;
+  }
+  h3 {
+    color: $brand-gold;
+  }
+
+  ul {
+    list-style: none;
+    margin-right: 1rem;
+    margin-left: 0;
+
+    li {
+      color: #666;
+      font-size: .9rem;
+      font-family: "Crimson Text", serif;
+    }
   }
 }
 
