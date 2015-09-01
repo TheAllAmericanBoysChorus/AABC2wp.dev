@@ -3,6 +3,10 @@
         <div class="row">
             <div class="small-12 medium-3 large-3 left small-centered small-text-center">
                 <img src="<?php bloginfo( 'template_directory' )?>/assets/images/footer-logo.png">
+                <ul>
+                <li>1055 Arlington Dr Costa Mesa, CA 92626</li>
+                <li></li>
+                </ul>
             </div>
 
             <div class="footer-nav small-12 medium-2 large-2 left small-centered small-text-center medium-text-left large-text-left">

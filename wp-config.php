@@ -17,33 +17,31 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 <<<<<<< Updated upstream
-// define('DB_NAME', 'aabc3_wp');
-define('DB_NAME', 'db151025_aabc_wp_2015');
-=======
-define('DB_NAME', 'aabc3wp');
->>>>>>> Stashed changes
+define('DB_NAME', 'aabc3_wp');
+// define('DB_NAME', 'db151025_aabc_wp_2015');
+// define('DB_NAME', 'aabc3wp');
 
 /** MySQL database username */
-// define('DB_USER', 'root');
-define('DB_USER', 'db151025_garrett');
+define('DB_USER', 'root');
+// define('DB_USER', 'db151025_garrett');
 
 /** MySQL database password */
-// define('DB_PASSWORD', 'root');
-define('DB_PASSWORD', 'h2osurf1');
+define('DB_PASSWORD', 'root');
+// define('DB_PASSWORD', 'h2osurf1');
 
 /** MySQL hostname */
-// define('DB_HOST', 'localhost');
-define('DB_HOST', 'internal-db.s151025.gridserver.com');
+define('DB_HOST', 'localhost');
+// define('DB_HOST', 'internal-db.s151025.gridserver.com');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf-8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-// define('WP_HOME','http://localhost:8000/AABC2wp.dev/');
-// define('WP_SITEURL','http://localhost:8000/AABC2wp.dev/');
-define('WP_HOME','http://www.taabc.org/');
-define('WP_SITEURL','http://www.taabc.org');
+define('WP_HOME','http://localhost:8000/AABC2wp.dev/');
+define('WP_SITEURL','http://localhost:8000/AABC2wp.dev/');
+// define('WP_HOME','http://www.taabc.org/');
+// define('WP_SITEURL','http://www.taabc.org');
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -80,7 +78,7 @@ $table_prefix  = 'wp_';
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy blogging. */
 
