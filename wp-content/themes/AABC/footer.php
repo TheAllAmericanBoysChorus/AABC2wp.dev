@@ -1,11 +1,12 @@
 <footer>
     <div class="footer-1">
         <div class="row">
-            <div class="small-12 medium-3 large-3 left small-centered small-text-center">
+            <div class="small-12 medium-3 large-3 left small-centered small-text-center large-text-left logo-footer">
                 <img src="<?php bloginfo( 'template_directory' )?>/assets/images/footer-logo.png">
                 <ul>
-                <li>1055 Arlington Dr Costa Mesa, CA 92626</li>
-                <li></li>
+                <li>1055 Arlington Dr<br/> Costa Mesa, CA 92626</li>
+                <li>(714)708-1670</li>
+                <li>info@taabc.org</li>
                 </ul>
             </div>
 
