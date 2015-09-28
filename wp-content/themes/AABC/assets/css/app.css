@@ -7550,6 +7550,14 @@ div.wpcf7-mail-sent-ok {
       font-size: 1rem;
       padding: .2rem 0; }
 
+/* General Content Styles */
+.general-content-left {
+  padding: 3rem 0; }
+  .general-content-left h1 {
+    color: #a99c67;
+    font-size: 2rem;
+    width: auto; }
+
 .main-gallery {
   background: url("../../images/footer-bg.png"); }
 
