@@ -15,6 +15,15 @@ var flkty = new Flickity( '.main-gallery', {
     autoPlay: 5000
 });
 
+var flkty = new Flickity( '.basic-gallery', {
+    cellAlign: 'left',
+    contain: true,
+    wrapAround: true,
+    pageDots: false,
+    prevNextButtons: true,
+    autoPlay: 5000
+});
+
 (function($) {
 
     // Foundation JavaScript

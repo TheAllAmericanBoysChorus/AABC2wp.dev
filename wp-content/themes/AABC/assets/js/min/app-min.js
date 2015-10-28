@@ -1,0 +1,1 @@
+var flkty=new Flickity(".main-gallery",{cellAlign:"left",contain:!0,wrapAround:!0,prevNextButtons:!1,autoPlay:5e3}),flkty=new Flickity(".basic-gallery",{cellAlign:"left",contain:!0,wrapAround:!0,pageDots:!1,prevNextButtons:!0,autoPlay:5e3});!function($){$(document).foundation("topbar",{sticky_class:"snap-to-top"})}(jQuery);

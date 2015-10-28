@@ -6717,6 +6717,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 90%;
   margin: 0 auto; }
 
+.basic-gallery .gallery-cell {
+  height: 400px; }
+
 .contact-us {
   padding: 4rem 0 1rem 0; }
   .contact-us h1 {
@@ -7555,9 +7558,15 @@ div.wpcf7-mail-sent-ok {
   padding: 3rem 0; }
   .general-content-left h1 {
     color: #a99c67;
-    font-size: 2rem;
-    width: auto; }
+    font-size: 2rem; }
 
+.content {
+  overflow: hidden;
+  height: inherit; }
+
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .content {
+    padding: 3rem 0 !important; } }
 .main-gallery {
   background: url("../../images/footer-bg.png"); }
 
@@ -7604,3 +7613,8 @@ div.wpcf7-mail-sent-ok {
 
 .flickity-page-dots .dot.is-selected {
   background: #a99c67; }
+
+.basic-gallery .gallery-cell {
+  width: 100%; }
+  .basic-gallery .gallery-cell img {
+    width: 100%; }

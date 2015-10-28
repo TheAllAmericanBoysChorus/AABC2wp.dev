@@ -15,11 +15,26 @@
 
             <?php the_content(); ?>
 
+        <?php 
+
+            $images = get_field('gallery');
+
+            if( $images ): ?>
+                <div class="basic-gallery">
+                    <?php foreach ( $images as $image ): ?> 
+                        <div class="gallery-cell">
+                            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
         <?php endwhile; else : ?>
             <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
         <?php endif; ?>
 
     </div>
+
     <div class="small-12 large-4 columns right sidebar-right fall-gala-sidebar" style="margin-top: 4rem;">
         <?php dynamic_sidebar('fall-gala-sidebar'); ?>
     </div>

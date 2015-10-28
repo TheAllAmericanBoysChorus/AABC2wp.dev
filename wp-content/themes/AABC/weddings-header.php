@@ -1,10 +1,10 @@
 <header>
     <div class="main-cta-bg-weddings">
         <div class="row clearfix logo-sm-container">
-            <div class="logo large-4 small-11 columns">
+            <div class="logo large-4 medium-5 small-11 columns">
                 <a href="<?php get_site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo-white.png"/></a>
             </div>
-            <div class="social-media-icons small-12 large-7 columns">
+            <div class="social-media-icons small-12 medium-5 large-7 columns">
                 <ul class="right">
                     <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/facebook-icon-white.png"></a></li>
                     <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/twitter-icon-white.png"></a></li>
