@@ -8,22 +8,28 @@
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
-    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left" style="padding: 3rem 0 !important;">
-        <?php dynamic_sidebar( 'about-us-info-1' ) ?>
+    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+        <div class="buffer">
+            <?php dynamic_sidebar( 'about-us-info-1' ) ?>
+        </div>
     </div>
 </div>
 
 <div class="row-full clearfix">
     <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/boys-jumping.jpg">
     <div class="small-11 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'about-us-info-2' ) ?>
+        <div class="buffer">
+            <?php dynamic_sidebar( 'about-us-info-2' ) ?>
+        </div>
     </div>
 </div>
 
 <div class="row-full clearfix">
     <img class="left small-12 large-6 columns"  src="<?php bloginfo( 'template_directory' )?>/assets/images/iowa.jpg">
     <div class="small-11 medium-10  large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+    <div class="buffer">
         <?php dynamic_sidebar( 'about-us-info-3' ) ?>
+    </div>
     </div>
 </div>
 <div class="blue-bg">
@@ -46,7 +52,7 @@ $the_query = new WP_Query( $args );
 ?>
 
 <div class="row-full our-staff">
-    <div class="small-12 medium-6 large-4 columns text-center small-centered">
+    <div class="small-12 medium1-12 large-4 columns text-center small-centered">
         <?php dynamic_sidebar( 'about-us-info-4' ) ?>
     </div>
 

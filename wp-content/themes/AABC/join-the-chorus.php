@@ -9,8 +9,10 @@
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
-    <div class="small-12 medium-7 large-4 columns content left small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'join-the-chorus-1' ) ?>
+    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+        <div class="buffer">
+            <?php dynamic_sidebar( 'join-the-chorus-1' ) ?>
+        </div>
     </div>
 </div>
 
@@ -26,8 +28,10 @@
 
 <div class="row-full clearfix">
     <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/rehearsal-1.jpg">
-    <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'join-the-chorus-2' ) ?>
+    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+        <div class="buffer">
+            <?php dynamic_sidebar( 'join-the-chorus-2' ) ?>
+        </div>
     </div>
 </div>
 </div>
@@ -74,15 +78,17 @@ $the_query = new WP_Query( $args );
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/clipper-game.jpg">
-    <div class="small-12 medium-7 large-4 columns content left small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'join-the-chorus-3' ) ?>
+    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+        <div class="buffer">
+            <?php dynamic_sidebar( 'join-the-chorus-3' ) ?>
+        </div>
     </div>
 </div>
 
 <div class="about-us-info-right clearfix">
-        <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/staff-2015.jpg">
-    <div class="content-left">
-        <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
+    <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/staff-2015.jpg">
+    <div class="small-11 large-4 columns content left small-text-center medium-text-center large-text-left">
+        <div class="buffer">
             <?php dynamic_sidebar( 'join-the-chorus-4' ) ?>
         </div>
     </div>

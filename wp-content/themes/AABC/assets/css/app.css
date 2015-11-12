@@ -6740,6 +6740,13 @@ h1, h2, h3, h4, h5, h6 {
 .row-full .columns {
   padding: 0 !important; }
 
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .buffer {
+    padding: 2rem 0; } }
+@media only screen and (max-width: 40em) {
+  .buffer {
+    padding: 2rem 0; } }
+
 /* Parent Portal Styles */
 .main-title {
   padding: 5rem 0; }
