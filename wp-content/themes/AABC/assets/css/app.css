@@ -7365,6 +7365,16 @@ div.wpcf7-mail-sent-ok {
   color: white;
   margin: 0 auto; }
 
+.event-unit {
+  position: relative; }
+  .event-unit button {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
 .season-sponsors {
   display: -webkit-box;
   display: -moz-box;

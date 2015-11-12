@@ -8,8 +8,10 @@
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/concert-2.jpg">
-    <div class="small-12 medium-7 large-4 columns content left small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'presenters-1' ) ?>
+    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+        <div class="buffer">
+            <?php dynamic_sidebar( 'presenters-1' ) ?>
+        </div>
     </div>
 </div>
 
@@ -32,8 +34,10 @@
 
 <div class="row-full clearfix">
     <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/concert-3.jpg">
-    <div class="small-12 large-4 columns content left small-text-center medium-text-center large-text-left">
-        <?php dynamic_sidebar( 'presenters-4' ) ?>
+    <div class="ssmall-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+        <div class="buffer">
+            <?php dynamic_sidebar( 'presenters-4' ) ?>
+        </div>
     </div>
 </div>
 
