@@ -15,21 +15,16 @@
                 <?php display_nav_footer_1_menu(); ?>
             </div>
             <div class="footer-nav small-12 medium-2 large-2 left small-centered small-text-center medium-text-left large-text-left">
-                <ul>
                     <h4>Book Us</h4>
                     <?php display_nav_footer_2_menu(); ?>
             </div>
             <div class="footer-nav small-12 medium-2 large-3 left small-centered small-text-center medium-text-left large-text-left">
-                <ul>
                     <h4>Communities</h4>
                     <?php display_nav_footer_3_menu(); ?>
-                </ul>
             </div>
             <div class="footer-nav small-12  medium-2 large-2 left small-centered small-text-center medium-text-left large-text-left">
-                <ul>
                     <h4>Ways To Give</h4>
                     <?php display_nav_footer_4_menu(); ?>
-                </ul>
             </div>
         </div>
         <div class="footer-2">
@@ -57,7 +52,7 @@
 </footer>
         <!-- start wp_footer() hooks -->
         <?php wp_footer(); ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js"></script>
         <!-- end wp_footer() hooks -->
 
     </div>

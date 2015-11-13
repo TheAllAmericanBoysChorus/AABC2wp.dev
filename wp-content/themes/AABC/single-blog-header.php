@@ -12,10 +12,10 @@
 
     <div class="head">
         <div class="row clearfix logo-sm-container">
-            <div class="logo large-4 medium-5 small-11 columns small-text-center small-centered">
+            <div class="logo large-4 medium-6 small-12 columns small-centered small-text-center large-text-left medium-text-left medium-uncentered large-uncentered">
                 <a href="<?php get_site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo-white.png"/></a>
             </div>
-            <div class="social-media-icons small-12 medium-5 large-7 columns">
+            <div class="social-media-icons small-12 medium-6 large-7 columns">
                 <ul class="right">
                     <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/facebook-icon-white.png"></a></li>
                     <li><a href="#"><img src="<?php bloginfo('template_directory'); ?>/assets/images/twitter-icon-white.png"></a></li>

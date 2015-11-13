@@ -4,7 +4,7 @@
  * Load Styles Into Theme
  */
 function load_styles() {
-    wp_enqueue_style( 'foundation', get_template_directory_uri() . '/assets/css/foundation/css/foundation.css' );
+    wp_enqueue_style( 'foundation', get_template_directory_uri() . '/assets/css/foundation/css/foundation.min.css' );
     wp_enqueue_style( 'flickity_css', 'https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.css' );
     wp_enqueue_style( 'app', get_template_directory_uri() . '/assets/css/app.css' );
     wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/foundation_js/vendor/jquery.js', array(), '1.0.0', true );
