@@ -98,7 +98,7 @@ class WP_DLM {
 
 			// Upgrade Manager
 			$upgrade_manager = new DLM_Upgrade_Manager();
-			$upgrade_manager->check();
+			$upgrade_manager->setup();
 		}
 
 		// Setup AJAX handler if doing AJAX
@@ -115,6 +115,10 @@ class WP_DLM {
 		// Setup DLM Download Handler
 		$download_handler = new DLM_Download_Handler();
 		$download_handler->setup();
+
+		// setup no access page endpoints
+		$no_access_page_endpoint = new DLM_Download_No_Access_Page_Endpoint();
+		$no_access_page_endpoint->setup();
 
 		// Setup shortcodes
 		$dlm_shortcodes = new DLM_Shortcodes();

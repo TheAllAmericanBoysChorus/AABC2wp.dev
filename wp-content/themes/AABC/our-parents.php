@@ -13,6 +13,11 @@ get_header();
         <h1>Our Parents</h1>
     </div>
 </div>
+<div class="row">
+    <div class="small-11 medium-8 large-7 columns text-center small-centered">
+        <?php the_content(); ?>
+    </div>
+</div>
 
 <?php
 
@@ -24,16 +29,18 @@ $the_query = new WP_Query( $args );
 
 ?>
 
+<?php 
+    if (!post_password_required() ) { ?>
+        <div class="row">
+            <div class="small-12 large-8 columns right general-content-right">
+                <?php dynamic_sidebar('our-parents-right'); ?>
+            </div>
 
-<div class="row">
-    <div class="small-12 large-8 columns right general-content-right">
-        <?php dynamic_sidebar('our-parents-right'); ?>
-    </div>
-
-    <div class="small-12 large-4 columns left sidebar-left">
-        <?php dynamic_sidebar('our-parents-sidebar'); ?>
-    </div>
-</div>
+            <div class="small-12 large-4 columns left sidebar-left">
+                <?php dynamic_sidebar('our-parents-sidebar'); ?>
+            </div>
+        </div>
+    <?php } ?>
 
 <?php get_footer(); ?>
 

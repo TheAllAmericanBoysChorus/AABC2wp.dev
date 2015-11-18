@@ -1,17 +1,17 @@
 === Better Search Replace ===
 Contributors: ExpandedFronts, mattshaw
-Tags: search replace, update urls, database, search replace database, update database urls, update live url
+Tags: search replace, search and replace, update urls, database, search replace database, update database urls, update live url, better search replace, search&replace
 Requires at least: 3.0.1
-Tested up to: 4.3
+Tested up to: 4.3.1
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A simple plugin for updating URLs or other text in a database.
+A simple plugin to update URLs or other text in a database.
 
 == Description ==
 
-When moving your WordPress site to a new domain or server, you will likely run into a need to run a search/replace on the database for everything to work correctly. Fortunately, there are several plugins available for this task, however, all have a different approach to a few key features. This plugin consolidates the best features from these plugins, incorporating the following features in a simple, ad-free plugin:
+When moving your WordPress site to a new domain or server, you will likely run into a need to run a search/replace on the database for everything to work correctly. Fortunately, there are several plugins available for this task, however, all have a different approach to a few key features. This plugin consolidates the best features from these plugins, incorporating the following features in one simple plugin:
 
 * Serialization support for all tables
 * The ability to select specific tables
@@ -27,9 +27,9 @@ When moving your WordPress site to a new domain or server, you will likely run i
 * Save or load custom profiles for quickly repeating a search/replace in the future
 * Support and updates for 1 year
 
-[Learn more about Better Search Replace Pro](https://expandedfronts.com/downloads/better-search-replace-pro/)
+[Learn more about Better Search Replace Pro](https://expandedfronts.com/products/better-search-replace-pro/)
 
-The search/replace functionality is heavily based on interconnect/it's great and open-source Search Replace DB script, modified to use WordPress native database functions to ensure compatibility.
+The search and replace functionality is heavily based on interconnect/it's great and open-source Search Replace DB script, modified to use WordPress native database functions to ensure compatibility.
 
 **Supported Languages**
 
@@ -88,16 +88,44 @@ If you're moving your site from one server to another and changing the URL of yo
 
 More information on moving WordPress can be found [here](http://codex.wordpress.org/Moving_WordPress).
 
-= I get a white screen when using this plugin? =
-
-Just go back in your browser and try decreasing the "Max Page Size" setting via the plugin settings tab.
-
 == Screenshots ==
 
 1. The Better Search Replace page added to the "Tools" menu
 2. After running a search/replace dry-run.
 
 == Changelog ==
+
+= 1.2.6 =
+* Removed unused code/small cleanup
+
+= 1.2.5 =
+* Improved progress bar info and styles
+* Small cleanup
+
+= 1.2.4 =
+* Added "Settings saved" notice when saving settings
+* Fixed bug with wp_magic_quotes interfering with some search strings
+
+= 1.2.3 =
+* Fixed bug with searching for backslashes
+* Fixed potential bug with getting tables in large multisites
+* Fixed potential notice in append_report
+* Improved handling of missing primary keys
+
+= 1.2.2 =
+* Fixed AJAX conflict with WooCommerce
+* Fixed a few issues with translations
+* Tweaked "System Info" to use get_locale() instead of WP_LANG constant
+* Updated German translation (props @Linus Ziegenhagen)
+
+= 1.2.1 =
+* Fixed minor issue with display of progress bar
+* Updated translation file
+
+= 1.2 =
+* Switched to AJAX bulk processing for search/replaces
+* Decreased minimum "Max Page Size" to 1000
+* Added "Help" tab with system info for easier troubleshooting
 
 = 1.1.1 =
 * Added ability to change max page size

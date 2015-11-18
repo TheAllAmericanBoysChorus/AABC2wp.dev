@@ -1,0 +1,610 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Recent Posts Widget With Thumbnails"
+msgstr ""
+
+#. Short description.
+msgid "Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings"
+msgstr ""
+
+#. Screenshot description.
+msgid "The first screenshot shows the widget in the sidebar with five teasers of current posts. Each list item shows the title, image, date and excerpt of a post."
+msgstr ""
+
+#. Screenshot description.
+msgid "The second screenshot shows the widget on the Widget Management Page in the backend."
+msgstr ""
+
+#. Found in description header.
+msgid "Lightweight, simple and effective"
+msgstr ""
+
+#. Found in description header.
+msgid "Options you can set"
+msgstr ""
+
+#. Found in description header.
+msgid "What users said"
+msgstr ""
+
+#. Found in description header.
+msgid "Useful hints for developers: Hooks and CSS"
+msgstr ""
+
+#. Found in description header.
+msgid "Languages"
+msgstr ""
+
+#. Found in description list item.
+msgid "Title of the widget"
+msgstr ""
+
+#. Found in description list item.
+msgid "Number of listed posts"
+msgstr ""
+
+#. Found in description list item.
+msgid "Hide current post in list"
+msgstr ""
+
+#. Found in description list item.
+msgid "Keep sticky posts on top of the list"
+msgstr ""
+
+#. Found in description list item.
+msgid "Hide post title"
+msgstr ""
+
+#. Found in description list item.
+msgid "Show post date"
+msgstr ""
+
+#. Found in description list item.
+msgid "Show post excerpt"
+msgstr ""
+
+#. Found in description list item.
+msgid "Show number of comments"
+msgstr ""
+
+#. Found in description list item.
+msgid "Excerpt length"
+msgstr ""
+
+#. Found in description list item.
+msgid "Signs after excerpt"
+msgstr ""
+
+#. Found in description list item.
+msgid "Show posts of selected categories (or of all categories)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Show post thumbnail (featured image)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Registered thumbnail dimensions"
+msgstr ""
+
+#. Found in description list item.
+msgid "Thumbnail width in px"
+msgstr ""
+
+#. Found in description list item.
+msgid "Thumbnail height in px"
+msgstr ""
+
+#. Found in description list item.
+msgid "Keep aspect ratio of thumbnails"
+msgstr ""
+
+#. Found in description list item.
+msgid "Try to take the first post image as thumbnail"
+msgstr ""
+
+#. Found in description list item.
+msgid "Only use the first post image as thumbnail"
+msgstr ""
+
+#. Found in description list item.
+msgid "Use default thumbnail if no thumbnail is available"
+msgstr ""
+
+#. Found in description list item.
+msgid "Default thumbnail URL"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://mayifix.com/how-to-show-recent-posts-in-wordpress-blog.html\">How to show recent posts in WordPress blog</a> by Robin on June 28, 2015"
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Number 5</strong> in <a href=\"http://dotcave.com/wordpress/free-recent-posts-widgets-for-wordpress/\">Best List of Free Recent Posts Widgets for WordPress</a> by jerry on November 29, 2014"
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Number 1</strong> in <a href=\"http://www.drweb.de/magazin/nuetzlich-die-10-interessantesten-widgets-fuer-ihre-wordpress-webseite-50307/\">Nützlich: Die 10 interessantesten Widgets für Ihre WordPress-Webseite</a> by Andreas Hecht on October 13, 2014"
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Number 1</strong> in <a href=\"http://www.wpbeginner.com/showcase/25-most-useful-wordpress-widgets-for-your-site/\">25 Most Useful WordPress Widgets for Your Site</a> by Editorial Staff on September 18, 2014"
+msgstr ""
+
+#. Found in description list item.
+msgid "English"
+msgstr ""
+
+#. Found in description list item.
+msgid "German (Deutsch)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Persian (Farsi), kindly drawn up by <a href=\"https://profiles.wordpress.org/asreelm\">Sajjad Panahi</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "Arabic (العربية), kindly drawn up by <a href=\"https://wordpress.org/support/profile/salzard\">Shadi AlZard</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The plugin is available in English, German (Deutsch), Persian (Farsi) and Arabic (العربية)."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and enhanced to display thumbnails of the posts."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "You can set the width and heigth of the thumbnails in the list. The thumbnails appear left-aligned to the post titles in left-to-right languages. In right-to-left languages they appear right-aligned."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "See <a href=\"https://wordpress.org/plugins/recent-posts-widget-with-thumbnails/other_notes/\">Other Notes</a> for supported hooks and available CSS selectors."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The user interface is available in"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Further translations are welcome. If you want to give in your translation please leave a notice in the <a href=\"https://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails\">plugin's support forum</a>."
+msgstr ""
+
+#. Found in installation header.
+msgid "Using The WordPress Dashboard"
+msgstr ""
+
+#. Found in installation header.
+msgid "Uploading in WordPress Dashboard"
+msgstr ""
+
+#. Found in installation header.
+msgid "Using FTP"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Navigate to the 'Add New' in the plugins dashboard"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Search for 'Recent Posts Widget With Thumbnails'"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click 'Install Now'"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin on the Plugin dashboard"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go to 'Appereance' =&gt; 'Widgets' and select 'Recent Posts Widget With Thumbnails'"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Navigate to the 'Upload' area"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Select <code>recent-posts-widget-with-thumbnails.zip</code> from your computer"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin in the Plugin dashboard"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Download <code>recent-posts-widget-with-thumbnails.zip</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Extract the <code>recent-posts-widget-with-thumbnails</code> directory to your computer"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Upload the <code>recent-posts-widget-with-thumbnails</code> directory to the <code>/wp-content/plugins/</code> directory"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option: Show number of comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated *.pot file and translations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed search stop at more link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Deleted visual intend of the linklist in some themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored thumbnail size variable"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added widget description based on backend language"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Corrected text domain name for translate.wordpress.org"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Renamed translation files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Little adaptions for language files, ready for translate.wordpress.org"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added arabic translation. Thank you very much, <a href=\"https://wordpress.org/support/profile/salzard\">Shadi AlZard</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested successfully with WordPress 4.3.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed alignment of text and thumbnail in right-to-left (RTL) languages. Please re-save the widget to get the correct layout in RTL languages."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added persian translation (Farsi). Thank you very much <a href=\"https://wordpress.org/support/profile/asreelm\">Sajjad Panahi</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested successfully with WordPress 4.3"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed single selection of a category to selection of multiple categories"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added DIV with id <code>rpwwt-{widget_id}</code> and class <code>rpwwt-widget</code> around list for available container with ensured attribute for CSS selectors"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated admin CSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated *.pot file and german translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated screenshot of widget in the backend"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revised readme.txt"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added category option: widget only lists posts of a selected category, else lists posts of all categories"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added sticky posts option: widget shows sticky posts on top of the list, else lists them in normal order"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added hide current post option: widget does not list the post where the user is currently on, else lists it"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added CSS class names for easy designing of the list and its list items; see Description for details"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added style sheet for Widget page in the backend"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed missing custom image sizes in frontend"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Formatted the code more readable"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated screenshots"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added default image sizes dropdown menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added options to print out excerpts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored: HTML output moved into include files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Slight improvements for security and performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed error message on trial to open the CSS file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested successfully with WordPress 4.2.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug of wrong path to public.css file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed HTML class names, now they start with 'rpwwt-'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Set CSS for the list style to prevent dots in some themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added span element with class \"post-title\" around the title"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested successfully with WordPress 4.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to keep aspect ratios of the original images"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to hide the post title in the list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved inline CSS to external file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revised *.pot file and german translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Successfully tested with WordPress 4.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug which threw a warning in debug mode when accessing options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug which prevented to find the first content image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Slightly revised algorithm for detecting the first image in post content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improve uninstall routine"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested successfully with WordPress 3.9.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to set width and height of the thumbnails"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to prefer first content image to featured image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to use only first content image as thumbnail"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to set a default thumbnail"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added function to delete plugin's settings in the database if the plugin is deleted"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved code for more robustness"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The plugin was released."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Improved data sanitization"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Revised algorithm to detect the first image in post content."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Successfully tested with WordPress 4.0"
+msgstr ""
+
+#. Found in faq header.
+msgid "What are the requirements for this plugin?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I set a default thumbnail?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I set the width and height of the thumbnail?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I change the alignment of the thumbnails in the list?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Where can I set the CSS of the list?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can the plugin take the first image of a post as thumbnail image?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Where is the *.pot file for translating the plugin in any language?"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The WordPress version should be at least 2.9 to use featured images."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The theme should support <code>wp_head()</code> in the HTML header section to print the CSS code for a beautiful alignment of the thumbnails."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes. You can enter the desired width and height of the thumbnails or select one of the sizes as set in 'Settings' &gt; 'Media'."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "This feature will come in a future version of the plugin. Set the alignment in the CSS of your theme instead."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "This feature will come in a future version of the plugin. Set the CSS in the style.css of your theme instead."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes. It works with images previously uploaded into the media library. You can select to prefer the first image to the featured image or to use the first image only."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "If you want to contribute a translation of the plugin in your language it would be great! You would find the *.pot file in the 'languages' directory of this plugin. If you would send the *.po file to me I would include it in the next release of the plugin."
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Other Notes"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Supported Hooks"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Available CSS Selectors"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "widget_title"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "widget_posts_args"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "excerpt_more"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "excerpt_length"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "list_cats"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "The plugin considers the output of actions hooked on:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "To design the list and its items you can use these CSS selectors:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "The elements which contain the posts list:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "The lists which contain the list items:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All list items in the list:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All list items of sticky posts in the list:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All links in the list; every link contains the image and the post title:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All images in the list (use that to set the margins around images):"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All post titles in the list:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All post dates in the list:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All post excerpts in the list:"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "All numbers of comments in the list:"
+msgstr ""

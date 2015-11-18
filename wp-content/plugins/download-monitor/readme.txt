@@ -4,7 +4,7 @@ Donate link: http://www.barrykooij.com/donate/
 Tags: download, downloads, monitor, hits, download monitor, tracking, admin, count, counter, files, versions, download count, logging, AJAX, digital, documents, download category, download manager, download template, downloadmanager, file manager, file tree, grid, hits, ip-address, manager, media, monitor, password, protect downloads, tracker
 Requires at least: 3.8
 Tested up to: 4.3
-Stable tag: 1.8.1
+Stable tag: 1.9.0
 License: GPLv3
 
 Download Monitor is a plugin for uploading and managing downloads, tracking downloads, and displaying links.
@@ -106,6 +106,19 @@ More documentation can be found in our [Knowledge Base](https://www.download-mon
 4. Display regular download links or fancy ones all using shortcodes and templates.
 
 == Changelog ==
+
+= 1.9.0: September 15, 2015 =
+* Feature: We added a separate 'No Access' page that includes the following features:
+* No Access Page : Added [dlm_no_access] shortcode that displays the no access content.
+* No Access Page : Added new option in Access settings tab to set No Access Page.
+* No Access Page : Added new template file for no access page.
+* No Access Page : We now redirect to set No Access page (if set) when user has no access to download.
+* Feature: Added ability to remove log entries.
+* Feature: Added browser detection for IE 11 and up.
+* Feature: Added OS detection for Windows 8.1
+* Feature: Added OS detection for Windows 10
+* Feature: Added Featured download, Members only and Redirect to file to bulk edit options.
+* Feature: Added Featured download, Members only and Redirect to file to quick edit options.
 
 = 1.8.1: August 21, 2015 =
 * Tweak: Small tweak to make download count fit better in box template.
