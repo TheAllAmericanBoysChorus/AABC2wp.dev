@@ -132,6 +132,49 @@ $the_query = new WP_Query( $args );
 
 <?php wp_reset_query(); ?>
 
+<?php
+
+$args = array(
+    'post_type' => 'calendar',
+    'posts_per_page' => '3'
+);
+
+$the_query = new WP_Query( $args );
+
+?>
+
+<div class="row-full">
+    <div class="small-12 columns text-center">
+        <h1 class="upcoming-events-headline">Upcoming Events</h1>
+    </div>
+    <div class="small-12 columns">
+        <div class="upcoming-events-home">
+            <?php if( have_posts() ) : ?>
+                <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                    <div class="small-4 columns">
+                        <div class="calendar-event-bg" style="background:url(<?php the_field('featured_image')?>); background-size: cover; background-position: center;">
+                            <div class="black-bg">
+                                <div class="event-info">
+                                    <h2><?php the_field( 'title' );?></h2>
+                                    <span class="event-category"><?php the_field( 'event_category' );?></span><br/>
+                                    <span class="date"><?php the_field( 'date' );?></span><br/>
+                                    <span class="time"><?php the_field( 'time' );?></span><br/>
+                                    <span class="location"><?php the_field( 'location' );?></span><br/>
+                                    <span class="address"><?php the_field( 'address' );?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+                
+                <?php else : ?>
+
+            <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div class="row-full clearfix">
     <a href="<?php echo site_url();?>/alumni-corner">
         <div class="home-widget-left small-12 large-6 columns">
