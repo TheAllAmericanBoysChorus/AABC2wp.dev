@@ -13,6 +13,14 @@
 	height: inherit;
 }
 
+.important-link-new {
+	text-transform: uppercase;
+	font-family: 'Arial', sans-serif;
+	font-weight: 300;
+	font-size: .8rem;
+	color: $brand-red;
+}
+
 
 @media #{$medium-only} { 
 	.content {

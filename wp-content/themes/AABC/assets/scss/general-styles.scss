@@ -8,6 +8,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 2.2rem;
 }
 
+ul {
+  li {
+    font-family: 'Crimson Text', serif;
+    color: #222;
+  }
+}
+
 .clearfix:after {
   content: " "; /* Older browser do not support empty content */
   visibility: hidden;
@@ -34,6 +41,16 @@ h1, h2, h3, h4, h5, h6 {
   h1 {
     color: $brand-red;
     padding-bottom: 2rem;
+  }
+}
+
+.basic-cta-button {
+  background: $brand-red;
+  padding: .5rem 2rem;
+  color: #fff;
+  border-radius: 5rem;
+  &:hover {
+    background: $brand-dark-blue;
   }
 }
 
