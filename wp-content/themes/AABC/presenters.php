@@ -18,15 +18,13 @@
 <div class="blue-bg">
     <div class="row">
         <div class="small-12 columns text-center small-centered song-list-title">
-            <h1>For The 2015 | 2016 Seasons</h1>
+            <h1>For The 2016 | 2017 Seasons</h1>
             <h5>An American Musical Journey</h5>
         </div>
-        <ul class="small-12 large-4 columns song-list small-text-center large-text-left">
-            <h2>Act 1</h2>
+        <ul style="margin-left:0;" class="small-12 large-4 columns song-list small-text-center large-text-left">
             <?php dynamic_sidebar( 'presenters-2' ) ?>
         </ul>
-        <ul class="small-12 large-4 columns song-list small-text-center large-text-left">
-            <h2>Act 2</h2>
+        <ul style="margin-left:0;" class="small-12 large-4 columns song-list small-text-center large-text-left">
             <?php dynamic_sidebar( 'presenters-3' ) ?>
         </ul>
     </div>
