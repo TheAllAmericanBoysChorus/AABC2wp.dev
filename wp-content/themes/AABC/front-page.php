@@ -31,7 +31,7 @@ $the_query = new WP_Query( $args );
                     <img src="<?php bloginfo('template_directory'); ?>/assets/images/ferry-ride.jpg">
                     <a href="<?php echo site_url();?>/blog"><button class="secondary-cta-btn">View Posts</button></a>
             <?php endif; ?>
-            
+
         </div>
     </div>
 
@@ -151,7 +151,7 @@ $the_query = new WP_Query( $args );
         <div class="upcoming-events-home">
             <?php if( have_posts() ) : ?>
                 <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                    <div class="small-4 columns">
+                    <div class="large-4 small-12 medium-4 columns">
                         <div class="calendar-event-bg" style="background:url(<?php the_field('featured_image')?>); background-size: cover; background-position: center;">
                             <div class="black-bg">
                                 <div class="event-info">
@@ -166,7 +166,7 @@ $the_query = new WP_Query( $args );
                         </div>
                     </div>
                 <?php endwhile; ?>
-                
+
                 <?php else : ?>
 
             <?php endif; ?>
