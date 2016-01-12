@@ -30,12 +30,19 @@ $the_query = new WP_Query( $args );
         <?php if( have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <div class="blog-post">
+                    <h1><?php the_field('title');?><br/>
+                    <strong><?php the_field('date');?></strong><br/>
+                    <br/>
+                    <img src="<?php the_field('featured_image');?>"/>
+                    <?php the_field('description');?>
 
-                    <h1><?php the_title(); ?></h1>
+                    <?php if( get_field('button_link') ): ?>
+                        <a target="_blank" href="<?php the_field('button_link'); ?>"><button class="calendar-event-btn"><?php the_field('button_text');?></button></a>
+                    <?php endif; ?>
 
-                    <div class="blog-post-details"><?php the_date(); ?></div>
-
-                    <?php the_content(); ?>
+                    <?php if( get_field('download_file') ): ?>
+                        <a target="_blank" href="<?php the_field('download_file'); ?>"><button class="calendar-event-btn"><?php the_field('download_file_button_text');?></button></a>
+                    <?php endif; ?>
                 </div>
                 <hr />
             <?php endwhile;
@@ -50,7 +57,3 @@ $the_query = new WP_Query( $args );
 </div>
 
 <?php get_footer(); ?>
-
-
-
-

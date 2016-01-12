@@ -59,7 +59,7 @@
 
 
 // Load NOUVEAU compatibility styles
-@import "wordpress";    
+@import "wordpress";
 
 // PLACE YOUR OWN STYLES HERE...
 @import 'parts/header';
@@ -71,6 +71,7 @@
 @import 'pages/donate';
 @import 'pages/films';
 @import 'pages/home';
+@import 'pages/blog';
 @import 'pages/join';
 @import 'pages/presenters';
 @import 'pages/weddings';
@@ -80,5 +81,3 @@
 
 @import 'parts/testimonial-slider';
 @import 'parts/basic-gallery-slider';
-
-

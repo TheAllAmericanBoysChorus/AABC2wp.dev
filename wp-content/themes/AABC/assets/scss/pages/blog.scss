@@ -1,0 +1,20 @@
+.blog-post {
+  strong {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+  }
+}
+
+
+.calendar-event-btn {
+  background: $brand-dark-blue;
+  padding: 1rem 1.5rem;
+  color: white;
+  transition: 0.2s all ease-in-out;
+  border-radius: 10px;
+  &:hover {
+    background: $brand-blue;
+    transition: 0.2s all ease-in-out;
+  }
+}
