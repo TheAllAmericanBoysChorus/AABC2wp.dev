@@ -141,7 +141,7 @@ $args = array(
 
 $the_query = new WP_Query( $args );
 
-?>gm
+?>
 
 <div class="row-full">
     <div class="small-12 columns text-center">
