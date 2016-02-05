@@ -32,20 +32,23 @@ var flkty = new Flickity( '.basic-gallery', {
     });
 
     //Your code goes here
-    // Main Banner Image Script
 
-    // Define Variables
 
-        //var mainBannerId = $("#main-banner");
-        //var homePage = "http://localhost/AABCv3wp.dev/";
-        //var aboutPage = "http://localhost/AABCv3wp.dev/about-us-2/";
-        //
-        //if (location.href === homePage) {
-        //    mainBannerId.addClass("main-cta-bg-home");
-        //    console.log("Hello");
-        //} else {
-        //    mainBannerId.removeClass("main-cta-bg-home");
-        //}
+    $(document).ready(function(){
+
+      $(window).scroll(function(){
+        if($(window).scrollTop() > 1000) {
+          $('.modal-container').addClass('scrolled');
+        } else {
+          return;
+        }
+      });
+
+      $('.modal-container i').on('click', function() {
+        $('.modal-container').addClass('hide');
+      });
+
+    });
 
 
 

@@ -1,3 +1,21 @@
+<div class="modal-container">
+  <div class="row">
+    <div class="small-12 small-centered columns text-center">
+      <div class="email-modal">
+        <div class="modal-content">
+          <div class="modal-image">
+            <i class="fa fa-times"> Close</i>
+          </div>
+          <!-- email form -->
+          <div class="email-form">
+            <?php dynamic_sidebar('email-newsletter-modal');?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <header>
         <div class="main-cta-bg-home">
             <?php get_template_part('site-nav-logo');?>
