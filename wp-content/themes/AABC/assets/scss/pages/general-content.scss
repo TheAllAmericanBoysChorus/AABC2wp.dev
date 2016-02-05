@@ -21,8 +21,29 @@
 	color: $brand-red;
 }
 
+.sidebar-left {
+	i {
+		color: #777;
+	}
 
-@media #{$medium-only} { 
+	span {
+		font-family: "Crimson Text", serif;
+	}
+
+	a {
+		color: #777;
+		&:hover > i {
+			color: $brand-red;
+		}
+
+		&:hover {
+			color: $brand-red;
+		}
+	}
+}
+
+
+@media #{$medium-only} {
 	.content {
 		padding: 3rem 0 !important;
 	}
