@@ -35,12 +35,15 @@
   display: flex;
   align-items: center;
   transition: 0.4s all ease-in;
-}
-
-.home-widget-left:hover, .home-widget-right:hover {
-  opacity: 0.8;
-  transition: 0.4s all ease-in;
-  cursor: pointer;
+  .black-bg {
+      background: rgba(0,0,0,0.6);
+      width: 100%;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 100;
+  }
 }
 
 .home-widget-right {
@@ -52,12 +55,28 @@
   display: flex;
   align-items: center;
   transition: 0.4s all ease-in;
+  .black-bg {
+      background: rgba(0,0,0,0.6);
+      width: 100%;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 100;
+  }
 }
 
 .home-widget-right, .home-widget-left {
   h1 {
+    position: relative;
     color: white;
     margin: 0 auto;
+  }
+
+  &:hover > .black-bg {
+    background: rgba(0,0,0,0);
+    transition: 0.2s all ease-in-out;
+    cursor: pointer;
   }
 }
 

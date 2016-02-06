@@ -175,15 +175,19 @@ $the_query = new WP_Query( $args );
     </div>
 </div>
 
-<div class="row-full clearfix">
+<div class="row-full clearfix alumni-upcoming">
     <a href="<?php echo site_url();?>/alumni-corner">
         <div class="home-widget-left small-12 large-6 columns">
+          <div class="black-bg">
             <h1>Alumni Corner</h1>
+          </div>
         </div>
     </a>
     <a href="<?php echo site_url();?>/calendar">
         <div class="home-widget-right small-12 large-6 columns">
+          <div class="black-bg">
             <h1>Upcoming Events</h1>
+          </div>
         </div>
     </a>
 </div>
