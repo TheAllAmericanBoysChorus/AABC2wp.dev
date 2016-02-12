@@ -308,7 +308,24 @@
 .contain-to-grid {
   background: $brand-dark-blue;
   border-bottom: 2px solid $brand-gold;
+
+  &.fixed-nav {
+    position: fixed;
+    z-index: 300;
+    top: 0;
+
+  }
 }
+
+.small-logo {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+
 
 
 .top-bar.expanded .title-area {

@@ -1,4 +1,4 @@
-<div class="row clearfix logo-sm-container">
+        <div class="row clearfix logo-sm-container">
             <div class="logo large-4 medium-6 small-12 columns small-centered small-text-center large-text-left medium-text-left medium-uncentered large-uncentered">
                 <a href="<?php get_site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo-white.png"/></a>
             </div>
@@ -15,7 +15,7 @@
         <div class="contain-to-grid">
             <nav class="top-bar" data-topbar role="navigation">
                 <ul class="title-area">
-                    <li class="name"></li>
+                    <li class="name"><img class="small-logo" src="<?php bloginfo('template_directory');?>/assets/images/aabc-small-logo.png" width="30px" style="padding-top: 5px; margin-right: 10px;" /></li>
                     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
                 </ul>
                 <section class="top-bar-section">

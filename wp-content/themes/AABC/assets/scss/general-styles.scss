@@ -15,6 +15,10 @@ ul {
   }
 }
 
+#frame {
+  overflow: auto;
+}
+
 .clearfix:after {
   content: " "; /* Older browser do not support empty content */
   visibility: hidden;
@@ -238,7 +242,7 @@ ul {
 
 .blog-content {
   padding-top: 4rem;
-  
+
   h3 {
     color: $brand-gold;
     font-size: 2rem;

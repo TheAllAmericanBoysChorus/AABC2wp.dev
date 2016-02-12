@@ -1,4 +1,3 @@
-
 <?php
 //Template Name: Home
 ?>
@@ -16,7 +15,6 @@ $args = array(
 $the_query = new WP_Query( $args );
 
 ?>
-
 
 <div class="row event-cta">
     <div class="small-12 medium-6 large-5 columns">

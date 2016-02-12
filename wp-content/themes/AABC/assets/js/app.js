@@ -36,6 +36,26 @@ var flkty = new Flickity( '.basic-gallery', {
 
     $(document).ready(function(){
 
+      //  Navigation fixed after scrolling
+      var $mainNavBar = $('.contain-to-grid');
+      var $smallLogo = $('.small-logo');
+
+      $(window).scroll(function(){
+        if($(window).scrollTop() >= 160) {
+          $mainNavBar.addClass('fixed-nav');
+          $smallLogo.addClass('show');
+        } else {
+          $mainNavBar.removeClass('fixed.nav');
+          $smallLogo.removeClass('show');
+        }
+
+        if($(window).scrollTop() <= 160) {
+          $mainNavBar.removeClass('fixed-nav');
+          $smallLogo.removeClass('show');
+        }
+      });
+
+      // Show modal container after scrolling
       $(window).scroll(function(){
         if($(window).scrollTop() > 1000) {
           $('.modal-container').addClass('scrolled');
@@ -44,6 +64,7 @@ var flkty = new Flickity( '.basic-gallery', {
         }
       });
 
+      // Hide modal when 'x' is clicked
       $('.modal-container i').on('click', function() {
         $('.modal-container').addClass('hide');
       });
