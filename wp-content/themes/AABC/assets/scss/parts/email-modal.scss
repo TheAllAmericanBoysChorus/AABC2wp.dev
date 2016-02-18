@@ -26,6 +26,12 @@
   left: 50%;
   transform: translateX(-50%);
 
+  @media #{$small-only} {
+    width: 90%;
+    min-height: 300px;
+    top: 3rem;
+  }
+
   h1 {
     color: $brand-gold;
     padding: 3rem 0;
@@ -40,6 +46,10 @@
       background-size: cover;
       background-position: center;
       min-height: 300px;
+
+      @media #{$small-only} {
+        min-height: 200px;
+      }
 
       i {
         color: white;
