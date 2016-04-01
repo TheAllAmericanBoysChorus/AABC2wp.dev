@@ -50,9 +50,15 @@ $the_query = new WP_Query( $args );
         <div class="event-unit">
             <?php if( $the_query->have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <h1><?php the_field('title');?></h1>
-            <img src="<?php the_field('image');?>">
-            <a href="<?php the_field('button_link');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
+                <h1><?php the_field('title');?></h1>
+                <img src="<?php the_field('image');?>">
+              <?php if(get_field('title') == 'Jog-A-Thon') :?>
+                <div style="position: absolute; top: 55%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+                <?php the_field('jog_a_thon_link');?>
+              </div>
+              <?php else : ?>
+                <a href="<?php the_field('button_link');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
+            <?php endif; ?>
                 <?php endwhile; else : ?>
                 <h1>Up Coming Events</h1>
                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/bus.jpg">
