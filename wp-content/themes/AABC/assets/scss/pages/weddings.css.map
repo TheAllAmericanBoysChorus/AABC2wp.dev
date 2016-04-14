@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEA,kBAAmB,CACjB,YAAY,CAAE,EAAE,CAChB,qBAAG,CACD,UAAU,CAAE,IAAI,CAGlB,4BAAU,CACR,OAAO,CAAE,iCAAiC,CAG5C,qBAAG,CACD,KAAK,CAAE,IAAI,CACX,WAAW,CAAE,qBAAqB",
-"sources": ["weddings.scss"],
-"names": [],
-"file": "weddings.css"
-}

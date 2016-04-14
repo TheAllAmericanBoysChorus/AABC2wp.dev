@@ -61,9 +61,12 @@
 // Load NOUVEAU compatibility styles
 @import "wordpress";
 
+//Import Specific Themed Variables
+@import 'parts/variables';
+
 // PLACE YOUR OWN STYLES HERE...
 @import 'parts/header';
-@import 'general-styles';
+@import 'parts/general-styles';
 @import 'parts/footer';
 @import 'pages/about-us';
 @import 'pages/alumni-corner';
