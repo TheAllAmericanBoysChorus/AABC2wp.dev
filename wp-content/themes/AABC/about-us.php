@@ -56,7 +56,7 @@ $the_query = new WP_Query( $args );
         <?php dynamic_sidebar( 'about-us-info-4' ) ?>
     </div>
 
-    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-6">
+    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-7">
         <?php if( have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <li>
@@ -85,7 +85,3 @@ $the_query = new WP_Query( $args );
 </div>
 
 <?php get_footer(); ?>
-
-
-
-
