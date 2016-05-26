@@ -217,15 +217,23 @@ class BSR_Admin {
 						foreach ( $results['table_reports'] as $table_name => $report ) {
 							$time = $report['end'] - $report['start'];
 
-							if ( $report['change'] != 0 ) {
+							if ( $report['change'] !== 0 ) {
 								$report['change'] = '<strong>' . $report['change'] . '</strong>';
 							}
 
-							if ( $report['updates'] != 0 ) {
+							if ( $report['updates'] !== 0 ) {
 								$report['updates'] = '<strong>' . $report['updates'] . '</strong>';
 							}
 
-							echo '<tr><td class="bsr-first">' . $table_name . '</td><td class="bsr-second">' . $report['change'] . '</td><td class="bsr-third">' . $report['updates'] . '</td><td class="bsr-fourth">' . round( $time, 3 ) . ' seconds</td></tr>';
+							printf(
+								'<tr><td class="bsr-first">%s</td><td class="bsr-second">%s</td><td class="bsr-third">%s</td><td class="bsr-fourth">%s %s</td></tr>',
+								$table_name,
+								$report['change'],
+								$report['updates'],
+								round( $time, 3 ),
+								__( 'seconds', 'better-search-replace' )
+							);
+
 						}
 					?>
 					</tbody>

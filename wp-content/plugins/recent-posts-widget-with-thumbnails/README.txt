@@ -1,56 +1,71 @@
 === Recent Posts Widget With Thumbnails ===
 Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
-Tags: arabic, aspect ratio, category, categories, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
+Tags: arabic, aspect ratio, author, category, categories, category, current post, excerpt, extended, featured, featured images, first post image, height, image, images, listed posts, post date, post categories, post category, post title, random, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
 Requires at least: 2.9
-Tested up to: 4.3.1
-Stable tag: 4.4
+Tested up to: 4.5
+Stable tag: 4.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
+List of your site&#8217;s most recent posts, with clickable title and thumbnails.
 
 == Description ==
 
-The plugin is available in English, German (Deutsch), Persian (Farsi) and Arabic (العربية).
+The plugin is available in English, German (Deutsch), Persian (فارسی), Arabic (العربية) and Polish (Polski).
 
 = Lightweight, simple and effective =
 
-No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and enhanced to display thumbnails of the posts.
+No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and extended to display thumbnails of the posts.
 
 The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail.
 
 You can set the width and heigth of the thumbnails in the list. The thumbnails appear left-aligned to the post titles in left-to-right languages. In right-to-left languages they appear right-aligned.
 
-= Options you can set =
-
-1. Title of the widget
-2. Number of listed posts
-3. Hide current post in list
-4. Keep sticky posts on top of the list
-5. Hide post title
-6. Show post date
-7. Show post excerpt
-8. Show number of comments
-9. Excerpt length
-10. Signs after excerpt
-11. Show posts of selected categories (or of all categories)
-12. Show post thumbnail (featured image)
-13. Registered thumbnail dimensions
-14. Thumbnail width in px
-15. Thumbnail height in px
-16. Keep aspect ratio of thumbnails
-17. Try to take the first post image as thumbnail
-18. Only use the first post image as thumbnail
-19. Use default thumbnail if no thumbnail is available
-20. Default thumbnail URL
-
 = What users said =
 
+* **"&hellip;definitely the best Recent Posts plugin I've found&hellip;"** in the [support forum](https://wordpress.org/support/topic/google-chrome-blurry-thumbnail-85x85) by devintshawn on April 9, 2016
+* **"&hellip;you just have to try it out"** in [WordPress Tools That Use Visuals to Grab Visitors’ Attention](http://www.onextrapixel.com/2016/02/25/wordpress-tools-that-use-visuals-to-grab-visitors-attention/) by Gayane Mar on February 25, 2016
+* **"Easy and lightweight"** in [8 Useful WordPress Widgets for Your Site](http://dinevthemes.com/8-useful-wordpress-widgets-for-your-site/) by Lucy Barret on January 21, 2016
+* **Number 5** in [12 Useful WordPress Sidebar Widgets to Engage Visitors](https://85ideas.com/plugins/best-widgets-wordpress/) by Pawan Kumar on December 8, 2015
+* **Number 1** in [Los 10 widgets de WordPress más prácticos](http://wpdirecto.com/los-10-widgets-de-wordpress-mas-practicos-1860/) by Jorge López on November 13, 2015
 * [How to show recent posts in WordPress blog](http://mayifix.com/how-to-show-recent-posts-in-wordpress-blog.html) by Robin on June 28, 2015
 * **Number 5** in [Best List of Free Recent Posts Widgets for WordPress](http://dotcave.com/wordpress/free-recent-posts-widgets-for-wordpress/) by jerry on November 29, 2014
 * **Number 1** in [Nützlich: Die 10 interessantesten Widgets für Ihre WordPress-Webseite](http://www.drweb.de/magazin/nuetzlich-die-10-interessantesten-widgets-fuer-ihre-wordpress-webseite-50307/) by Andreas Hecht on October 13, 2014
 * **Number 1** in [25 Most Useful WordPress Widgets for Your Site](http://www.wpbeginner.com/showcase/25-most-useful-wordpress-widgets-for-your-site/) by Editorial Staff on September 18, 2014
+
+= Options you can set =
+
+1. Title of the widget
+2. Number of listed posts
+3. Open post links in new windows
+4. Random order of posts
+5. Hide current post in list
+6. Keep sticky posts on top of the list
+7. Hide post title
+8. Maximum length of post title
+9. Show post author
+10. Show post categories
+11. Show post date
+12. Show post excerpt
+13. Show number of comments
+14. Excerpt length
+15. Signs after excerpt
+16. Show posts of selected categories (or of all categories)
+17. Show post thumbnail (featured image)
+18. Registered thumbnail dimensions
+19. Thumbnail width in px
+20. Thumbnail height in px
+21. Keep aspect ratio of thumbnails
+22. Try to take the first post image as thumbnail
+23. Only use the first post image as thumbnail
+24. Use default thumbnail if no thumbnail is available
+25. Default thumbnail URL
+
+= Much more options available =
+
+If you want to build your special posts lists with additional options for layout, informations about each post and embedding via shortcode [take a look at the plugin Ultimate Post List Pro](http://shop.stehle-internet.de/downloads/ultimate-post-list-pro/).
+
 
 = Useful hints for developers: Hooks and CSS =
 
@@ -62,8 +77,9 @@ The user interface is available in
 
 * English
 * German (Deutsch)
-* Persian (Farsi), kindly drawn up by [Sajjad Panahi](https://profiles.wordpress.org/asreelm)
+* Persian (فارسی), kindly drawn up by [Sajjad Panahi](https://profiles.wordpress.org/asreelm)
 * Arabic (العربية), kindly drawn up by [Shadi AlZard](https://wordpress.org/support/profile/salzard)
+* Polish (Polski), kindly drawn up by [Marcin Mikolajczyk](https://wordpress.org/support/profile/marcinmik)
 
 Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](https://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
 
@@ -74,10 +90,10 @@ Further translations are welcome. If you want to give in your translation please
 The plugin considers the output of actions hooked on:
 
 1. widget_title
-2. widget_posts_args
-3. excerpt_more
-4. excerpt_length
-5. list_cats
+2. rpwwt_widget_posts_args
+3. rpwwt_excerpt_more
+4. rpwwt_excerpt_length
+5. rpwwt_list_cats
 
 = Available CSS Selectors =
 
@@ -103,6 +119,12 @@ All images in the list (use that to set the margins around images):
 
 All post titles in the list:
 `.rpwwt-widget ul li a span.rpwwt-post-title`
+
+All post author in the list:
+`.rpwwt-widget ul li div.rpwwt-post-author`
+
+All post categories in the list:
+`.rpwwt-widget ul li div.rpwwt-post-categories`
 
 All post dates in the list:
 `.rpwwt-widget ul li div.rpwwt-post-date`
@@ -174,10 +196,60 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Screenshots ==
 
-1. The first screenshot shows the widget in the sidebar with five teasers of current posts. Each list item shows the title, image, date and excerpt of a post.
+1. The first screenshot shows the widget in the sidebar with five teasers of current posts. Each list item shows the title, image, date, assigned categories and excerpt of a post.
 2. The second screenshot shows the widget on the Widget Management Page in the backend.
 
 == Changelog ==
+
+= 4.9.2 =
+* Added polish translation. Thank you very much, [Marcin Mikolajczyk](https://wordpress.org/support/profile/marcinmik)
+* Improved: Manual excerpts are taken unchanged ("as is")
+* I18n description in the backend's plugin list
+* Added link to more versatile plugin [Ultimate Post List Pro](http://shop.stehle-internet.de/downloads/ultimate-post-list-pro/)
+* Tested successfully with WordPress 4.5
+* Updated *.pot file and translations
+
+= 4.9.1 =
+* Improved integration of 3rd party plugins for effects on the thumbnail
+
+= 4.9 =
+* Added option: Open post links in new windows
+* Renamed back: Hook 'rpwwt-widget-title' to 'widget-title' to let 3rd party plugins change the title
+* Improved sanitizing of stored variables
+* Updated *.pot file and translations
+* Updated screenshot of widget in the backend
+
+= 4.8 =
+* Added option: Show post author
+* Updated *.pot file and translations
+* Updated screenshot of widget in the backend
+
+= 4.7 =
+* Added option: Random order of posts
+* Updated *.pot file and translations
+* Updated screenshot of widget in the backend
+* Tested successfully with WordPress 4.4.2
+
+= 4.6.2 =
+* Renamed the hook names to avoid interferences with other functions of plugins and the theme. If you use these hooks for that plugin please change them: just place 'rpwwt_' before the hook names
+* Improved: Last list item has no space anymore to the next widget to keep same spaces between widgets
+
+= 4.6.1 =
+* Fixed: widget title. Now if no title is entered no title is displayed (instead of showing the plugin's name)
+* Fixed: commas in categories list. Commas are now internationalized (translated)
+
+= 4.6 =
+* Added option: Post categories
+* Updated *.pot file and translations
+* Updated screenshot of widget in the backend
+
+= 4.5.1 =
+* Moved comment checkbox to position after form fields for the excerpt options
+* Tested successfully with WordPress 4.4
+
+= 4.5 =
+* Added option: Post title length
+* Updated *.pot file and translations
 
 = 4.4 =
 * Added option: Show number of comments
@@ -289,6 +361,36 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.9.2 =
+Some text improvements, polish translation, tested with WP 4.5
+
+= 4.9.1 =
+Improved integration of 3rd party plugins on the thumbnail
+
+= 4.9 =
+Added option: Open link in new window; renamed back: hook 'rpwwt-widget-title' to 'widget-title'
+
+= 4.8 =
+Added option: Show post author
+
+= 4.7 =
+Added option: Random posts order
+
+= 4.6.2 =
+Renamed the hook names to avoid interferences: just place 'rpwwt_' before the hook names. Small CSS improvement
+
+= 4.6.1 =
+Fixed empty widget title, comma internationalization
+
+= 4.6 =
+Added option: Post categories
+
+= 4.5.1 =
+Moved comment checkbox, tested with WordPress 4.4
+
+= 4.5 =
+Added option: Post title length
 
 = 4.4 =
 Added option: Show number of comments

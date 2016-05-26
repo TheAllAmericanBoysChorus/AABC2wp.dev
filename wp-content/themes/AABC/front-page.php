@@ -16,14 +16,29 @@ $the_query = new WP_Query( $args );
 
 ?>
 
-<div class="row event-cta">
-    <div class="small-12 medium-6 large-5 columns">
+<div class="row-full event-cta">
+    <div class="small-12 medium-6 large-6 columns">
         <div class="event-unit">
             <?php if( $the_query->have_posts() ) : ?>
                 <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                     <h1><?php the_field('title');?></h1>
-                    <img src="<?php the_field('image');?>">
-                    <a href="<?php the_field('button_link');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
+                    <div style="background: url('<?php the_field('image');?>'); background-size: cover; min-height: 550px; max-height: 550px; background-position: center;">
+
+                      <a href="<?php the_field('button_link');?>">
+                        <div class="black-bg">
+                            <div class="event-info">
+                                <h2><?php the_field( 'title' );?></h2>
+                                <span class="date"><?php the_field( 'date' );?></span><br/>
+                                <span class="location"><?php the_field( 'location' );?></span><br/>
+                                <span class="address"><?php the_field( 'address' );?></span><br/>
+                                <a href="<?php the_field('button_link');?>"><button class="event-unit-btn"><?php the_field('button_text');?></button></a>
+                            </div>
+                        </div>
+                      </a>
+
+
+                    </div>
+
                 <?php endwhile; else : ?>
                     <h1>The Blog</h1>
                     <img src="<?php bloginfo('template_directory'); ?>/assets/images/ferry-ride.jpg">
@@ -46,18 +61,33 @@ $the_query = new WP_Query( $args );
     ?>
 
 
-    <div class="small-12 medium-6 large-5 columns">
+    <div class="small-12 medium-6 large-6 columns">
         <div class="event-unit">
             <?php if( $the_query->have_posts() ) : ?>
             <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <h1><?php the_field('title');?></h1>
-                <img src="<?php the_field('image');?>">
-              <?php if(get_field('title') == 'Jog-A-Thon') :?>
+                <div style="background: url('<?php the_field('image');?>'); background-size: cover; min-height: 550px; max-height: 550px; background-position: center;">
+
+                  <a href="<?php the_field('button_link');?>">
+                    <div class="black-bg">
+                        <div class="event-info">
+                            <h2><?php the_field( 'title' );?></h2>
+                            <span class="date"><?php the_field( 'date' );?></span><br/>
+                            <span class="location"><?php the_field( 'location' );?></span><br/>
+                            <span class="address"><?php the_field( 'address' );?></span><br/>
+                            <a href="<?php the_field('button_link');?>"><button class="event-unit-btn"><?php the_field('button_text');?></button></a>
+                        </div>
+                    </div>
+                  </a>
+
+
+                </div>
+              <!-- <?php if(get_field('title') == 'Jog-A-Thon') :?>
                 <div style="position: absolute; top: 55%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
                 <?php the_field('jog_a_thon_link');?>
               </div>
-              <?php else : ?>
-                <a href="<?php the_field('button_link');?>"><button class="secondary-cta-btn"><?php the_field('button_text');?></button></a>
+              <?php else : ?> -->
+
             <?php endif; ?>
                 <?php endwhile; else : ?>
                 <h1>Up Coming Events</h1>

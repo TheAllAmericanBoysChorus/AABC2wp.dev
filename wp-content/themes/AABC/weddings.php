@@ -7,7 +7,7 @@
 <?php get_template_part( 'weddings-header' ); ?>
 
 <div class="row-full info-right clearfix">
-    <div class="small-12 medium-9 large-4 columns content left small-text-center large-text-left">
+    <div class="small-11 medium-7 large-4 large-uncentered large-push-1 small-centered columns content small-text-center medium-text-center large-text-left">
         <h1>Dynamic Enough To Sing In An Opera House, Inimate Enough For Your Wedding. </h1>
         <h5>Our Performance Will Move You</h5>
         <p>For those seeking to offer a magical entertainment experience for their
@@ -58,7 +58,7 @@ $the_query = new WP_Query( $args );
 <?php wp_reset_query(); ?>
 
 <div class="row-full info-right clearfix">
-    <div class="small-12 medium-7 large-4 columns content right small-text-center medium-text-center large-text-left wedding-song-list">
+    <div class="small-11 medium-7 large-4 large-push-1 small-centered columns content small-text-center medium-text-center large-text-left large-uncentered">
         <?php dynamic_sidebar( 'wedding-songs' ) ?>
     </div>
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
@@ -67,7 +67,3 @@ $the_query = new WP_Query( $args );
 
 
 <?php get_footer(); ?>
-
-
-
-

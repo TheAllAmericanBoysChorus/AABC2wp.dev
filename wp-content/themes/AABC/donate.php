@@ -8,7 +8,7 @@
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
-    <div class="small-11 medium-10 large-4 columns content left small-text-center medium-text-center large-text-left">
+    <div class="small-11 medium-7 large-4 large-push-1 small-centered columns content small-text-center medium-text-center large-text-left large-uncentered">
         <h1>It’s Time To Sing Your Song</h1>
         <h5>Be A Part Of A World-Class Organization That Gives Back.</h5>
         <p>Each year the AABC must conduct a fundraising and Season Sponsorship campaigns to fill the gap between total annual expenses and the revenue realized from tuition, ticket sales, performance fees, and other earned income.  This season, AABC must raise $180,000 (25% of its 2014 operating budget).</p>

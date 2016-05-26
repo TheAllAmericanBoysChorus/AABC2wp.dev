@@ -32,7 +32,7 @@ var flkty = new Flickity( '.basic-gallery', {
     contain: true,
     wrapAround: true,
     pageDots: false,
-    prevNextButtons: true,
+    prevNextButtons: false,
     autoPlay: 5000
 });
 

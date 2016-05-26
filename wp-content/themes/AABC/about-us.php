@@ -8,7 +8,7 @@
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">
-    <div class="small-11 medium-7 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+    <div class="small-11 medium-7 large-4 large-push-1 small-centered columns content small-text-center medium-text-center large-text-left large-uncentered">
         <div class="buffer">
             <?php dynamic_sidebar( 'about-us-info-1' ) ?>
         </div>
@@ -17,7 +17,7 @@
 
 <div class="row-full clearfix">
     <img class="right small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/boys-jumping.jpg">
-    <div class="small-11 large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+    <div class="small-11 medium-7 large-4 large-uncentered large-push-1 small-centered columns content small-text-center medium-text-center large-text-left">
         <div class="buffer">
             <?php dynamic_sidebar( 'about-us-info-2' ) ?>
         </div>
@@ -26,7 +26,7 @@
 
 <div class="row-full clearfix">
     <img class="left small-12 large-6 columns"  src="<?php bloginfo( 'template_directory' )?>/assets/images/iowa.jpg">
-    <div class="small-11 medium-10  large-4 small-centered columns content small-text-center medium-text-center large-text-left">
+    <div class="small-11 medium-7 large-4 large-push-1 small-centered columns content small-text-center medium-text-center large-text-left large-uncentered">
     <div class="buffer">
         <?php dynamic_sidebar( 'about-us-info-3' ) ?>
     </div>
