@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'contact-header' ); ?>
+<?php include( get_template_directory() . '/headers/contact-header.php'); ?>
 
 <div class="row">
     <div class="small-12 columns text-center contact-us">
@@ -19,7 +19,3 @@
 
 
 <?php get_footer(); ?>
-
-
-
-

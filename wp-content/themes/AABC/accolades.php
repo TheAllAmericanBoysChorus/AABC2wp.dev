@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'accolades-header' ); ?>
+<?php include( get_template_directory() . '/headers/accolades-header.php'); ?>
 
 <div class="accolades row">
     <div class="small-12 medium-12 large-10 columns text-center large-centered">
@@ -77,7 +77,3 @@ $the_query = new WP_Query( $args );
 </div>
 
 <?php get_footer(); ?>
-
-
-
-

@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'fall-gala-header' ); ?>
+<?php include( get_template_directory() . '/headers/fall-gala-header.php'); ?>
 
 <div class="row">
 	<div class="text-center small-12 columns main-title">
@@ -29,7 +29,3 @@
 
 
 <?php get_footer(); ?>
-
-
-
-

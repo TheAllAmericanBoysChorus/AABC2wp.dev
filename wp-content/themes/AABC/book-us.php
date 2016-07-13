@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'book-us-header' ); ?>
+<?php include( get_template_directory() . '/headers/book-us-header.php'); ?>
 
 <div class="row create-buzz">
     <div class="small-12 medium-10 large-8 small-centered text-center columns">
@@ -95,7 +95,3 @@ $the_query = new WP_Query( $args );
 </div>
 
 <?php get_footer(); ?>
-
-
-
-

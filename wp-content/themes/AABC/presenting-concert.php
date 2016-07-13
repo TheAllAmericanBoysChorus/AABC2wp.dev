@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'vocal-point-header' ); ?>
+<?php include( get_template_directory() . '/headers/vocal-point-header.php'); ?>
 
 
 

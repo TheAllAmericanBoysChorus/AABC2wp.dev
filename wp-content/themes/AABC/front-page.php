@@ -3,7 +3,7 @@
 ?>
 <?php get_header(); ?>
 
-<?php get_template_part( 'home-header' ); ?>
+<?php include( get_template_directory() . '/headers/home-header.php' ); ?>
 
 
 <?php

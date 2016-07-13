@@ -5,7 +5,7 @@
 get_header();
 ?>
 
-<?php get_template_part( 'season-sponsorship-header' ); ?>
+<?php include( get_template_directory() . '/headers/season-sponsorship-header.php'); ?>
 
 <div class="row">
     <div class="small-12 medium-10 large-7 small-centered text-center columns main-title">
@@ -21,11 +21,11 @@ get_header();
 </div>
 
 <div class="row-full sponsor-levels-grid clearfix blue-bg">
-	
+
 	<div class="text-center small-12 columns">
 		<h1 class="season-sponsor-section-title">Season Sponsor Levels</h1>
 	</div>
-	
+
 	<div class="small-12 medium-3 large-2 medium-offset-1 columns sponsorship-unit text-center accolades-sponsor">
 		<div class="level-amount">$5,000</div>
 		<h1>Accolades Sponsor</h1>
@@ -43,7 +43,7 @@ get_header();
 			</div>
 		</ul>
 	</div>
-	
+
 	<div class="small-12 medium-3 large-2 columns sponsorship-unit text-center applause-sponsor">
 		<div class="level-amount">$10,000</div>
 		<h1>Applause Sponsor</h1>
@@ -84,13 +84,13 @@ get_header();
 			<div class="text-center">
 				<button class="sponsor-button">Sponsor The Chorus</button>
 			</div>
-			
+
 		</ul>
 	</div>
 
 
 
-	
+
 
 	<div class="small-12 medium-5 large-2 columns sponsorship-unit text-center standing-ovation-sponsor">
 		<div class="level-amount">$25,000</div>
@@ -158,7 +158,3 @@ $the_query = new WP_Query( $args );
 </div>
 
 <?php get_footer(); ?>
-
-
-
-

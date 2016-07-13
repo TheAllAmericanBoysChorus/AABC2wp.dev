@@ -6,7 +6,7 @@ get_header();
 
 ?>
 
-<?php get_template_part( 'our-parents-header' ); ?>
+<?php include( get_template_directory() . '/headers/our-parents-header.php'); ?>
 
 <div class="row">
     <div class="small-12 medium-8 large-12 columns text-center small-centered main-title">
@@ -29,7 +29,7 @@ $the_query = new WP_Query( $args );
 
 ?>
 
-<?php 
+<?php
     if (!post_password_required() ) { ?>
         <div class="row">
             <div class="small-12 large-8 columns right general-content-right">
@@ -43,7 +43,3 @@ $the_query = new WP_Query( $args );
     <?php } ?>
 
 <?php get_footer(); ?>
-
-
-
-

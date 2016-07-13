@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'weddings-header' ); ?>
+<?php include( get_template_directory() . '/headers/weddings-header.php'); ?>
 
 <div class="row-full info-right clearfix">
     <div class="small-11 medium-7 large-4 large-uncentered large-push-1 small-centered columns content small-text-center medium-text-center large-text-left">

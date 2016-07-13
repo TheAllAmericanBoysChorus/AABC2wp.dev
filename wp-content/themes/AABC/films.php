@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'films-recordings-header' ); ?>
+<?php include( get_template_directory() . '/headers/films-recordings-header.php'); ?>
 
 <div class="row">
     <div class="small-11 medium-10 large-7 small-centered text-center columns main-title">

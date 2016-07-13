@@ -5,7 +5,7 @@
 get_header();
 ?>
 
-<?php get_template_part( 'press-releases-header' ); ?>
+<?php include(get_template_directory() . '/headers/press-releases-header.php'); ?>
 
 <div class="row">
     <div class="small-12 medium-10 large-7 small-centered text-center columns main-title">
@@ -50,7 +50,3 @@ $the_query = new WP_Query( $args );
 </div>
 
 <?php get_footer(); ?>
-
-
-
-

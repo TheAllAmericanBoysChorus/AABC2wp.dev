@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'donate-header' ); ?>
+<?php include( get_template_directory() . '/headers/donate-header.php'); ?>
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/3-boys.jpg">

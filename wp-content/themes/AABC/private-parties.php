@@ -4,7 +4,7 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part( 'private-parties-header' ); ?>
+<?php include(get_template_directory() . '/headers/private-parties-header.php'); ?>
 
 <div class="row-full info-right clearfix">
     <img class="left small-12 large-6 columns" src="<?php bloginfo( 'template_directory' )?>/assets/images/concert-2.jpg">
