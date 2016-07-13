@@ -1,6 +1,6 @@
 <header>
 	<div class="main-cta-bg-film">
-		<?php get_template_part('site-nav-logo'); ?>
+		<?php include( get_template_directory() . '/navigation/site-nav-logo.php'); ?>
         <div class="main-cta">
             <div class="row">
                 <div class="small-10 small-centered columns text-center">
