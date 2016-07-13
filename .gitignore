@@ -6,3 +6,9 @@
 
 /wp-content/themes/AABC/node_modules
 /wp-content/themes/AABC/bower_components
+
+
+# Jetbrains Editor Files & Folders
+*.idea
+*.xml
+*.iml
