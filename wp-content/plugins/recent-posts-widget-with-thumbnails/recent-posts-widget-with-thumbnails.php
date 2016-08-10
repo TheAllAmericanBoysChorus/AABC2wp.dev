@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     4.4
+Version:     4.9.2
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-widget-with-thumbnails
@@ -26,11 +26,15 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	var $default_thumb_width;  // custom width of the thumbnail
 	var $default_thumb_height; // custom height of the thumbnail
 	var $default_thumb_url; // URL of the default thumbnail
+	var $default_post_title_length; // number of chars of excerpt
 	var $default_excerpt_length; // number of chars of excerpt
 	var $default_excerpt_more; // characters to indicate further text
 	var $default_category_ids; // selected categories
 	var $css_file_path; // path of the public css file
 	var $current_thumb_dimensions; // set size of the thumbnail
+	var $in_categories_text; // translated text for 'In {categories}' 
+	var $comma_text; // translated text for ', ' 
+	var $author_text; // translated text for 'Author:' 
 
 	function __construct() {
 		$language_codes = explode( '_', get_locale() );
@@ -44,21 +48,26 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				$widget_desc = 'فهرست سایت شما ارسال جدید، با عنوان قابل کلیک و عکسها';
 				break;
 			case 'de':
-				$widget_name = 'Letzte Beitr&auml;ge, mit Vorschaubildern';
+				$widget_name = 'Letzte Beitr&auml;ge mit Vorschaubildern';
 				$widget_desc = 'Liste deiner aktuellsten Beitr&auml;ge, mit klickbaren &Uuml;berschriften und Vorschaubildern.';
 				break;
+			case 'pl':
+				$widget_name = 'Ostatnie posty z miniaturami';
+				$widget_desc = 'Lista ostatnich wpisów twojej strony z klikalnymi tytułami i miniaturami.';
+				break;
 			default:
-				$widget_name = 'Recent Posts, With Thumbnails';
+				$widget_name = 'Recent Posts With Thumbnails';
 				$widget_desc = 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.';
 		}
 		$this->plugin_slug				= 'recent-posts-widget-with-thumbnails';
-		$this->plugin_version			= '4.4';
+		$this->plugin_version			= '4.9.2';
 		$this->default_number_posts		= 5;
 		$this->default_thumb_dimensions	= 'custom';
 		$this->default_thumb_width		= absint( round( get_option( 'thumbnail_size_w', 110 ) / 2 ) );
 		$this->default_thumb_height 	= absint( round( get_option( 'thumbnail_size_h', 110 ) / 2 ) );
-		$this->default_excerpt_length	= absint( apply_filters( 'excerpt_length', 55 ) );
-		$this->default_excerpt_more		= apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$this->default_post_title_length = 1000;
+		$this->default_excerpt_length	= absint( apply_filters( 'rpwwt_excerpt_length', 55 ) );
+		$this->default_excerpt_more		= apply_filters( 'rpwwt_excerpt_more', ' ' . '[&hellip;]' );
 		$this->default_category_ids		= array( 0 );
 		$this->default_thumb_url		= plugins_url( 'default_thumb.gif', __FILE__ );
 		$this->css_file_path			= dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'public.css';
@@ -73,8 +82,10 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_public_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_style' ) );
 
-		$widget_name = __( 'Recent Posts, With Thumbnails', 'recent-posts-widget-with-thumbnails' );
+		// not in use, just for the po-editor to display the translation on the plugins overview list
+		$widget_name = __( 'Recent Posts With Thumbnails', 'recent-posts-widget-with-thumbnails' );
 		$widget_desc = __( 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.', 'recent-posts-widget-with-thumbnails' );
+
 	}
 
 	function widget( $args, $instance ) {
@@ -100,24 +111,29 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		extract( $args );
 
 		// get and sanitize values
-		$title					= ( ! empty( $instance[ 'title' ] ) )				? $instance[ 'title' ]									: __( 'Recent Posts With Thumbnails', 'recent-posts-widget-with-thumbnails' );
+		$title					= ( ! empty( $instance[ 'title' ] ) )				? esc_html( $instance[ 'title' ] )						: '';
 		$title					= apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$category_ids 			= ( ! empty( $instance[ 'category_ids' ] ) )		? array_map( 'absint', $instance[ 'category_ids' ] )	: $this->default_category_ids;
-		$default_url 			= ( ! empty( $instance[ 'default_url' ] ) )			? $instance[ 'default_url' ]							: $this->default_thumb_url;
+		$default_url 			= ( ! empty( $instance[ 'default_url' ] ) )			? esc_url_raw( $instance[ 'default_url' ] )				: $this->default_thumb_url;
+		$thumb_dimensions		= ( ! empty( $instance[ 'thumb_dimensions' ] ) )	? $instance[ 'thumb_dimensions' ]						: $this->default_thumb_dimensions;
 		$excerpt_length 		= ( ! empty( $instance[ 'excerpt_length' ] ) )		? absint( $instance[ 'excerpt_length' ] )				: $this->default_excerpt_length;
 		$number_posts			= ( ! empty( $instance[ 'number_posts' ] ) )		? absint( $instance[ 'number_posts' ] )					: $this->default_number_posts;
-		$thumb_dimensions		= ( ! empty( $instance[ 'thumb_dimensions' ] ) )	? $instance[ 'thumb_dimensions' ]						: $this->default_thumb_dimensions;
+		$post_title_length 		= ( ! empty( $instance[ 'post_title_length' ] ) )	? absint( $instance[ 'post_title_length' ] )			: $this->default_post_title_length;
 		$hide_current_post		= ( isset( $instance[ 'hide_current_post' ] ) ) 	? (bool) $instance[ 'hide_current_post' ]				: false;
 		$hide_title				= ( isset( $instance[ 'hide_title' ] ) ) 			? (bool) $instance[ 'hide_title' ]						: false;
 		$keep_aspect_ratio		= ( isset( $instance[ 'keep_aspect_ratio' ] ) )		? (bool) $instance[ 'keep_aspect_ratio' ]				: false;
 		$keep_sticky			= ( isset( $instance[ 'keep_sticky' ] ) )			? (bool) $instance[ 'keep_sticky' ]						: false;
 		$only_1st_img			= ( isset( $instance[ 'only_1st_img' ] ) )			? (bool) $instance[ 'only_1st_img' ]					: false;
-		$show_date				= ( isset( $instance[ 'show_date' ] ) )				? (bool) $instance[ 'show_date' ]						: false;
+		$random_order			= ( isset( $instance[ 'random_order' ] ) )			? (bool) $instance[ 'random_order' ]					: false;
+		$show_author			= ( isset( $instance[ 'show_author' ] ) )			? (bool) $instance[ 'show_author' ]						: false;
+		$show_categories		= ( isset( $instance[ 'show_categories' ] ) )		? (bool) $instance[ 'show_categories' ]					: false;
 		$show_comments_number	= ( isset( $instance[ 'show_comments_number' ] ) )	? (bool) $instance[ 'show_comments_number' ]			: false;
+		$show_date				= ( isset( $instance[ 'show_date' ] ) )				? (bool) $instance[ 'show_date' ]						: false;
 		$show_excerpt			= ( isset( $instance[ 'show_excerpt' ] ) )			? (bool) $instance[ 'show_excerpt' ]					: false;
 		$show_thumb				= ( isset( $instance[ 'show_thumb' ] ) )			? (bool) $instance[ 'show_thumb' ]						: false;
 		$try_1st_img			= ( isset( $instance[ 'try_1st_img' ] ) )			? (bool) $instance[ 'try_1st_img' ]						: false;
 		$use_default			= ( isset( $instance[ 'use_default' ] ) )			? (bool) $instance[ 'use_default' ]						: false;
+		$open_new_window		= ( isset( $instance[ 'open_new_window' ] ) )		? (bool) $instance[ 'open_new_window' ]					: false;
 
 		// let empty string
 		if ( ! empty( $instance[ 'excerpt_more' ] ) ) {
@@ -165,6 +181,13 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		}
 		$default_img .= ' />';
 		
+		// set link target
+		if ( $open_new_window ) {
+			$link_target = ' target="_blank"';
+		} else {
+			$link_target = '';
+		}
+		
 		// filter the arguments for the Recent Posts widget:
 		
 		// standard params
@@ -177,7 +200,10 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		// ignore sticky posts if desired, else show them on top
 		$query_args[ 'ignore_sticky_posts' ] = ( $keep_sticky ) ? false : true;
 		
-		// add categories param only if not 'all categories' was selected
+		// set order of posts in widget
+		$query_args[ 'orderby' ] = ( $random_order ) ? 'rand' : 'date';
+		
+		// add categories param only if 'all categories' was not selected
 		if ( ! in_array( 0, $category_ids ) ) {
 			$query_args[ 'category__in' ] = $category_ids;
 		}
@@ -191,9 +217,16 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		}
 
 		// run the query: get the latest posts
-		$r = new WP_Query( apply_filters( 'widget_posts_args', $query_args ) );
+		$r = new WP_Query( apply_filters( 'rpwwt_widget_posts_args', $query_args ) );
 
 		if ( $r->have_posts()) :
+		
+			// translate repeately used texts once (for more performance)
+			$this->in_categories_text = _x( 'In', 'In {categories}', 'recent-posts-widget-with-thumbnails' );
+			$text = ', ';
+			$this->comma_text = __( $text );
+			$text = 'By %s';
+			$this->author_text = __( $text );
 
 			// print list
 			include 'includes/widget.php';
@@ -215,11 +248,12 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$instance = $old_widget_settings;
 		// sanitize user input before update
 		$instance[ 'title' ] 				= ( isset( $new_widget_settings[ 'title' ] ) )					? strip_tags( $new_widget_settings[ 'title' ] )					: '';
-		$instance[ 'default_url' ] 			= ( isset( $new_widget_settings[ 'default_url' ] ) )			? strip_tags( $new_widget_settings[ 'default_url' ] )			: $this->default_thumb_url;
+		$instance[ 'default_url' ] 			= ( isset( $new_widget_settings[ 'default_url' ] ) )			? esc_url_raw( $new_widget_settings[ 'default_url' ] )			: $this->default_thumb_url;
 		$instance[ 'thumb_dimensions' ] 	= ( isset( $new_widget_settings[ 'thumb_dimensions' ] ) )		? strip_tags( $new_widget_settings[ 'thumb_dimensions' ] )		: $this->default_thumb_dimensions;
 		$instance[ 'category_ids' ]   		= ( isset( $new_widget_settings[ 'category_ids' ] ) )			? array_map( 'absint', $new_widget_settings[ 'category_ids' ] )	: $this->default_category_ids;
 		$instance[ 'excerpt_length' ] 		= ( isset( $new_widget_settings[ 'excerpt_length' ] ) )			? absint( $new_widget_settings[ 'excerpt_length' ] )			: $this->default_excerpt_length;
 		$instance[ 'number_posts' ]			= ( isset( $new_widget_settings[ 'number_posts' ] ) )			? absint( $new_widget_settings[ 'number_posts' ] )				: $this->default_number_posts;
+		$instance[ 'post_title_length' ] 	= ( isset( $new_widget_settings[ 'post_title_length' ] ) )		? absint( $new_widget_settings[ 'post_title_length' ] )			: $this->default_post_title_length;
 		$instance[ 'thumb_height' ] 		= ( isset( $new_widget_settings[ 'thumb_height' ] ) )			? absint( $new_widget_settings[ 'thumb_height' ] )				: $this->default_thumb_height;
 		$instance[ 'thumb_width' ] 			= ( isset( $new_widget_settings[ 'thumb_width' ] ) )			? absint( $new_widget_settings[ 'thumb_width' ] )				: $this->default_thumb_width;
 		$instance[ 'hide_current_post' ]	= ( isset( $new_widget_settings[ 'hide_current_post' ] ) )		? (bool) $new_widget_settings[ 'hide_current_post' ]			: false;
@@ -227,12 +261,16 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$instance[ 'keep_aspect_ratio'] 	= ( isset( $new_widget_settings[ 'keep_aspect_ratio' ] ) )		? (bool) $new_widget_settings[ 'keep_aspect_ratio' ]			: false;
 		$instance[ 'keep_sticky' ] 			= ( isset( $new_widget_settings[ 'keep_sticky' ] ) )			? (bool) $new_widget_settings[ 'keep_sticky' ]					: false;
 		$instance[ 'only_1st_img' ] 		= ( isset( $new_widget_settings[ 'only_1st_img' ] ) )			? (bool) $new_widget_settings[ 'only_1st_img' ]					: false;
-		$instance[ 'show_date' ] 			= ( isset( $new_widget_settings[ 'show_date' ] ) )				? (bool) $new_widget_settings[ 'show_date' ]					: false;
+		$instance[ 'random_order' ]			= ( isset( $new_widget_settings[ 'random_order' ] ) )			? (bool) $new_widget_settings[ 'random_order' ]					: false;
+		$instance[ 'show_author' ]			= ( isset( $new_widget_settings[ 'show_author' ] ) )			? (bool) $new_widget_settings[ 'show_author' ]					: false;
+		$instance[ 'show_categories' ]		= ( isset( $new_widget_settings[ 'show_categories' ] ) )		? (bool) $new_widget_settings[ 'show_categories' ]				: false;
 		$instance[ 'show_comments_number' ]	= ( isset( $new_widget_settings[ 'show_comments_number' ] ) )	? (bool) $new_widget_settings[ 'show_comments_number' ]			: false;
+		$instance[ 'show_date' ] 			= ( isset( $new_widget_settings[ 'show_date' ] ) )				? (bool) $new_widget_settings[ 'show_date' ]					: false;
 		$instance[ 'show_excerpt' ] 		= ( isset( $new_widget_settings[ 'show_excerpt' ] ) )			? (bool) $new_widget_settings[ 'show_excerpt' ]					: false;
 		$instance[ 'show_thumb' ] 			= ( isset( $new_widget_settings[ 'show_thumb' ] ) )				? (bool) $new_widget_settings[ 'show_thumb' ]					: false;
 		$instance[ 'try_1st_img' ] 			= ( isset( $new_widget_settings[ 'try_1st_img' ] ) )			? (bool) $new_widget_settings[ 'try_1st_img' ]					: false;
 		$instance[ 'use_default' ] 			= ( isset( $new_widget_settings[ 'use_default' ] ) )			? (bool) $new_widget_settings[ 'use_default' ]					: false;
+		$instance[ 'open_new_window' ]		= ( isset( $new_widget_settings[ 'open_new_window' ] ) )		? (bool) $new_widget_settings[ 'open_new_window' ]				: false;
 
 		// let empty string
 		if ( isset( $new_widget_settings[ 'excerpt_more' ] ) ) {
@@ -272,10 +310,11 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
 	function form( $instance ) {
 		// get and sanitize values
-		$title					= ( isset( $instance[ 'title' ] ) ) 				? $instance[ 'title' ]									: '';
+		$title					= ( isset( $instance[ 'title' ] ) ) 				? esc_html( $instance[ 'title' ] )						: '';
 		$thumb_dimensions		= ( isset( $instance[ 'thumb_dimensions' ] ) )		? $instance[ 'thumb_dimensions' ]						: $this->default_thumb_dimensions;
-		$default_url			= ( isset( $instance[ 'default_url' ] ) )			? $instance[ 'default_url' ]							: $this->default_thumb_url;
+		$default_url			= ( isset( $instance[ 'default_url' ] ) )			? esc_url_raw( $instance[ 'default_url' ] )				: $this->default_thumb_url;
 		$excerpt_length			= ( isset( $instance[ 'excerpt_length' ] ) )		? absint( $instance[ 'excerpt_length' ] )				: $this->default_excerpt_length;
+		$post_title_length		= ( isset( $instance[ 'post_title_length' ] ) )		? absint( $instance[ 'post_title_length' ] )			: $this->default_post_title_length;
 		$number_posts			= ( isset( $instance[ 'number_posts' ] ) )			? absint( $instance[ 'number_posts' ] )					: $this->default_number_posts;
 		$thumb_height			= ( isset( $instance[ 'thumb_height' ] ) )			? absint( $instance[ 'thumb_height' ] )					: $this->default_thumb_height;
 		$thumb_width			= ( isset( $instance[ 'thumb_width' ] ) )			? absint( $instance[ 'thumb_width' ] )					: $this->default_thumb_width;
@@ -285,12 +324,16 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$keep_aspect_ratio		= ( isset( $instance[ 'keep_aspect_ratio' ] ) )		? (bool) $instance[ 'keep_aspect_ratio' ]				: false;
 		$keep_sticky			= ( isset( $instance[ 'keep_sticky' ] ) )			? (bool) $instance[ 'keep_sticky' ]						: false;
 		$only_1st_img			= ( isset( $instance[ 'only_1st_img' ] ) )			? (bool) $instance[ 'only_1st_img' ]					: false;
+		$random_order			= ( isset( $instance[ 'random_order' ] ) )			? (bool) $instance[ 'random_order' ]					: false;
+		$show_author			= ( isset( $instance[ 'show_author' ] ) )			? (bool) $instance[ 'show_author' ]						: false;
+		$show_categories		= ( isset( $instance[ 'show_categories' ] ) )		? (bool) $instance[ 'show_categories' ]					: false;
+		$show_comments_number	= ( isset( $instance[ 'show_comments_number' ] ) )	? (bool) $instance[ 'show_comments_number' ]			: false;
 		$show_date				= ( isset( $instance[ 'show_date' ] ) )				? (bool) $instance[ 'show_date' ]						: false;
-		$show_comments_number	= ( isset( $instance[ 'show_comments_number' ] ) ) ? (bool) $instance[ 'show_comments_number' ]				: false;
 		$show_excerpt			= ( isset( $instance[ 'show_excerpt' ] ) )			? (bool) $instance[ 'show_excerpt' ]					: false;
 		$show_thumb				= ( isset( $instance[ 'show_thumb' ] ) )			? (bool) $instance[ 'show_thumb' ]						: true;
 		$try_1st_img			= ( isset( $instance[ 'try_1st_img' ] ) )			? (bool) $instance[ 'try_1st_img' ]						: false;
 		$use_default			= ( isset( $instance[ 'use_default' ] ) )			? (bool) $instance[ 'use_default' ]						: false;
+		$open_new_window		= ( isset( $instance[ 'open_new_window' ] ) )		? (bool) $instance[ 'open_new_window' ]					: false;
 
 		// let empty string
 		if ( isset( $instance[ 'excerpt_more' ] ) ) { 
@@ -311,6 +354,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		// sanitize vars
 		if ( ! $category_ids )		$category_ids		= $this->default_category_ids;
 		if ( ! $default_url )		$default_url		= $this->default_thumb_url;
+		if ( ! $post_title_length )	$post_title_length	= $this->default_post_title_length;
 		if ( ! $excerpt_length )	$excerpt_length		= $this->default_excerpt_length;
 		if ( ! $number_posts )		$number_posts		= $this->default_number_posts;
 		if ( ! $thumb_dimensions )	$thumb_dimensions	= $this->default_thumb_dimensions;
@@ -328,8 +372,12 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$id_keep_sticky				= $this->get_field_id( 'keep_sticky' );
 		$id_number_posts			= $this->get_field_id( 'number_posts' );
 		$id_only_1st_img			= $this->get_field_id( 'only_1st_img' );
-		$id_show_date				= $this->get_field_id( 'show_date' );
+		$id_post_title_length		= $this->get_field_id( 'post_title_length' );
+		$id_random_order			= $this->get_field_id( 'random_order' );
+		$id_show_author				= $this->get_field_id( 'show_author' );
+		$id_show_categories			= $this->get_field_id( 'show_categories' );
 		$id_show_comments_number	= $this->get_field_id( 'show_comments_number' );
+		$id_show_date				= $this->get_field_id( 'show_date' );
 		$id_show_excerpt			= $this->get_field_id( 'show_excerpt' );
 		$id_show_thumb				= $this->get_field_id( 'show_thumb' );
 		$id_thumb_dimensions		= $this->get_field_id( 'thumb_dimensions' );
@@ -338,6 +386,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$id_title					= $this->get_field_id( 'title' );
 		$id_try_1st_img				= $this->get_field_id( 'try_1st_img' );
 		$id_use_default				= $this->get_field_id( 'use_default' );
+		$id_open_new_window			= $this->get_field_id( 'open_new_window' );
 		
 		// get texts and values for image sizes dropdown
 		global $_wp_additional_image_sizes;
@@ -469,7 +518,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 			$selection_element .= "\n";
 
 			foreach ( $cat_list as $category ) {
-				$cat_name = apply_filters( 'list_cats', $category[ 'name' ], $category );
+				$cat_name = apply_filters( 'rpwwt_list_cats', $category[ 'name' ], $category );
 				$pad = ( 0 < $category[ 'depth' ] ) ? str_repeat('&ndash;&nbsp;', $category[ 'depth' ] ) : '';
 				$selection_element .= "\t";
 				$selection_element .= '<option value="' . $category[ 'id' ] . '"';
@@ -637,6 +686,55 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	}
 
 	/**
+	 * Returns the assigned categories of a post in a string
+	 *
+	 * @access   private
+	 * @since     4.6
+	 *
+	 */
+	private function get_the_categories ( $id ) {
+		$terms = get_the_terms( $id, 'category' );
+
+		if ( is_wp_error( $terms ) ) {
+			return __( 'Error on listing categories', 'recent-posts-widget-with-thumbnails' );
+		}
+
+		if ( empty( $terms ) ) {
+			$text = 'No categories';
+			return __( $text );
+		}
+
+		$categories = array();
+
+		foreach ( $terms as $term ) {
+			$categories[] = $term->name;
+		}
+
+		$string = $this->in_categories_text . ' ';
+		$string .= join( $this->comma_text, $categories );
+		
+		return $string;
+	}
+
+	/**
+	 * Returns the assigned author of a post in a string
+	 *
+	 * @access   private
+	 * @since     4.8
+	 *
+	 */
+	private function get_the_author () {
+		$author = get_the_author();
+
+		if ( empty( $author ) ) {
+			return '';
+		} else {
+			return sprintf( $this->author_text, $author );
+		}
+
+	}
+
+	/**
 	 * Generate the css file with stored settings
 	 *
 	 * @since 2.3
@@ -650,6 +748,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		// generate CSS
 		$css_code  = ".rpwwt-widget ul { list-style: outside none none; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }\n"; 
 		$css_code .= ".rpwwt-widget ul li { overflow: hidden; margin: 0 0 1.5em; }\n"; 
+		$css_code .= ".rpwwt-widget ul li:last-child { margin: 0; }\n"; 
 		if ( is_rtl() ) {
 			$css_code .= ".rpwwt-widget ul li img { display: inline; float: right; margin: .3em 0 .75em .75em; }\n";
 		} else {
@@ -714,30 +813,56 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 */
 	private function get_the_trimmed_excerpt ( $len = 55, $more = ' [&hellip;]' ) {
 		
+		global $post;
+								
 		// get current post's excerpt
 		$excerpt = get_the_excerpt();
 
-		// if excerpt is longer than desired
-		if ( mb_strlen( $excerpt ) > $len ) {
-			// get excerpt in desired length
-			$sub_excerpt = mb_substr( $excerpt, 0, $len - 4 );
-			// get array of shortened excerpt words
-			$excerpt_words = explode( ' ', $sub_excerpt );
-			// get the length of the last word in the shortened excerpt
-			$excerpt_cut = - ( mb_strlen( $excerpt_words[ count( $excerpt_words ) - 1 ] ) );
-			// if there is no empty string
-			if ( $excerpt_cut < 0 ) {
-				// get the shorter excerpt until the last word
-				$excerpt = mb_substr( $sub_excerpt, 0, $excerpt_cut );
-			} else {
-				// get the shortened excerpt
-				$excerpt = $sub_excerpt;
+		// text processings if no manual excerpt is available
+		if ( '' == $post->post_excerpt ) {
+			// if excerpt is longer than desired
+			if ( mb_strlen( $excerpt ) > $len ) {
+				// get excerpt in desired length
+				$sub_excerpt = mb_substr( $excerpt, 0, $len - 4 );
+				// get array of shortened excerpt words
+				$excerpt_words = explode( ' ', $sub_excerpt );
+				// get the length of the last word in the shortened excerpt
+				$excerpt_cut = - ( mb_strlen( $excerpt_words[ count( $excerpt_words ) - 1 ] ) );
+				// if there is no empty string
+				if ( $excerpt_cut < 0 ) {
+					// get the shorter excerpt until the last word
+					$excerpt = mb_substr( $sub_excerpt, 0, $excerpt_cut );
+				} else {
+					// get the shortened excerpt
+					$excerpt = $sub_excerpt;
+				}
+				// append 'more' text
+				$excerpt .= $more;
 			}
-			// append ellipses
-			$excerpt .= $more;
 		}
 		// return text
 		return $excerpt;
+	}
+
+	/**
+	 * Returns the shortened post title, must use in a loop.
+	 *
+	 * @since 4.5
+	 */
+	private function get_the_trimmed_post_title ( $len = 1000, $more = '&hellip;' ) {
+		
+		// get current post's post_title
+		$post_title = get_the_title();
+
+		// if post_title is longer than desired
+		if ( mb_strlen( $post_title ) > $len ) {
+			// get post_title in desired length
+			$post_title = mb_substr( $post_title, 0, $len );
+			// append ellipses
+			$post_title .= $more;
+		}
+		// return text
+		return $post_title;
 	}
 
 	/**

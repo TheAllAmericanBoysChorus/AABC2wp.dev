@@ -1,13 +1,13 @@
 <?php
 /**
  * SINGLE BLOG POSTS
- * 
+ *
  * This is the template for single, full-page blog posts.
  */
 get_header();
 ?>
 
-<?php get_template_part( 'single-blog-header' ); ?>
+<?php include( get_template_directory() . '/headers/single-blog-header.php'); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
     <div id="container" class="row blog-content">

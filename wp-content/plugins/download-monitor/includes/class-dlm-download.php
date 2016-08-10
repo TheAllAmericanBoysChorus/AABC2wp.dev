@@ -78,7 +78,7 @@ class DLM_Download {
 	 * exists function.
 	 *
 	 * @access public
-	 * @return void
+	 * @return bool
 	 */
 	public function exists() {
 		return ( ! is_null( $this->post ) );
@@ -91,7 +91,7 @@ class DLM_Download {
 	 *
 	 * @param mixed $version_id
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function version_exists( $version_id ) {
 		return in_array( $version_id, array_keys( $this->get_file_versions() ) );
@@ -222,7 +222,7 @@ class DLM_Download {
 	 * get_the_download_link function.
 	 *
 	 * @access public
-	 * @return void
+	 * @return String
 	 */
 	public function get_the_download_link() {
 		$scheme   = parse_url( get_option( 'home' ), PHP_URL_SCHEME );

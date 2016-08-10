@@ -2,7 +2,7 @@
 Contributors: ExpandedFronts, mattshaw
 Tags: search replace, search and replace, update urls, database, search replace database, update database urls, update live url, better search replace, search&replace
 Requires at least: 3.0.1
-Tested up to: 4.3.1
+Tested up to: 4.4
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -19,15 +19,15 @@ When moving your WordPress site to a new domain or server, you will likely run i
 * No server requirements aside from a running installation of WordPress
 * WordPress Multisite support
 
-**Premium features available in the Pro version:**
-
-* View exactly what changed during a search/replace
-* Backup and import the database while running a search/replace
-* Priority email support from the developer of the plugin
-* Save or load custom profiles for quickly repeating a search/replace in the future
-* Support and updates for 1 year
-
-[Learn more about Better Search Replace Pro](https://expandedfronts.com/products/better-search-replace-pro/)
+> **Time-saving features available in the Pro version:**
+>
+> * View exactly what changed during a search/replace
+> * Backup and import the database while running a search/replace
+> * Priority email support from the developer of the plugin
+> * Save or load custom profiles for quickly repeating a search/replace in the future
+> * Support and updates for 1 year
+>
+> **[Learn more about Better Search Replace Pro](https://expandedfronts.com/products/better-search-replace-pro/)**
 
 The search and replace functionality is heavily based on interconnect/it's great and open-source Search Replace DB script, modified to use WordPress native database functions to ensure compatibility.
 
@@ -94,6 +94,18 @@ More information on moving WordPress can be found [here](http://codex.wordpress.
 2. After running a search/replace dry-run.
 
 == Changelog ==
+
+= 1.2.9 - December 8, 2015 =
+* Fix: Bug with case-insensitive searches in serialized objects
+* Fix: Bug with early skip due to lack of primary key
+
+= 1.2.8 - November 25, 2015 =
+* Fix: Bug with report details
+
+= 1.2.7 - November 24, 2015 =
+* Fix: Untranslateable string
+* Tweak: Check BSR_PATH instead of ABSPATH to be consistent
+* Tested with 4.4
 
 = 1.2.6 =
 * Removed unused code/small cleanup
