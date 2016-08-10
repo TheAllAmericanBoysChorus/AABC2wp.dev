@@ -9,44 +9,38 @@
 <div class="accolades row">
     <div class="small-12 medium-12 large-10 columns text-center large-centered">
         <h1>Accolades</h1>
-        <p>We acknowledge and thank the following foundations, companies and individuals who provided significant program and operating support and sponsorship to The All-American Boys Chorus from 2012 to 2015</p>
+        <p>We acknowledge and thank the following foundations, companies and individuals who provided significant program and operating support and sponsorship to The All-American Boys Chorus from 2013 to 2016</p>
     </div>
     <ul class="accolades-list small-12 large-4 columns small-text-center large-text-left">
+        <li>Wendy and Tom Ahlering</li>
         <li>Angels Baseball Foundation</li>
         <li>Julia and George Argyros</li>
         <li>Bank of America</li>
         <li>Barbara and Russell Bell</li>
-        <li>Boeing Company</li>
         <li>John and Donna Crean Foundation</li>
         <li>Vien and Tom Courtney</li>
         <li>Cathy and Roger Dale</li>
-        <li>Edison International</li>
         <li>Bill Gilbert and the Langdale Company</li>
     </ul>
     <ul class="accolades-list small-12 large-4 columns small-text-center large-text-left">
         <li>George Hoag Family Foundation</li>
-        <li>Gorfaine/Schwartz Agency</li>
-        <li>Tracy and Scott Hughes</li>
-        <li>The Foresters</li>
+        <li>Jeff and Susan Hamar</li>
+        <li>Diana and Michael Hoffman</li>
         <li>Lilian and John Kappos</li>
-        <li>Jacqueline and Leighton Ko</li>
         <li>Lynn Krogh</li>
-        <li>Hazel and Ivan Lin</li>
+        <li>Greg and Kathy May</li>
         <li>Lynn and Paul Multari</li>
-        <li>Orange County Fair</li>
     </ul>
     <ul class="accolades-list small-12 large-3 columns small-text-center large-text-left">
+        <li>Rita and Bob Pipta</li>
         <li>Pacific Life Foundation</li>
         <li>Michele and John Page</li>
-        <li>Robinson Foundation</li>
         <li>Diana and Bill Sanderson</li>
         <li>Glenn and Mindy Stearns</li>
         <li>The Charitable Foundation</li>
         <li>The Rose Hills Foundation</li>
-        <li>Val Hongo-Whiting</li>
         <li>U.S. Bank</li>
         <li>Wells Fargo Bank</li>
-        <li>Grace and Li Xu</li>
     <ul>
 </div>
 <?php

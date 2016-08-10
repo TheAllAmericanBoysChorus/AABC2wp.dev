@@ -39,7 +39,7 @@ get_header();
 			<li>1/2 page ad in all event programs (2,000)</li>
 			<li>Special seating at each of the season events: 4 tickets Holiday Concert, 4 tickets Summer Concert.</li>
 			<div class="text-center">
-				<button class="sponsor-button">Sponsor The Chorus</button>
+				<a href="http://taabc.org/contact-us"><button class="sponsor-button">Sponsor The Chorus</button></a>
 			</div>
 		</ul>
 	</div>
@@ -56,10 +56,10 @@ get_header();
 			<li>Mention in all donor mailings (15,000)</li>
 			<li>Recognition in all newsletters (1,500)</li>
 			<li>1/2 page ad in all event programs (2,000)</li>
-			<li>2 tickets for special hosted VIP and media reception</li>
+			<li>4 tickets for the AABC and VIP Reception Gala</li>
 			<li>Special seating at each of the season events: 6 tickets Holiday Concert, 6 tickets</li>
 			<div class="text-center">
-				<button class="sponsor-button">Sponsor The Chorus</button>
+				<a href="http://taabc.org/contact-us"><button class="sponsor-button">Sponsor The Chorus</button></a>
 			</div>
 		</ul>
 	</div>
@@ -79,10 +79,10 @@ get_header();
 			<li>Mention in all donor mailings (15,000)</li>
 			<li>Recognition in all newsletters (1,500)</li>
 			<li>Full page ad in the inside front cover of event programs (2,000)</li>
-			<li>10 tickets for special hosted VIP and media reception</li>
+			<li>2 tables of 10 for the AABC and VIP Reception Gala</li>
 			<li>Special seating at each of the season events: 20 Tickets Holiday Concert, 20 tickets Summer Concert.</li>
 			<div class="text-center">
-				<button class="sponsor-button">Sponsor The Chorus</button>
+				<a href="http://taabc.org/contact-us"><button class="sponsor-button">Sponsor The Chorus</button></a>
 			</div>
 
 		</ul>
@@ -106,10 +106,10 @@ get_header();
 			<li>Mention in all donor mailings (15,000)</li>
 			<li>Recognition in all newsletters (1,500)</li>
 			<li>Full page ad in the inside front cover of event programs (2,000)</li>
-			<li>5 tickets for special hosted VIP and media reception</li>
+			<li>1 table of 10 for the AABC and VIP Reception Gala</li>
 			<li>Special seating at each of the season events: 10 Tickets Holiday Concert, 10 tickets Summer Concert.</li>
 			<div class="text-center">
-				<button class="sponsor-button">Sponsor The Chorus</button>
+				<a href="http://taabc.org/contact-us"><button class="sponsor-button">Sponsor The Chorus</button></a>
 			</div>
 		</ul>
 	</div>
@@ -124,7 +124,7 @@ get_header();
 			<li>1/4 page ad in all event programs (2,000)</li>
 			<li>Special seating at each of the season events: 2 tickets Holiday Concert, 2 tickets Summer Concert.</li>
 			<div class="text-center">
-				<button class="sponsor-button">Sponsor The Chorus</button>
+				<a href="http://taabc.org/contact-us"><button class="sponsor-button">Sponsor The Chorus</button></a>
 			</div>
 		</ul>
 	</div>
