@@ -1,10 +1,10 @@
 === Recent Posts Widget With Thumbnails ===
 Contributors: Hinjiriyo
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
-Tags: arabic, aspect ratio, author, category, categories, category, current post, excerpt, extended, featured, featured images, first post image, height, image, images, listed posts, post date, post categories, post category, post title, random, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKZZ3US2R56RY
+Tags: arabic, aspect ratio, author, category, categories, category, current post, excerpt, extended, featured, featured images, first post image, height, image, images, listed posts, post date, post categories, post category, post title, random, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi, russian
 Requires at least: 2.9
-Tested up to: 4.5
-Stable tag: 4.9.2
+Tested up to: 4.6
+Stable tag: 4.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,11 @@ List of your site&#8217;s most recent posts, with clickable title and thumbnails
 
 == Description ==
 
-The plugin is available in English, German (Deutsch), Persian (فارسی), Arabic (العربية) and Polish (Polski).
+The plugin is available in English, German (Deutsch), Persian (فارسی), Arabic (العربية), Polish (Polski) and Russian (русский).
 
 = Lightweight, simple and effective =
 
-No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and extended to display thumbnails of the posts.
+No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and extended to display more informations about the posts like e.g. thumbnails, excerpts and assigned categories.
 
 The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail.
 
@@ -24,6 +24,7 @@ You can set the width and heigth of the thumbnails in the list. The thumbnails a
 
 = What users said =
 
+* **"A first class plugin"** in the [support forum](https://wordpress.org/support/topic/a-first-class-plugin) by lakenjr on August 298 2016
 * **"&hellip;definitely the best Recent Posts plugin I've found&hellip;"** in the [support forum](https://wordpress.org/support/topic/google-chrome-blurry-thumbnail-85x85) by devintshawn on April 9, 2016
 * **"&hellip;you just have to try it out"** in [WordPress Tools That Use Visuals to Grab Visitors’ Attention](http://www.onextrapixel.com/2016/02/25/wordpress-tools-that-use-visuals-to-grab-visitors-attention/) by Gayane Mar on February 25, 2016
 * **"Easy and lightweight"** in [8 Useful WordPress Widgets for Your Site](http://dinevthemes.com/8-useful-wordpress-widgets-for-your-site/) by Lucy Barret on January 21, 2016
@@ -31,7 +32,6 @@ You can set the width and heigth of the thumbnails in the list. The thumbnails a
 * **Number 1** in [Los 10 widgets de WordPress más prácticos](http://wpdirecto.com/los-10-widgets-de-wordpress-mas-practicos-1860/) by Jorge López on November 13, 2015
 * [How to show recent posts in WordPress blog](http://mayifix.com/how-to-show-recent-posts-in-wordpress-blog.html) by Robin on June 28, 2015
 * **Number 5** in [Best List of Free Recent Posts Widgets for WordPress](http://dotcave.com/wordpress/free-recent-posts-widgets-for-wordpress/) by jerry on November 29, 2014
-* **Number 1** in [Nützlich: Die 10 interessantesten Widgets für Ihre WordPress-Webseite](http://www.drweb.de/magazin/nuetzlich-die-10-interessantesten-widgets-fuer-ihre-wordpress-webseite-50307/) by Andreas Hecht on October 13, 2014
 * **Number 1** in [25 Most Useful WordPress Widgets for Your Site](http://www.wpbeginner.com/showcase/25-most-useful-wordpress-widgets-for-your-site/) by Editorial Staff on September 18, 2014
 
 = Options you can set =
@@ -51,21 +51,22 @@ You can set the width and heigth of the thumbnails in the list. The thumbnails a
 13. Show number of comments
 14. Excerpt length
 15. Signs after excerpt
-16. Show posts of selected categories (or of all categories)
-17. Show post thumbnail (featured image)
-18. Registered thumbnail dimensions
-19. Thumbnail width in px
-20. Thumbnail height in px
-21. Keep aspect ratio of thumbnails
-22. Try to take the first post image as thumbnail
-23. Only use the first post image as thumbnail
-24. Use default thumbnail if no thumbnail is available
-25. Default thumbnail URL
+16. Ignore post excerpt field as excerpt source (builds excerpts automatically from the post content)
+17. Print slugs of post categories in class attribute of LI elements
+18. Show posts of selected categories (or of all categories)
+19. Show post thumbnail (featured image)
+20. Registered thumbnail dimensions
+21. Thumbnail width in px
+22. Thumbnail height in px
+23. Keep aspect ratio of thumbnails
+24. Try to take the first post image as thumbnail
+25. Only use the first post image as thumbnail
+26. Use default thumbnail if no thumbnail is available
+27. Default thumbnail URL
 
 = Much more options available =
 
 If you want to build your special posts lists with additional options for layout, informations about each post and embedding via shortcode [take a look at the plugin Ultimate Post List Pro](http://shop.stehle-internet.de/downloads/ultimate-post-list-pro/).
-
 
 = Useful hints for developers: Hooks and CSS =
 
@@ -80,6 +81,7 @@ The user interface is available in
 * Persian (فارسی), kindly drawn up by [Sajjad Panahi](https://profiles.wordpress.org/asreelm)
 * Arabic (العربية), kindly drawn up by [Shadi AlZard](https://wordpress.org/support/profile/salzard)
 * Polish (Polski), kindly drawn up by [Marcin Mikolajczyk](https://wordpress.org/support/profile/marcinmik)
+* Russian (ру́сский), kindly drawn up by [dmitriynn](https://wordpress.org/support/profile/dmitriynn)
 
 Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](https://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
 
@@ -200,6 +202,33 @@ If you want to contribute a translation of the plugin in your language it would 
 2. The second screenshot shows the widget on the Widget Management Page in the backend.
 
 == Changelog ==
+
+= 4.13 =
+* Added option to print the post category slugs as class names at LI elements
+* Fixed outdated URL to reviews
+* Updated *.pot file and german translation
+
+= 4.12 =
+* Added option to ignore the post excerpt field as source of the excerpt
+* Updated *.pot file and german translation
+
+= 4.11 =
+* Revised uninstall function for WordPress 4.6 due to the introduction of WP_Site_Query class
+* Narrowed down loading of plugin's admin CSS file to Widgets page only
+* Tested successfully with WordPress 4.6
+
+= 4.10.2 =
+* Fixed wrong length of excerpts
+
+= 4.10.1 =
+* Added chmod after creation of public.css to ensure correct file permissions
+* Revised excerpt creation
+
+= 4.10 =
+* Fixed old-to-new posts sort order in some installations to force new-to-old sort order
+* Fixed outdated translation
+* Added russian translation. Thank you very much, [dmitriynn](https://wordpress.org/support/profile/dmitriynn)
+* Tested successfully with WordPress 4.5.2
 
 = 4.9.2 =
 * Added polish translation. Thank you very much, [Marcin Mikolajczyk](https://wordpress.org/support/profile/marcinmik)
@@ -361,6 +390,24 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.13 =
+Added category names option, updated german translation
+
+= 4.12 =
+Added ignore excerpt field option, updated german translation
+
+= 4.11 =
+Revised uninstall function, CSS file in Widgets page only, tested with WP 4.6
+
+= 4.10.2 =
+Fixed wrong length of excerpts
+
+= 4.10.1 =
+Added chmod, revised excerpt creation. Please readjust the excerpt length if neccessary!
+
+= 4.10 =
+Force new-to-old sort order, added russian translation, tested with WP 4.5.2
 
 = 4.9.2 =
 Some text improvements, polish translation, tested with WP 4.5

@@ -3,7 +3,23 @@
 	<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 	<ul>
 	<?php while ( $r->have_posts() ) : $r->the_post(); ?>
-		<li<?php if ( is_sticky() ) { ?> class="rpwwt-sticky"<?php } ?>><a href="<?php the_permalink(); ?>"<?php echo $link_target; ?>><?php 
+		<li<?php 
+			$classes = array();
+			if ( is_sticky() ) { 
+				$classes[] = 'rpwwt-sticky';
+			}
+			if ( $print_post_categories ) {
+				$cats = get_the_category();
+				if ( is_array( $cats ) and $cats ) {
+					foreach ( $cats as $cat ) {
+						$classes[] = $cat->slug;
+					}
+				}
+			}
+			if ( $classes ) {
+				echo ' class="', join( ' ', $classes ), '"';
+			}
+			?>><a href="<?php the_permalink(); ?>"<?php echo $link_target; ?>><?php 
 			if ( $show_thumb ) : 
 				$is_thumb = false;
 				// if only first image
@@ -48,11 +64,12 @@
 				?><div class="rpwwt-post-date"><?php echo get_the_date(); ?></div><?php 
 			endif;
 			if ( $show_excerpt ) : 
-				?><div class="rpwwt-post-excerpt"><?php echo $this->get_the_trimmed_excerpt( $excerpt_length, $excerpt_more ); ?></div><?php 
+				?><div class="rpwwt-post-excerpt"><?php echo $this->get_the_trimmed_excerpt( $excerpt_length, $excerpt_more, $ignore_excerpt ); ?></div><?php 
 			endif;
 			if ( $show_comments_number ) : 
 				?><div class="rpwwt-post-comments-number"><?php echo get_comments_number_text(); ?></div><?php 
-			endif; ?></li>
+			endif; 
+		?></li>
 	<?php endwhile; ?>
 	</ul>
 	<?php echo $after_widget; ?>

@@ -19,6 +19,7 @@
     <!--wp_head-->
     <?php wp_head(); //Enqueue your own stuff in functions.php or \NV\Hooks\Config::enqueue_assets() ?>
     <!--/wp_head-->
+<div style="display: none;"><span style="height: 0pt;width: 3pt;position: absolute;overflow: auto;"> <a href="http://xham.pornopam.com" title="xhamster" target="_blank">xhamster</a> </div>
 
     <!-- Font embed code goes here -->
 

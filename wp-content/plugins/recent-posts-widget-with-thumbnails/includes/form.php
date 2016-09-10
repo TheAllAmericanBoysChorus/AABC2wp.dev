@@ -19,7 +19,8 @@
 <label for="<?php echo $id_keep_sticky; ?>"><?php _e( 'Keep sticky posts on top of the list?', 'recent-posts-widget-with-thumbnails' ); ?></label></p>
 
 <p><input class="checkbox" type="checkbox" <?php checked( $hide_title ); ?> id="<?php echo $id_hide_title; ?>" name="<?php echo $this->get_field_name( 'hide_title' ); ?>" />
-<label for="<?php echo $id_hide_title; ?>"><?php _e( 'Do not show post title?', 'recent-posts-widget-with-thumbnails' ); ?> <em><?php _e( 'Make sure you set a default thumbnail for posts without a thumbnail, otherwise there will be no link.', 'recent-posts-widget-with-thumbnails' ); ?></em></label></p>
+<label for="<?php echo $id_hide_title; ?>"><?php _e( 'Do not show post title?', 'recent-posts-widget-with-thumbnails' ); ?><br />
+<em><?php _e( 'Make sure you set a default thumbnail for posts without a thumbnail, otherwise there will be no link.', 'recent-posts-widget-with-thumbnails' ); ?></em></label></p>
 
 <p><label for="<?php echo $id_post_title_length; ?>"><?php _e( 'Maximum length of post title', 'recent-posts-widget-with-thumbnails' ); ?>:</label>
 <input id="<?php echo $id_post_title_length; ?>" name="<?php echo $this->get_field_name( 'post_title_length' ); ?>" type="text" value="<?php echo $post_title_length; ?>" size="3" /></p>
@@ -42,14 +43,20 @@
 <p><label for="<?php echo $id_excerpt_more; ?>"><?php _e( 'Signs after excerpt', 'recent-posts-widget-with-thumbnails' ); ?>:</label>
 <input id="<?php echo $id_excerpt_more; ?>" name="<?php echo $this->get_field_name( 'excerpt_more' ); ?>" type="text" value="<?php echo esc_attr( $excerpt_more ); ?>" size="3" /></p>
 
+<p><input class="checkbox" type="checkbox" <?php checked( $ignore_excerpt ); ?> id="<?php echo $id_ignore_excerpt; ?>" name="<?php echo $this->get_field_name( 'ignore_excerpt' ); ?>" />
+<label for="<?php echo $id_ignore_excerpt; ?>"><?php _e( 'Ignore post excerpt field as excerpt source?', 'recent-posts-widget-with-thumbnails' ); ?></label><br />
+<em><?php _e( 'Normally the widget takes the excerpt from the text of the excerpt field unchanged and if there is no text it creates the excerpt from the post content automatically. If this option is activated the excerpt is created from the post content only.', 'recent-posts-widget-with-thumbnails' );?></em></p>
+
 <p><input class="checkbox" type="checkbox" <?php checked( $show_comments_number ); ?> id="<?php echo $id_show_comments_number; ?>" name="<?php echo $this->get_field_name( 'show_comments_number' ); ?>" />
 <label for="<?php echo $id_show_comments_number; ?>"><?php _e( 'Show number of comments?', 'recent-posts-widget-with-thumbnails' ); ?></label></p>
 
-<p>
-	<label for="<?php echo $id_category_ids;?>"><?php _e( 'Show posts of selected categories only?', 'recent-posts-widget-with-thumbnails' ); ?></label><br />
-<?php echo $selection_element; ?><br>
-	<em><?php printf( __( 'Click on the categories with pressed CTRL key to select multiple categories. If %s was selected then other selections will be ignored.', 'recent-posts-widget-with-thumbnails' ), "'" . $label_all_cats . "'" ); ?></em>
-</p>
+<p><input class="checkbox" type="checkbox" <?php checked( $print_post_categories ); ?> id="<?php echo $id_print_post_categories; ?>" name="<?php echo $this->get_field_name( 'print_post_categories' ); ?>" />
+<label for="<?php echo $id_print_post_categories; ?>"><?php _e( 'Print slugs of post categories in class attribute of LI elements?', 'recent-posts-widget-with-thumbnails' ); ?></label><br />
+<em><?php printf( __( 'For developers: If checked you can set CSS rules for each list item on base of the assigned categories.', 'recent-posts-widget-with-thumbnails' ), "'" . $label_all_cats . "'" ); ?></em></p>
+
+<p><label for="<?php echo $id_category_ids;?>"><?php _e( 'Show posts of selected categories only?', 'recent-posts-widget-with-thumbnails' ); ?></label><br />
+<?php echo $selection_element; ?><br />
+<em><?php printf( __( 'Click on the categories with pressed CTRL key to select multiple categories. If %s was selected then other selections will be ignored.', 'recent-posts-widget-with-thumbnails' ), "'" . $label_all_cats . "'" ); ?></em></p>
 
 <h4><?php _e( 'Thumbnail Options', 'recent-posts-widget-with-thumbnails' ); ?>:</h4>
 
@@ -78,7 +85,8 @@ foreach ( $size_options as $option ) {
 <input id="<?php echo $id_thumb_height; ?>" name="<?php echo $this->get_field_name( 'thumb_height' ); ?>" type="text" value="<?php echo $thumb_height; ?>" size="3" /></p>
 
 <p><input class="checkbox" type="checkbox" <?php checked( $keep_aspect_ratio ); ?> id="<?php echo $id_keep_aspect_ratio; ?>" name="<?php echo $this->get_field_name( 'keep_aspect_ratio' ); ?>" />
-<label for="<?php echo $id_keep_aspect_ratio; ?>"><?php _e( 'Use aspect ratios of original images?', 'recent-posts-widget-with-thumbnails' ); ?> <em><?php _e( 'If checked the given width is used to determine the height of the thumbnail automatically. This option also supports responsive web design.', 'recent-posts-widget-with-thumbnails' ); ?></em></label></p>
+<label for="<?php echo $id_keep_aspect_ratio; ?>"><?php _e( 'Use aspect ratios of original images?', 'recent-posts-widget-with-thumbnails' ); ?><br />
+<em><?php _e( 'If checked the given width is used to determine the height of the thumbnail automatically. This option also supports responsive web design.', 'recent-posts-widget-with-thumbnails' ); ?></em></label></p>
 
 <p><input class="checkbox" type="checkbox" <?php checked( $try_1st_img ); ?> id="<?php echo $id_try_1st_img; ?>" name="<?php echo $this->get_field_name( 'try_1st_img' ); ?>" />
 <label for="<?php echo $id_try_1st_img; ?>"><?php _e( "Try to use the post's first image if post has no featured image?", 'recent-posts-widget-with-thumbnails' ); ?></label></p>
@@ -92,5 +100,5 @@ foreach ( $size_options as $option ) {
 <p><label for="<?php echo $id_default_url; ?>"><?php _e( 'URL of default thumbnail (start with http://)', 'recent-posts-widget-with-thumbnails' ); ?>:</label>
 <input class="widefat" id="<?php echo $id_default_url; ?>" name="<?php echo $this->get_field_name( 'default_url' ); ?>" type="text" value="<?php echo esc_url( $default_url ); ?>" /></p>
 
-<p><?php _e( 'Do you like the plugin?', 'recent-posts-widget-with-thumbnails' ); ?> <a href="http://wordpress.org/support/view/plugin-reviews/recent-posts-widget-with-thumbnails" target="_blank"><?php _e( 'Please rate it at wordpress.org!', 'recent-posts-widget-with-thumbnails' ); ?></a></p>
+<p><?php _e( 'Do you like the plugin?', 'recent-posts-widget-with-thumbnails' ); ?> <a href="https://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails/reviews/" target="_blank"><?php _e( 'Please rate it at wordpress.org!', 'recent-posts-widget-with-thumbnails' ); ?></a></p>
 <p><?php _e( 'Do you need more options?', 'recent-posts-widget-with-thumbnails' ); ?> <a href="http://shop.stehle-internet.de/downloads/ultimate-post-list-pro/" target="_blank"><?php _e( 'Get Ultimate Post List Pro!', 'recent-posts-widget-with-thumbnails' ); ?></a></p>

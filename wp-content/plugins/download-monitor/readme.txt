@@ -1,10 +1,10 @@
 === Download Monitor ===
-Contributors: never5, barrykooij, mikejolley
+Contributors: never5, barrykooij, mikejolley, hchouhan
 Donate link: http://www.barrykooij.com/donate/
 Tags: download, downloads, monitor, hits, download monitor, tracking, admin, count, counter, files, versions, download count, logging, AJAX, digital, documents, download category, download manager, download template, downloadmanager, file manager, file tree, grid, hits, ip-address, manager, media, monitor, password, protect downloads, tracker
 Requires at least: 3.8
-Tested up to: 4.5
-Stable tag: 1.9.3
+Tested up to: 4.6
+Stable tag: 1.9.5
 License: GPLv3
 
 Download Monitor is a plugin for uploading and managing downloads, tracking downloads, and displaying links.
@@ -117,6 +117,17 @@ More documentation can be found in our [Knowledge Base](https://www.download-mon
 4. Display regular download links or fancy ones all using shortcodes and templates.
 
 == Changelog ==
+
+= 1.9.5: August 23, 2016 =
+* Tweak: Fixed a bug where Download Options couldn't be checked off in quick edit.
+* Tweak: Updated settings screen description for custom templates.
+* Tweak: Download Information input fields are now readonly since these fields are informational only. Props [kraftner](https://github.com/kraftner).
+* Tweak: Removed code that triggered PHP7 incompatibility false positives in PHP7 compatibility scans.
+* Tweak: Removed old JSON library since default JSON functions are available from PHP 5.2 and up.
+
+= 1.9.4: May 2, 2016 =
+* Tweak: Various cookie tweaks to prevent incorrect double logging entries.
+* Tweak: Added a Cookie Manager class to centralize cookie related tasks.
 
 = 1.9.3: April 11, 2016 =
 * Tweak: Small rework of [downloads] loop. Downloads now filterable per download via dlm_shortcode_downloads_loop_download.
