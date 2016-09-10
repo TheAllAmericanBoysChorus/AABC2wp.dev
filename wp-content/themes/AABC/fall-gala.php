@@ -12,8 +12,8 @@
 	</div>
 
 	<div class="small-12 large-centered columns text-center fall-gala-btn-row">
-		<a href="http://www.taabc.org/download/2165/"><button>Underwrite The Gala</button></a>
-		<a href="http://www.taabc.org/download/2168/"><button>Donate Auction Items</button></a>
+		<a href="http://www.taabc.org/download/3581/"><button>Underwrite The Gala</button></a>
+		<a href="http://www.taabc.org/download/3576/"><button>Donate Auction Items</button></a>
 		<a href="https://my.bidpal.net/taabcgala16" target="_blank"><button>Purchase Gala Tickets</button>
 		<a href="https://my.bidpal.net/taabcgala16"><button>Bid In Online Auction<br/></button></a>
 	</div>
