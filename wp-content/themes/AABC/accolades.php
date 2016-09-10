@@ -12,43 +12,60 @@
         <p>We acknowledge and thank the following foundations, companies and individuals who provided significant program and operating support and sponsorship to The All-American Boys Chorus from 2012 to 2015</p>
     </div>
     <ul class="accolades-list small-12 large-4 columns small-text-center large-text-left">
-        <li>Angels Baseball Foundation</li>
         <li>Julia and George Argyros</li>
         <li>Bank of America</li>
         <li>Barbara and Russell Bell</li>
-        <li>Boeing Company</li>
-        <li>John and Donna Crean Foundation</li>
+        <li>R.G. Canning</li>
+        <li>Charitable Foundation</li>
         <li>Vien and Tom Courtney</li>
-        <li>Cathy and Roger Dale</li>
-        <li>Edison International</li>
-        <li>Bill Gilbert and the Langdale Company</li>
+        <li>Crean Foundation</li>
+        <li>Cushman Wakefield</li>
     </ul>
     <ul class="accolades-list small-12 large-4 columns small-text-center large-text-left">
+        <li>Bill Gilbert and the Langdale Company</li>
         <li>George Hoag Family Foundation</li>
-        <li>Gorfaine/Schwartz Agency</li>
-        <li>Tracy and Scott Hughes</li>
-        <li>The Foresters</li>
         <li>Lilian and John Kappos</li>
-        <li>Jacqueline and Leighton Ko</li>
         <li>Lynn Krogh</li>
-        <li>Hazel and Ivan Lin</li>
         <li>Lynn and Paul Multari</li>
-        <li>Orange County Fair</li>
-    </ul>
-    <ul class="accolades-list small-12 large-3 columns small-text-center large-text-left">
+        <li>Huey Yann Ooi</li>
         <li>Pacific Life Foundation</li>
         <li>Michele and John Page</li>
+
+    </ul>
+    <ul class="accolades-list small-12 large-3 columns small-text-center large-text-left">
         <li>Robinson Foundation</li>
         <li>Diana and Bill Sanderson</li>
-        <li>Glenn and Mindy Stearns</li>
-        <li>The Charitable Foundation</li>
-        <li>The Rose Hills Foundation</li>
-        <li>Val Hongo-Whiting</li>
+        <li>SunTrust Bank</li>
+        <li>Charles & Kathy Tarrant</li>
+        <li>Larry Whiting & Val Hongo-Whiting</li>
         <li>U.S. Bank</li>
         <li>Wells Fargo Bank</li>
-        <li>Grace and Li Xu</li>
     <ul>
 </div>
+
+
+Charitable Foundation
+Vien and Tom Courtney
+Crean Foundation
+Cushman &amp; Wakefield
+Bill Gilbert and the Langdale Company
+George Hoag Family Foundation
+Lilian and John Kappos
+Lynn Krogh
+Lynn and Paul Multari
+Huey Yann Ooi
+Pacific Life Foundation
+Michele and John Page
+Rita and Bob Pipta
+Robinson Foundation
+Diana and Bill Sanderson
+Suntrust Bank
+Charles and Kathy Tarrant
+Larry Whiting and Val Hongo-Whiting
+U.S. Bank
+Wells Fargo Bank
+
+
 <?php
 
 $args = array(
