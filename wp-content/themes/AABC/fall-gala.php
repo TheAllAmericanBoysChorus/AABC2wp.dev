@@ -18,7 +18,7 @@
 		<a href="https://my.bidpal.net/taabcgala16"><button>Bid In Online Auction<br/></button></a>
 	</div>
 
-    <div class="small-12 large-8 columns left general-content-right">
+    <div class="small-12 large-8 columns text-center large-centered">
         <?php dynamic_sidebar('fall-gala-main-content'); ?>
     </div>
 
